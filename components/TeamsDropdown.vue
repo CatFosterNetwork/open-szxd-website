@@ -28,8 +28,10 @@ const actions = [
     target: "_blank",
   },
   {
-    label: "Contact support",
-    icon: "i-heroicons-chat-bubble-bottom-center-text",
+    label: "Contact us",
+    icon: "i-simple-icons-github",
+    to: "https://github.com/CatFosterNetwork",
+    target: "_blank",
   },
 ];
 

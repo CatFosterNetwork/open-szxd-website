@@ -11,9 +11,17 @@ export interface User {
   location: string
 }
 
+export interface Schedule {
+  id: number
+  user: User
+  time: string
+  address: string
+  status: 'unknown' | 'missing' | 'checked' | 'manual'
+}
+
 export interface Mail {
   id: number
-  unread?: boolean
+  is_checked?: boolean
   from: User
   subject: string
   body: string

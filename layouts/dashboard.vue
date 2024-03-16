@@ -72,11 +72,13 @@ const links = [
   },
 ];
 
-import { useClipboard } from '@vueuse/core'
+import { useClipboard } from "@vueuse/core";
 
-const toast = useToast()
-const inviteMsg = ref('Go to https://open.szxd.swu.social/ to get free and automatic check in service.')
-const { text, copy, copied, isSupported } = useClipboard({ inviteMsg })
+const toast = useToast();
+const inviteMsg = ref(
+  "Go to https://open.szxd.swu.social/ to get free and automatic check in service."
+);
+const { text, copy, copied, isSupported } = useClipboard({ inviteMsg });
 
 const footerLinks = [
   {
@@ -84,9 +86,9 @@ const footerLinks = [
     icon: "i-heroicons-plus",
     // to: "/settings/members",
     click: () => {
-      copy(inviteMsg.value)
-      toast.add({ title: 'Copied!', icon: 'i-heroicons-check-circle' })
-    }
+      copy(inviteMsg.value);
+      toast.add({ title: "Copied!", icon: "i-heroicons-check-circle" });
+    },
   },
   {
     label: "Help & Support",
@@ -105,20 +107,15 @@ const groups = [
     })),
   },
   {
-    key: "code",
-    label: "Code",
+    key: "contact",
+    label: "Contact",
     commands: [
       {
         id: "source",
-        label: "View page source",
+        label: "Contact us on GitHub",
         icon: "i-simple-icons-github",
         click: () => {
-          window.open(
-            `https://github.com/nuxt-ui-pro/dashboard/blob/main/pages${
-              route.path === "/" ? "/index" : route.path
-            }.vue`,
-            "_blank"
-          );
+          window.open(`https://github.com/CatFosterNetwork`, "_blank");
         },
       },
     ],

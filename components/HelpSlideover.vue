@@ -21,12 +21,12 @@ const links = [
   //   to: "https://ui.nuxt.com/pro/getting-started",
   //   target: "_blank",
   // },
-  // {
-  //   label: "GitHub repository",
-  //   icon: "i-simple-icons-github",
-  //   to: "https://github.com/nuxt-ui-pro/dashboard",
-  //   target: "_blank",
-  // },
+  {
+    label: "Contact us on GitHub",
+    icon: "i-simple-icons-github",
+    to: "https://github.com/CatFosterNetwork",
+    target: "_blank",
+  },
   {
     label: "Buy Open-SZXD Pro",
     icon: "i-heroicons-credit-card",

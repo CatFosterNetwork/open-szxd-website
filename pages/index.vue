@@ -12,7 +12,7 @@
       <UNavigationTree :links="mapContentNavigation(navigation)" />
     </template>
   </UHeader>
-  <view class="body">
+  <view class="grid lg:grid-cols-2 lg:items-center gap-8 min-h-5/6 m-10">
     <view class="big-title">
       <ULandingHero
         title="Keep Free and Not Be Controlled"
@@ -22,12 +22,12 @@
             label: 'Get Started',
             icon: 'i-heroicons-rocket-launch',
             size: 'lg',
-            to: '/login',
+            to: startPosition,
           },
         ]"
       />
     </view>
-    <view class="grid">
+    <view>
       <ULandingGrid>
         <ULandingCard
           class="col-span-6 row-span-2"
@@ -81,22 +81,23 @@ const links = [
     to: "/settings",
   },
 ];
+
+const startPosition = ref<string>("/login");
+
+onMounted(() => {
+  let session_token_cookie = useCookie("session_token");
+
+  startPosition.value =
+    session_token_cookie.value != "" &&
+    session_token_cookie.value != null &&
+    session_token_cookie.value != undefined
+      ? "/dashboard"
+      : "/login";
+});
 </script>
 
 <style lang="scss" scoped>
 .body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 85vh;
-}
-
-.big-title {
-  width: 150rem;
-  margin-bottom: 2rem;
-}
-
-.grid {
-  margin: 0 5rem;
 }
 </style>

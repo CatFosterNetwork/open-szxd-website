@@ -25,11 +25,25 @@ const responseSuccess = (response: any) => {
   return Promise.resolve(response)
 }
 
+function clearAllCookie() {
+  var date=new Date();
+  date.setTime(date.getTime()-10000);
+  var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
+  if (keys) {
+      for (var i = keys.length; i--;)
+        document.cookie=keys[i]+"=0; expire="+date.toString()+"; path=/";
+  }
+}
+
 const responseFailed = (error: any) => {
   const { response } = error
   if (response) {
     // handleError(response)
     // cons error = new Error(response.data.msg)
+    if (response.status === 400) {
+      clearAllCookie()
+      window.location.href = '/login'
+    }
     return Promise.reject()
   } else if (!window.navigator.onLine) {
     return Promise.reject(new Error('please check your network'))

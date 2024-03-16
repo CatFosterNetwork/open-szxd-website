@@ -9,6 +9,7 @@
         icon="i-heroicons-lock-closed"
         :ui="{ base: 'text-center', footer: 'text-center' }"
         @submit="onSubmit"
+        :loading="loading"
       >
         <template #description>
           Don't have an account?
@@ -39,6 +40,7 @@
 <script setup lang="ts">
 import type { FormError } from "#ui/types";
 
+const loading = ref(false);
 const toast = useToast();
 
 const fields = [
@@ -68,6 +70,7 @@ const validate = (state: any) => {
 import Api from "~/api/api";
 
 const onSubmit = (data: any) => {
+  loading.value = true;
   Api.register(data)
     .then((res: any) => {
       if (res.data.code === 0x0) {
@@ -79,8 +82,10 @@ const onSubmit = (data: any) => {
           color: "red",
         });
       }
+      loading.value = false;
     })
     .catch(() => {
+      loading.value = false;
       toast.add({
         title: "Login failed, Please check your accout or password!",
         color: "red",

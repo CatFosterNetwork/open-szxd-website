@@ -3,6 +3,7 @@ import { eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, format } fr
 import { VisXYContainer, VisLine, VisAxis, VisArea, VisCrosshair, VisTooltip } from '@unovis/vue'
 import { useElementSize } from '@vueuse/core'
 import type { Period, Range } from '~/types'
+import Api from '~/api/api'
 
 const cardRef = ref<HTMLElement | null>(null)
 
@@ -24,7 +25,6 @@ type DataRecord = {
 
 const { width } = useElementSize(cardRef)
 
-// We use `useAsyncData` here to have same random data on the client and server
 const { data } = await useAsyncData<DataRecord[]>(async () => {
   const dates = ({
     daily: eachDayOfInterval,
@@ -32,10 +32,10 @@ const { data } = await useAsyncData<DataRecord[]>(async () => {
     monthly: eachMonthOfInterval
   })[props.period](props.range)
 
-  const min = 1000
-  const max = 10000
+  let res = await Api.statistics()
+  res.data.data = res.data.data.slice(0, dates.length).reverse()
 
-  return dates.map((date) => ({ date, amount: Math.floor(Math.random() * (max - min + 1)) + min }))
+  return dates.map((date, index) => ({ date, amount: res.data.data[index] }))
 }, {
   watch: [() => props.period, () => props.range],
   default: () => []
@@ -44,7 +44,7 @@ const { data } = await useAsyncData<DataRecord[]>(async () => {
 const x = (_: DataRecord, i: number) => i
 const y = (d: DataRecord) => d.amount
 
-const total = computed(() => data.value.reduce((acc: number, { amount }) => acc + amount, 0))
+// const total = computed(() => data.value.reduce((acc: number, { amount }) => acc + amount, 0))
 
 const formatNumber = new Intl.NumberFormat('en', { maximumFractionDigits: 0 }).format
 
@@ -75,7 +75,7 @@ const template = (d: DataRecord) => `${formatDate(d.date)}: ${formatNumber(d.amo
           Number of users today
         </p>
         <p class="text-3xl text-gray-900 dark:text-white font-semibold">
-          {{ formatNumber(total) }}
+          {{ formatNumber(data[data.length - 1]?.amount || 0) }}
         </p>
       </div>
     </template>
