@@ -1,8 +1,10 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 const sales = [
   {
     user: {
-      name: "Offline payment QR code",
+      name: t("homeSales.sales.1.name"),
       email: "",
       avatar: {
         src: "https://i.pravatar.cc/128?u=0",
@@ -12,7 +14,7 @@ const sales = [
   },
   {
     user: {
-      name: "Rapid SWU VPN",
+      name: t("homeSales.sales.2.name"),
       email: "",
       avatar: {
         src: "https://i.pravatar.cc/128?u=4",
@@ -22,7 +24,7 @@ const sales = [
   },
   {
     user: {
-      name: "Elective course copilot",
+      name: t("homeSales.sales.3.name"),
       email: "",
       avatar: {
         src: "https://i.pravatar.cc/128?u=1",
@@ -51,8 +53,8 @@ const formatNumber = new Intl.NumberFormat("en", {
 
 <template>
   <UDashboardCard
-    title="Premium Member"
-    description="The Pro version has more powerful features."
+    :title="$t('homeSales.dashboardCard.title')"
+    :description="$t('homeSales.dashboardCard.description')"
     icon="i-heroicons-star"
   >
     <NuxtLink

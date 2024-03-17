@@ -2,6 +2,8 @@
 import type { Mail } from "~/types";
 import Api from "~/api/api";
 
+const { t } = useI18n();
+
 const tabItems = [
   {
     label: "All",
@@ -15,7 +17,7 @@ const selectedTab = ref(0);
 const dropdownItems = [
   [
     {
-      label: "Mark as unread",
+      label: t("inbox.dropdownItems.read"),
       icon: "i-heroicons-check-circle",
       click: () => {
         if (selectedMail.value) {
@@ -24,10 +26,16 @@ const dropdownItems = [
         }
       },
     },
-    // {
-    //   label: "Mark as important",
-    //   icon: "i-heroicons-exclamation-circle",
-    // },
+    {
+      label: t("inbox.dropdownItems.allread"),
+      icon: "i-heroicons-exclamation-circle",
+      click: () => {
+        filteredMails.value.forEach((mail) => {
+          mail.unread = false;
+          Api.read(mail.id);
+        });
+      },
+    },
   ],
   // [
   //   {

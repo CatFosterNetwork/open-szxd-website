@@ -1,81 +1,101 @@
 <script setup lang="ts">
-import { eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, format } from 'date-fns'
-import { VisXYContainer, VisLine, VisAxis, VisArea, VisCrosshair, VisTooltip } from '@unovis/vue'
-import { useElementSize } from '@vueuse/core'
-import type { Period, Range } from '~/types'
-import Api from '~/api/api'
+import {
+  eachDayOfInterval,
+  eachWeekOfInterval,
+  eachMonthOfInterval,
+  format,
+} from "date-fns";
+import {
+  VisXYContainer,
+  VisLine,
+  VisAxis,
+  VisArea,
+  VisCrosshair,
+  VisTooltip,
+} from "@unovis/vue";
+import { useElementSize } from "@vueuse/core";
+import type { Period, Range } from "~/types";
+import Api from "~/api/api";
 
-const cardRef = ref<HTMLElement | null>(null)
+const cardRef = ref<HTMLElement | null>(null);
 
 const props = defineProps({
   period: {
     type: String as PropType<Period>,
-    required: true
+    required: true,
   },
   range: {
     type: Object as PropType<Range>,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
 type DataRecord = {
-  date: Date
-  amount: number
-}
+  date: Date;
+  amount: number;
+};
 
-const { width } = useElementSize(cardRef)
+const { width } = useElementSize(cardRef);
 
-const { data } = await useAsyncData<DataRecord[]>(async () => {
-  const dates = ({
-    daily: eachDayOfInterval,
-    weekly: eachWeekOfInterval,
-    monthly: eachMonthOfInterval
-  })[props.period](props.range)
+const { data } = await useAsyncData<DataRecord[]>(
+  async () => {
+    const dates = {
+      daily: eachDayOfInterval,
+      weekly: eachWeekOfInterval,
+      monthly: eachMonthOfInterval,
+    }[props.period](props.range);
 
-  let res = await Api.statistics()
-  res.data.data = res.data.data.slice(0, dates.length).reverse()
-  res.data.data.pop()
-  dates.pop()
+    let res = await Api.statistics();
+    res.data.data = res.data.data.slice(0, dates.length).reverse();
+    res.data.data.pop();
+    dates.pop();
 
-  return dates.map((date, index) => ({ date, amount: res.data.data[index] }))
-}, {
-  server: false,
-  watch: [() => props.period, () => props.range],
-  default: () => []
-})
+    return dates.map((date, index) => ({ date, amount: res.data.data[index] }));
+  },
+  {
+    server: false,
+    watch: [() => props.period, () => props.range],
+    default: () => [],
+  }
+);
 
-const x = (_: DataRecord, i: number) => i
-const y = (d: DataRecord) => d.amount
+const x = (_: DataRecord, i: number) => i;
+const y = (d: DataRecord) => d.amount;
 
 // const total = computed(() => data.value.reduce((acc: number, { amount }) => acc + amount, 0))
 
-const formatNumber = new Intl.NumberFormat('en', { maximumFractionDigits: 0 }).format
+const formatNumber = new Intl.NumberFormat("en", { maximumFractionDigits: 0 })
+  .format;
 
 const formatDate = (date: Date): string => {
-  return ({
-    daily: format(date, 'd MMM'),
-    weekly: format(date, 'd MMM'),
-    monthly: format(date, 'MMM yyy')
-  })[props.period]
-}
+  return {
+    daily: format(date, "d MMM"),
+    weekly: format(date, "d MMM"),
+    monthly: format(date, "MMM yyy"),
+  }[props.period];
+};
 
 const xTicks = (i: number) => {
   if (i === 0 || i === data.value.length - 1 || !data.value[i]) {
-    return ''
+    return "";
   }
 
-  return formatDate(data.value[i].date)
-}
+  return formatDate(data.value[i].date);
+};
 
-const template = (d: DataRecord) => `${formatDate(d.date)}: ${formatNumber(d.amount)}`
+const template = (d: DataRecord) =>
+  `${formatDate(d.date)}: ${formatNumber(d.amount)}`;
 </script>
 
 <template>
-  <UDashboardCard ref="cardRef" :ui="{ body: { padding: '!pb-3 !px-0' } as any }">
+  <UDashboardCard
+    ref="cardRef"
+    :ui="{ body: { padding: '!pb-3 !px-0' } as any }"
+  >
     <template #header>
       <div>
         <p class="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
-          Number of users yesterday
+          {{ $t("homeChart.dashboardCard.header") }}
         </p>
         <p class="text-3xl text-gray-900 dark:text-white font-semibold">
           {{ formatNumber(data[data.length - 1]?.amount || 0) }}
@@ -83,13 +103,26 @@ const template = (d: DataRecord) => `${formatDate(d.date)}: ${formatNumber(d.amo
       </div>
     </template>
 
-    <VisXYContainer :data="data" :padding="{ top: 10 }" class="h-96" :width="width">
+    <VisXYContainer
+      :data="data"
+      :padding="{ top: 10 }"
+      class="h-96"
+      :width="width"
+    >
       <VisLine :x="x" :y="y" color="rgb(var(--color-primary-DEFAULT))" />
-      <VisArea :x="x" :y="y" color="rgb(var(--color-primary-DEFAULT))" :opacity="0.1" />
+      <VisArea
+        :x="x"
+        :y="y"
+        color="rgb(var(--color-primary-DEFAULT))"
+        :opacity="0.1"
+      />
 
       <VisAxis type="x" :x="x" :tick-format="xTicks" />
 
-      <VisCrosshair color="rgb(var(--color-primary-DEFAULT))" :template="template" />
+      <VisCrosshair
+        color="rgb(var(--color-primary-DEFAULT))"
+        :template="template"
+      />
 
       <VisTooltip />
     </VisXYContainer>

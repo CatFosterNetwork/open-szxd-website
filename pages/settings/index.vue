@@ -2,6 +2,8 @@
 import type { FormError, FormSubmitEvent } from "#ui/types";
 import Api from "~/api/api";
 
+const { t } = useI18n();
+
 checkLogin();
 
 const { data } = await useAsyncData(
@@ -190,13 +192,13 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       <UDivider class="mb-4" />
 
       <UDashboardSection
-        title="Account"
-        description="No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently."
+        :title="$t('settings.general.deleteAccount.title')"
+        description="$t('settings.general.deleteAccount.description')"
       >
         <div>
           <UButton
             color="red"
-            label="Delete account"
+            :label="$t('settings.general.deleteAccount.button')"
             size="md"
             @click="isDeleteAccountModalOpen = true"
           />

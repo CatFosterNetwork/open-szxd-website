@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Api from "~/api/api";
-const route = useRoute();
+const localePath = useLocalePath();
 const appConfig = useAppConfig();
 const { isHelpSlideoverOpen } = useDashboard();
-
+const { t } = useI18n();
 const badge = ref(0);
 
 await useAsyncData(async () => {
@@ -12,95 +12,91 @@ await useAsyncData(async () => {
   });
 });
 
-const links = reactive([
-  {
-    id: "home",
-    label: "Home",
-    icon: "i-heroicons-home",
-    to: "/",
-    tooltip: {
-      text: "Home",
-      shortcuts: ["G", "H"],
-    },
-  },
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    icon: "i-heroicons-chart-bar-square",
-    to: "/dashboard",
-    tooltip: {
-      text: "Dashboard",
-      shortcuts: ["G", "D"],
-    },
-  },
-  {
-    id: "inbox",
-    label: "Inbox",
-    icon: "i-heroicons-inbox",
-    to: "/inbox",
-    badge: badge.value,
-    tooltip: {
-      text: "Inbox",
-      shortcuts: ["G", "I"],
-    },
-  },
-  {
-    id: "schedule",
-    label: "Schedule",
-    icon: "i-heroicons-table-cells",
-    to: "/schedule",
-    tooltip: {
-      text: "Schedule",
-      shortcuts: ["G", "S"],
-    },
-  },
-  {
-    id: "settings",
-    label: "Settings",
-    to: "/settings",
-    icon: "i-heroicons-cog-8-tooth",
-    children: [
-      {
-        label: "General",
-        to: "/settings",
-        exact: true,
+const links = computed(() => {
+  return [
+    {
+      id: "home",
+      label: t("layouts.dashboard.links.home.label"),
+      icon: "i-heroicons-home",
+      to: localePath("/"),
+      tooltip: {
+        text: t("layouts.dashboard.links.home.text"),
+        shortcuts: ["G", "H"],
       },
-      // {
-      //   label: "Members",
-      //   to: "/settings/members",
-      // },
-      {
-        label: "Notifications",
-        to: "/settings/notifications",
-      },
-    ],
-    tooltip: {
-      text: "Settings",
-      shortcuts: ["G", "S"],
     },
-  },
-]);
+    {
+      id: "dashboard",
+      label: t("layouts.dashboard.links.dashboard.label"),
+      icon: "i-heroicons-chart-bar-square",
+      to: localePath("/dashboard"),
+      tooltip: {
+        text: t("layouts.dashboard.links.dashboard.text"),
+        shortcuts: ["G", "D"],
+      },
+    },
+    {
+      id: "inbox","Settings",
+      label: t("layouts.dashboard.links.inbox.label"),
+      icon: "i-heroicons-inbox",
+      to: localePath("/inbox"),
+      badge: badge.value,
+      tooltip: {
+        text: t("layouts.dashboard.links.inbox.text"),
+        shortcuts: ["G", "I"],
+      },
+    },
+    {
+      id: "schedule",
+      label: t("layouts.dashboard.links.schedule.label"),
+      icon: "i-heroicons-table-cells",
+      to: localePath("/schedule"),
+      tooltip: {
+        text: t("layouts.dashboard.links.schedule.text"),
+        shortcuts: ["G", "S"],
+      },
+    },
+    {
+      id: "settings",
+      label: t("layouts.dashboard.links.settings.label"),
+      to: localePath("/settings"),
+      icon: "i-heroicons-cog-8-tooth",
+      children: [
+        {
+          label: t("layouts.dashboard.links.settings.children.general"),
+          to: localePath("/settings"),
+          exact: true,
+        },
+        {
+          label: t("layouts.dashboard.links.settings.children.notifications"),
+          to: localePath("/settings/notifications"),
+        },
+      ],
+      tooltip: {
+        text: t("layouts.dashboard.links.settings.text"),
+        shortcuts: ["G", "S"],
+      },
+    },
+  ];
+});
 
 import { useClipboard } from "@vueuse/core";
 
 const toast = useToast();
-const inviteMsg = ref(
-  "Go to https://open.szxd.swu.social/ to get free and automatic check in service."
-);
+const inviteMsg = ref(t("layouts.dashboard.footerLinks.inviteMsg"));
+
 const { text, copy, copied, isSupported } = useClipboard({ inviteMsg });
 
 const footerLinks = [
   {
-    label: "Invite people",
+    label: t("layouts.dashboard.footerLinks.invite"),
     icon: "i-heroicons-plus",
-    // to: "/settings/members",
     click: () => {
       copy(inviteMsg.value);
-      toast.add({ title: "Copied!", icon: "i-heroicons-check-circle" });
+      toast.add({ title: t("layouts.dashboard.footerLinks.inviteMsgCopied"), icon: "i-heroicons-check-circle" });
     },
   },
   {
-    label: "Help & Support",
+    label: t("layouts.dashboard.footerLinks.help"),
     icon: "i-heroicons-question-mark-circle",
     click: () => (isHelpSlideoverOpen.value = true),
   },
@@ -109,19 +105,19 @@ const footerLinks = [
 const groups = [
   {
     key: "links",
-    label: "Go to",
-    commands: links.map((link) => ({
+    label: t("layouts.dashboard.lazyUDashboardSearch.groups.links.label"),
+    commands: links.value.map((link) => ({
       ...link,
       shortcuts: link.tooltip?.shortcuts,
     })),
   },
   {
     key: "contact",
-    label: "Contact",
+    label: t("layouts.dashboard.lazyUDashboardSearch.groups.contact"),
     commands: [
       {
         id: "source",
-        label: "Contact us on GitHub",
+        label: t("layouts.dashboard.lazyUDashboardSearch.groups.commands.label"),
         icon: "i-simple-icons-github",
         click: () => {
           window.open(`https://github.com/CatFosterNetwork`, "_blank");

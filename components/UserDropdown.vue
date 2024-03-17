@@ -2,6 +2,7 @@
 const { isHelpSlideoverOpen } = useDashboard();
 const { isDashboardSearchModalOpen } = useUIState();
 const { metaSymbol } = useShortcuts();
+const localePath = useLocalePath();
 
 const items = computed(() => [
   [
@@ -15,7 +16,7 @@ const items = computed(() => [
     {
       label: "Settings",
       icon: "i-heroicons-cog-8-tooth",
-      to: "/settings",
+      to: localePath("/settings"),
     },
     {
       label: "Command menu",
@@ -48,7 +49,7 @@ const items = computed(() => [
     {
       label: "Buy Open-SZXD Pro",
       icon: "i-heroicons-credit-card",
-      to: "/purchase",
+      to: localePath("/purchase"),
       target: "_blank",
     },
   ],
@@ -65,7 +66,7 @@ const items = computed(() => [
               "=;expires=" + new Date().toUTCString() + ";path=/"
             );
         });
-        window.location.href = "/";
+        window.location.href = localePath("/");
       },
     },
   ],

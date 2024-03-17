@@ -4,7 +4,7 @@
       <UAuthForm
         :fields="fields"
         :validate="validate"
-        title="Welcome back!"
+        :title="$t('login.authform.title')"
         align="top"
         icon="i-heroicons-lock-closed"
         :ui="{ base: 'text-center', footer: 'text-center' }"
@@ -12,8 +12,11 @@
         :loading="loading"
       >
         <template #description>
-          Don't have an account?
-          <NuxtLink to="/" class="font-medium">Go away</NuxtLink>.
+          {{ $t("login.authform.description") }}
+          <NuxtLinkLocale to="/" class="font-medium">{{
+            $t("login.authform.goaway")
+          }}</NuxtLinkLocale
+          >.
         </template>
 
         <template #password-hint>
@@ -22,14 +25,14 @@
             to="http://service2.swu.edu.cn/selfservice/module/userself/web/password_retrieve.jsf"
             class="text-primary font-medium"
           >
-            Forgot password?
+            {{ $t("login.authform.forgot") }}
           </NuxtLink>
         </template>
 
         <template #footer>
-          By signing in, you agree to our
-          <NuxtLink to="/" class="text-primary font-medium">
-            Terms of Service </NuxtLink
+          {{ $t("login.authform.footer") }}
+          <NuxtLinkLocale to="/" class="text-primary font-medium">
+            {{ $t("login.authform.terms") }} </NuxtLinkLocale
           >.
         </template>
       </UAuthForm>
@@ -39,6 +42,8 @@
 
 <script setup lang="ts">
 import type { FormError } from "#ui/types";
+const { t } = useI18n();
+const localePath = useLocalePath();
 
 const session_tokenCookie = useCookie("session_token", { readonly: true });
 if (
@@ -46,7 +51,7 @@ if (
   session_tokenCookie.value != null &&
   session_tokenCookie.value != undefined
 ) {
-  navigateTo("/dashboard");
+  navigateTo(localePath("/dashboard"));
 }
 
 const loading = ref(false);
@@ -55,24 +60,24 @@ const toast = useToast();
 const fields = [
   {
     name: "username",
-    label: "School account",
+    label: t("login.authform.fields.account.label"),
     type: "text",
-    placeholder: "Enter your account",
+    placeholder: t("login.authform.fields.account.placeholder"),
   },
   {
     name: "password",
-    label: "Password",
+    label: t("login.authform.fields.password.label"),
     type: "password",
-    placeholder: "Enter your password",
+    placeholder: t("login.authform.fields.password.placeholder"),
   },
 ];
 
 const validate = (state: any) => {
   const errors: FormError[] = [];
   if (!state.username)
-    errors.push({ path: "username", message: "Account is required" });
+    errors.push({ path: "username", message: t("login.authform.validate.username") });
   if (!state.password)
-    errors.push({ path: "password", message: "Password is required" });
+    errors.push({ path: "password", message: t("login.authform.validate.password") });
   return errors;
 };
 
@@ -83,11 +88,11 @@ const onSubmit = (data: any) => {
   Api.register(data)
     .then((res: any) => {
       if (res.data.code === 0x0) {
-        toast.add({ title: "Welcome back!" });
-        navigateTo("/dashboard");
+        toast.add({ title: t("login.submit.success") });
+        navigateTo(localePath("/dashboard"));
       } else {
         toast.add({
-          title: "Login failed, Please check your accout or password!",
+          title: t("login.submit.failed"),
           color: "red",
         });
       }
@@ -96,7 +101,7 @@ const onSubmit = (data: any) => {
     .catch(() => {
       loading.value = false;
       toast.add({
-        title: "Login failed, Please check your accout or password!",
+        title: t("login.submit.failed"),
         color: "red",
       });
     });

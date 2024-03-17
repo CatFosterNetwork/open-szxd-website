@@ -6,26 +6,26 @@
 
     <template #right>
       <UColorModeButton />
-      <UDropdown :items="availableLocales" mode="hover">
+      <UDropdown
+        :items="availableLocales"
+        mode="hover"
+        :ui="{ item: { disabled: 'cursor-text select-text' } }"
+      >
         <UButton icon="i-heroicons-language" variant="ghost" class="ml-2" />
       </UDropdown>
-    </template>
-
-    <template #panel>
-      <UNavigationTree :links="mapContentNavigation(navigation)" />
     </template>
   </UHeader>
   <view class="grid lg:grid-cols-2 lg:items-center gap-8 min-h-5/6 m-10">
     <view class="big-title">
       <ULandingHero
-        title="Keep Free and Not Be Controlled"
-        description="Watch your dreams materialize before your eyes with us."
+        :title="$t('index.landing.hero.title')"
+        :description="$t('index.landing.hero.description')"
         :links="[
           {
-            label: 'Get Started',
+            label: $t('index.landing.hero.links.label'),
             icon: 'i-heroicons-rocket-launch',
             size: 'lg',
-            to: startPosition,
+            to: localePath(startPosition),
           },
         ]"
       />
@@ -35,27 +35,27 @@
         <ULandingCard
           class="col-span-6 row-span-2"
           icon="i-heroicons-swatch"
-          title="High Visualization"
-          description="Visualize data so that you have a clear understanding of the functions of DingTalk in SWU."
+          :title="$t('index.landing.cards.visualization.title')"
+          :description="$t('index.landing.cards.visualization.description')"
         />
         <ULandingCard
           class="col-span-6 row-span-4"
           team
           icon="i-heroicons-wrench-screwdriver"
-          title="Professional Maintenance"
-          description="Our projects are maintained by skilled experts. The reliability and stability are far ahead among similar products. We use the web to make it easier for everyone to access. It can be seen that choosing us means choosing peace of mind."
+          :title="$t('index.landing.cards.maintenance.title')"
+          :description="$t('index.landing.cards.maintenance.description')"
         />
         <ULandingCard
           class="col-span-6 row-span-4"
           icon="i-heroicons-computer-desktop"
-          title="Automatically Clock In"
-          description="Use DingTalk API for automatic daily health check-in and bed check-in, so you no longer have to worry about missing out, the counselor's anger, and affecting your study."
+          :title="$t('index.landing.cards.clockin.title')"
+          :description="$t('index.landing.cards.clockin.description')"
         />
         <ULandingCard
           class="col-span-6 row-span-2"
           icon="i-heroicons-face-smile"
-          title="Easy to Use"
-          description="More than 100 users of our products have commented favorably on our services."
+          :title="$t('index.landing.cards.easy.title')"
+          :description="$t('index.landing.cards.easy.description')"
         />
       </ULandingGrid>
     </view>
@@ -63,10 +63,13 @@
 </template>
 
 <script setup lang="ts">
-import type { NavItem } from "@nuxt/content/dist/runtime/types";
+const { t } = useI18n();
 
-let session_token_cookie = useCookie("session_token");
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
+const session_token_cookie = useCookie("session_token");
 const startPosition = ref<string>("/login");
+
 
 startPosition.value =
   session_token_cookie.value != "" &&
@@ -79,37 +82,39 @@ const availableLocales = [
   [
     {
       label: "English",
-      to: "/",
+      to: switchLocalePath("en"),
     },
+  ],
+  [
     {
       label: "简体中文",
-      to: "/zh",
+      to: switchLocalePath("zh"),
     },
   ],
 ];
 
-const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
-
-const links = [
-  {
-    label: "Home",
-    icon: "i-heroicons-book-open",
-    to: "/",
-  },
-  {
-    label: "Dashboard",
-    icon: "i-heroicons-square-3-stack-3d",
-    to: "/dashboard",
-  },
-  {
-    label: "Product",
-    icon: "i-heroicons-rocket-launch",
-    to: "/purchase",
-  },
-];
+const links = computed(() => {
+  return [
+    {
+      label: t('header.links.home'),
+      icon: "i-heroicons-book-open",
+      to: localePath("/"),
+    },
+    {
+      label: t('header.links.dashboard'),
+      icon: "i-heroicons-square-3-stack-3d",
+      to: localePath("/dashboard"),
+    },
+    {
+      label: t("header.links.purchase"),
+      icon: "i-heroicons-rocket-launch",
+      to: localePath("/purchase"),
+    },
+  ];
+});
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .body {
   height: 85vh;
 }

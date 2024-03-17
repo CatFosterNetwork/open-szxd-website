@@ -21,14 +21,18 @@ await useAsyncData<void>(
     class="flex items-center sm:divide-x divide-gray-200 dark:divide-gray-800"
   >
     <div class="ms-3 text-xl" v-if="date == 'N/A'">
-      Automatic check-in has been
-      <span class="text-red-500 dark:text-red-400">deactivated</span>.
+      {{ $t("homeDateRangePicker.dashboardCard.description") }}
+      <span class="text-red-500 dark:text-red-400">{{
+        $t("homeDateRangePicker.dashboardCard.deactivate")
+      }}</span
+      >.
     </div>
     <div class="ms-3 text-xl" v-else>
-      Automatic check-in has been
+      {{ $t("homeDateRangePicker.dashboardCard.description") }}
       <span class="text-green-500 dark:text-green-400"
-        >activated until {{ date }}</span
-      >. Please log in again to refresh after expiration.
+        >{{ $t("homeDateRangePicker.dashboardCard.activateUntill") }}
+        {{ date }}</span
+      >{{ $t("homeDateRangePicker.dashboardCard.reactivate") }}.
     </div>
   </div>
 </template>

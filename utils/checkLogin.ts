@@ -1,8 +1,12 @@
 import { createSharedComposable } from "@vueuse/core";
 
+const localePath = useLocalePath();
+
 const _checkLogin = () => {
   const toast = useToast();
-  const session_tokenCookie = useCookie<string>("session_token", { readonly: true });
+  const session_tokenCookie = useCookie<string>("session_token", {
+    readonly: true,
+  });
   if (
     !session_tokenCookie.value ||
     session_tokenCookie.value.length == 0 ||
@@ -10,7 +14,7 @@ const _checkLogin = () => {
     session_tokenCookie.value == null
   ) {
     toast.add({ title: "Please login first", color: "red" });
-    // navigateTo("/login");
+    navigateTo(localePath("/login"));
   }
 };
 

@@ -1,0 +1,220 @@
+{
+  "header": {
+    "links": {
+      "home": "主页",
+      "dashboard": "仪表盘",
+      "purchase": "购买产品"
+    }
+  },
+  "index": {
+    "landing": {
+      "hero": {
+        "title": "保持自由\n不受控制",
+        "description": "与我们一起\n见证你的梦想化为现实",
+        "links": {
+          "label": "开始吧"
+        }
+      },
+      "cards": {
+        "visualization": {
+          "title": "数据高度可视化",
+          "description": "数据清晰地呈现在您眼前，让您清楚对数智西大的功能了如指掌。"
+        },
+        "maintenance": {
+          "title": "专业维护",
+          "description": "我们的项目由该领域的的权威专家维护。可靠性和稳定性在同类产品中遥遥领先。"
+        },
+
+        "clockin": {
+          "title": "自动打卡",
+          "description": "使用钉钉API进行自动日常健康打卡和查寝打卡，您再也不用再担心错过签到惹辅导员生气、在外学习无暇顾及于此了。"
+        },
+        "easy": {
+          "title": "简易上手",
+          "description": "界面简洁易用，操作简单便捷。"
+        }
+      }
+    }
+  },
+  "login": {
+    "authform": {
+      "title": "欢迎回来！",
+      "description": "没有账户？",
+      "goaway": "滚一边去",
+      "forgot": "忘记密码？",
+      "footer": "登录即代表您同意我们的",
+      "terms": "服务条款",
+      "fields": {
+        "account": {
+          "label": "校园网账号",
+          "placeholder": "请输入您的校园网账号"
+        },
+        "password": {
+          "label": "密码",
+          "placeholder": "请输入您的密码"
+        }
+      },
+      "validate": {
+        "username": "账户是必填项",
+        "password": "密码是必填项"
+      }
+    },
+    "submit": {
+      "success": "登陆成功！",
+      "failed": "登陆失败！请检查您的账号和密码是否正确。"
+    }
+  },
+  "purchase": {
+    "pricing": {
+      "free": {
+        "title": "免费",
+        "description": "体验产品计划，我们仅提供有限的服务",
+        "features": {
+          "1": "受限的定时任务",
+          "2": "部分功能开放",
+          "3": "网页控制面板"
+        }
+      },
+      "basic": {
+        "title": "基础",
+        "description": "通过成为月度会员，您可以享受所有高级功能，而仅需支付少量费用。",
+        "price": "¥15",
+        "cycle": "/月",
+        "badge": "当下最热",
+        "button": "立即购买",
+        "features": {
+          "1": "30天无忧体验",
+          "2": "来自所有渠道的每日通知",
+          "3": "优先处理反馈",
+          "4": "解锁所有付费功能"
+        }
+      },
+      "premium": {
+        "title": "高级",
+        "description": "高级年付会员，成为我们的一员，体验前所未有的自由，不再受到学校任何限制。",
+        "price": "¥145",
+        "cycle": "/年",
+        "badge": "最具性价比",
+        "button": "立即购买",
+        "features": {
+          "1": "365天无忧体验",
+          "2": "修改考试成绩（即将到来）",
+          "3": "成为所有功能的测试版会员",
+          "4": "在线人工服务"
+        }
+      }
+    }
+  },
+  "layouts": {
+    "dashboard": {
+      "links": {
+        "home": {
+          "label": "主页",
+          "text": "主页"
+        },
+        "dashboard": {
+          "label": "仪表盘",
+          "text": "仪表盘"
+        },
+        "purchase": {
+          "label": "产品购买",
+          "text": "产品购买"
+        },
+        "inbox": {
+          "label": "收件箱",
+          "text": "收件箱"
+        },
+        "schedule": {
+          "label": "安排计划",
+          "text": "安排计划"
+        },
+        "settings": {
+          "label": "设置",
+          "children": {
+            "general": "常规",
+            "notifications": "通知"
+          },
+          "text": "设置"
+        }
+      },
+      "footerLinks": {
+        "invite": "复制分享链接",
+        "help": "帮助中心",
+        "inviteMsg": "我正在使用钉钉的自动打卡服务，访问 https://open.szxd.swu.social/ 免费获取！",
+        "inviteMsgCopied": "已复制！"
+      },
+      "lazyUDashboardSearch": {
+        "groups": {
+          "links": {
+            "label": "前往"
+          },
+          "contact": {
+            "label": "联系",
+            "commands": {
+              "label": "在 GitHub 上联系我们"
+            }
+          }
+        }
+      }
+    }
+  },
+  "homeChart": {
+    "dashboardCard": {
+      "header": "昨日用户数量"
+    }
+  },
+  "homeCountries": {
+    "dashboardCard": {
+      "title": "宿舍排行",
+      "description": "使用自动签到服务最多的宿舍"
+    }
+  },
+  "homeSales": {
+    "sales": {
+      "1": {
+        "name": "钉钉离线付款码"
+      },
+      "2": {
+        "name": "高速西南大学 VPN"
+      },
+      "3": {
+        "name": "选修课抢课助手"
+      }
+    },
+    "dashboardCard": {
+      "title": "付费会员",
+      "description": "专业版拥有更多更强大的功能。"
+    }
+  },
+  "inbox": {
+    "dropdownItems": {
+      "unread": "标为未读",
+      "allread": "全部已读"
+    }
+  },
+  "settings": {
+    "general": {
+      "deleteAccount": {
+        "title": "删除账户",
+        "description": "不再想使用我们的服务了吗？您可以在这里删除您的账户。此操作不可逆。与此账户相关的所有信息将被永久删除。",
+        "button": "删除账户"
+      }
+    },
+    "deleteAccountModal": {
+      "success": "账户已被删除",
+      "failed": "删除账户失败",
+      "dashboardMoal": {
+        "title": "删除账户",
+        "description": "您确定要删除您的账户吗？"
+      }
+    }
+  },
+  "homeDateRangePicker": {
+    "dashboardCard": {
+      "description": "自动打卡服务",
+      "deactivate": "尚未激活",
+      "activateUntill": "已经激活至",
+      "reactivate": "。请在服务过期后重新登陆以激活继续使用。"
+    }
+  }
+}

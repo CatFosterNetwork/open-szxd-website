@@ -1,0 +1,222 @@
+{
+  "header": {
+    "links": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "purchase": "Purchase"
+    }
+  },
+  "index": {
+    "landing": {
+      "hero": {
+        "title": "Keep Free and Not Be Controlled",
+        "description": "Watch your dreams materialize before your eyes with us.",
+        "links": {
+          "label": "Get Started"
+        }
+      },
+      "cards": {
+        "visualization": {
+          "title": "High Visualization",
+          "description": "Visualize data so that you have a clear understanding of the functions of DingTalk in SWU."
+        },
+        "maintenance": {
+          "title": "Professional Maintenance",
+          "description": "Our projects are maintained by skilled experts. The reliability and stability are far ahead among similar products."
+        },
+
+        "clockin": {
+          "title": "Automatic Clock-in",
+          "description": "Use DingTalk API for automatic daily health check-in and bed check-in, so you no longer have to worry about missing out, the counselor's anger, and affecting your study."
+        },
+        "easy": {
+          "title": "Easy to Use",
+          "description": "The interface is simple and easy to use, and the operation is simple and convenient."
+        }
+      }
+    }
+  },
+  "login": {
+    "authform": {
+      "title": "Welcome back!",
+      "description": "Don't have an account?",
+      "goaway": "Go away",
+      "forgot": "Forgot password?",
+      "footer": "By signing in, you agree to our",
+      "terms": "Terms of Service",
+      "fields": {
+        "account": {
+          "name": "username",
+          "label": "School account",
+          "placeholder": "Enter your account"
+        },
+        "password": {
+          "name": "password",
+          "label": "Password",
+          "placeholder": "Enter your password"
+        }
+      },
+      "validate": {
+        "username": "Account is required",
+        "password": "Password is required"
+      }
+    },
+    "submit": {
+      "success": "Welcome back!",
+      "failed": "Login failed, Please check your accout or password!"
+    }
+  },
+  "purchase": {
+    "pricing": {
+      "free": {
+        "title": "Free",
+        "description": "Experience product plan, we only provide limited services",
+        "features": {
+          "1": "Restricted scheduled tasks",
+          "2": "limited functionality",
+          "3": "Web control panel"
+        }
+      },
+      "basic": {
+        "title": "Basic",
+        "description": "Monthly membership, you can enjoy all advanced features but only pay a few fees",
+        "price": "$1.99",
+        "cycle": "/month",
+        "badge": "Most popular",
+        "button": "Buy now",
+        "features": {
+          "1": "No worries for 30 days",
+          "2": "Daily notifications from all channels",
+          "3": "Prioritize feedback",
+          "4": "Unlock all paid features"
+        }
+      },
+      "premium": {
+        "title": "Premium",
+        "description": "Premium annual paid membership, become a member of us, experience unprecedented freedom, and break all school restrictions",
+        "price": "$19.99",
+        "cycle": "/year",
+        "badge": "Cost-effectiveness",
+        "button": "Buy now",
+        "features": {
+          "1": "No worries for 365 days",
+          "2": "Modify exam scores (not available now)",
+          "3": "Become a beta member for all features",
+          "4": "Online human service"
+        }
+      }
+    }
+  },
+  "layouts": {
+    "dashboard": {
+      "links": {
+        "home": {
+          "label": "Home",
+          "text": "Home"
+        },
+        "dashboard": {
+          "label": "Dashboard",
+          "text": "Dashboard"
+        },
+        "purchase": {
+          "label": "Purchase",
+          "text": "Purchase"
+        },
+        "inbox": {
+          "label": "Inbox",
+          "text": "Inbox"
+        },
+        "schedule": {
+          "label": "Schedule",
+          "text": "Schedule"
+        },
+        "settings": {
+          "label": "Settings",
+          "children": {
+            "general": "General",
+            "notifications": "Notifications"
+          },
+          "text": "Settings"
+        }
+      },
+      "footerLinks": {
+        "invite": "Copy Invite Message",
+        "help": "Help & Support",
+        "inviteMsg": "I'm using an automatic check in service of DingTalk, go to https://open.szxd.swu.social/ to get it free!",
+        "inviteMsgCopied": "Copied!"
+      },
+      "lazyUDashboardSearch": {
+        "groups": {
+          "links": {
+            "label": "Go to"
+          },
+          "contact": {
+            "label": "Contact",
+            "commands": {
+              "label": "Contact us on GitHub"
+            }
+          }
+        }
+      }
+    }
+  },
+  "homeChart": {
+    "dashboardCard": {
+      "header": "Number of users yesterday"
+    }
+  },
+  "homeCountries": {
+    "dashboardCard": {
+      "title": "Top dormitories",
+      "description": "Dormitories with the most use of automatic check-in services"
+    }
+  },
+  "homeSales": {
+    "sales": {
+      "1": {
+        "name": "Offline payment QR code"
+      },
+      "2": {
+        "name": "Rapid SWU VPN"
+      },
+      "3": {
+        "name": "Elective course copilot"
+      }
+    },
+    "dashboardCard": {
+      "title": "Premium Member",
+      "description": "The Pro version has more powerful features."
+    }
+  },
+  "inbox": {
+    "dropdownItems": {
+      "unread": "Mark as unread",
+      "allread": "Mark all as read"
+    }
+  },
+  "settings": {
+    "general": {
+      "deleteAccount": {
+        "title": "Delete Account",
+        "description": "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.",
+        "button": "Delete Account"
+      }
+    },
+    "deleteAccountModal": {
+      "success": "Account deleted",
+      "failed": "Failed to delete account",
+      "dashboardMoal": {
+        "title": "Delete account",
+        "description": "Are you sure you want to delete your account?"
+      }
+    }
+  },
+  "homeDateRangePicker": {
+    "dashboardCard": {
+        "description": "Automatic check-in has been",
+        "deactivate": "Deactivated",
+        "activateUntill": "Activated until",
+        "reactivate": ". Please log in again to refresh after expiration."
+    }
+  }
+}

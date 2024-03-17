@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import type { Schedule } from "~/types";
 import Api from "~/api/api";
-import { it } from "date-fns/locale";
+
+const localePath = useLocalePath();
 
 checkLogin();
 const defaultColumns = [
@@ -49,20 +50,6 @@ const query = {
   sort: sort.value.column,
   order: sort.value.direction,
 };
-
-const schedules = ref<Schedule[]>([]);
-// const pending = ref(true);
-// await Api.checkinList(query).then((res) => {
-//   res.data.data.forEach((item: any, index: number) => {
-//     item.id = index + 1;
-//   });
-//   res.data.data.forEach((item: any) => {
-//     item.date = new Date(item.date).toLocaleDateString();
-//     item.status = item.status === -1 ? "Not Clocked In" : item.status === 0 ? "Manually Checked In" : item.status === 1 ? "Auto Checked In" : "No Need to Check In";
-//   });
-//   schedules.value = res.data.data;
-//   pending.value = false;
-// })
 
 const { data, pending } = await useAsyncData<Schedule[]>(
   async () => {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { isHelpSlideoverOpen } = useDashboard();
 const { metaSymbol } = useShortcuts();
+const localePath = useLocalePath();
 
 const shortcuts = ref(false);
 const query = ref("");
@@ -30,7 +31,7 @@ const links = [
   {
     label: "Buy Open-SZXD Pro",
     icon: "i-heroicons-credit-card",
-    to: "/purchase",
+    to: localePath("/purchase"),
     target: "_blank",
   },
 ];

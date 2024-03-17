@@ -3,7 +3,7 @@ import Api from "~/api/api";
 const { data } = await useAsyncData(
   async () => {
     const res = await Api.gardens();
-    const result = res.data.data
+    const result = res.data.data;
     const colors = ["red", "orange", "yellow", "green", "teal", "blue"];
     let sum = 0;
     for (const key in result) {
@@ -13,61 +13,27 @@ const { data } = await useAsyncData(
     for (const key in result) {
       result[key] = {
         label: key,
-        value: result[key] / sum * 100,
+        value: (result[key] / sum) * 100,
         color: colors[i],
       };
       i++;
     }
-    const result2 = Object.keys(result).sort((a, b) => result[b].value - result[a].value).reduce(
-      (obj: any, key) => {
+    const result2 = Object.keys(result)
+      .sort((a, b) => result[b].value - result[a].value)
+      .reduce((obj: any, key) => {
         obj[key] = result[key];
         return obj;
-      },
-      {}
-    );
+      }, {});
     return result2;
   },
   { server: false, watch: [] }
 );
-
-// const countries = [
-//   {
-//     label: "橘园",
-//     value: 31,
-//     color: "red",
-//   },
-//   {
-//     label: "李园",
-//     value: 21,
-//     color: "orange",
-//   },
-//   {
-//     label: "桃园",
-//     value: 15,
-//     color: "yellow",
-//   },
-//   {
-//     label: "竹园",
-//     value: 10,
-//     color: "green",
-//   },
-//   {
-//     label: "杏园",
-//     value: 6,
-//     color: "teal",
-//   },
-//   {
-//     label: "梅园",
-//     value: 1,
-//     color: "blue",
-//   },
-// ];
 </script>
 
 <template>
   <UDashboardCard
-    title="Top dormitories"
-    description="Dormitories with the most use of automatic check-in services"
+    :title="$t('homeCountries.dashboardCard.title')"
+    :description="$t('homeCountries.dashboardCard.description')"
     icon="i-heroicons-globe-alt-20-solid"
   >
     <div class="space-y-2">
