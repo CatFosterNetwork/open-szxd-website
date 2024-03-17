@@ -35,7 +35,7 @@ const links = computed(() => {
       },
     },
     {
-      id: "inbox","Settings",
+      id: "inbox",
       label: t("layouts.dashboard.links.inbox.label"),
       icon: "i-heroicons-inbox",
       to: localePath("/inbox"),
@@ -84,15 +84,47 @@ import { useClipboard } from "@vueuse/core";
 const toast = useToast();
 const inviteMsg = ref(t("layouts.dashboard.footerLinks.inviteMsg"));
 
-const { text, copy, copied, isSupported } = useClipboard({ inviteMsg });
+const { copy, copied, text, isSupported } = useClipboard({
+  source: inviteMsg.value,
+});
+
+function legacyCopy(value: string) {
+  const ta = document.createElement("textarea");
+  ta.value = value ?? "";
+  ta.style.position = "absolute";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand("copy");
+  ta.remove();
+}
 
 const footerLinks = [
   {
     label: t("layouts.dashboard.footerLinks.invite"),
     icon: "i-heroicons-plus",
-    click: () => {
-      copy(inviteMsg.value);
-      toast.add({ title: t("layouts.dashboard.footerLinks.inviteMsgCopied"), icon: "i-heroicons-check-circle" });
+    click: async () => {
+      if (isSupported.value) {
+        await copy(inviteMsg.value);
+        toast.add({
+          title: t("layouts.dashboard.footerLinks.inviteMsgCopied"),
+          icon: "i-heroicons-check-circle",
+        });
+      } else {
+        try {
+          legacyCopy(inviteMsg.value);
+          toast.add({
+            title: t("layouts.dashboard.footerLinks.inviteMsgCopied"),
+            icon: "i-heroicons-check-circle",
+          });
+        } catch (e) {
+          toast.add({
+            title: t("layouts.dashboard.footerLinks.inviteMsgNotCopied"),
+            icon: "i-heroicons-x-circle",
+            color: "red",
+          });
+        }
+      }
     },
   },
   {
@@ -113,11 +145,13 @@ const groups = [
   },
   {
     key: "contact",
-    label: t("layouts.dashboard.lazyUDashboardSearch.groups.contact"),
+    label: t("layouts.dashboard.lazyUDashboardSearch.groups.contact.label"),
     commands: [
       {
         id: "source",
-        label: t("layouts.dashboard.lazyUDashboardSearch.groups.commands.label"),
+        label: t(
+          "layouts.dashboard.lazyUDashboardSearch.groups.contact.commands.label"
+        ),
         icon: "i-simple-icons-github",
         click: () => {
           window.open(`https://github.com/CatFosterNetwork`, "_blank");

@@ -24,15 +24,14 @@ await useAsyncData<void>(
       {{ $t("homeDateRangePicker.dashboardCard.description") }}
       <span class="text-red-500 dark:text-red-400">{{
         $t("homeDateRangePicker.dashboardCard.deactivate")
-      }}</span
-      >.
+      }}</span>
     </div>
     <div class="ms-3 text-xl" v-else>
       {{ $t("homeDateRangePicker.dashboardCard.description") }}
       <span class="text-green-500 dark:text-green-400"
         >{{ $t("homeDateRangePicker.dashboardCard.activateUntill") }}
         {{ date }}</span
-      >{{ $t("homeDateRangePicker.dashboardCard.reactivate") }}.
+      >{{ $t("homeDateRangePicker.dashboardCard.reactivate") }}
     </div>
   </div>
 </template>

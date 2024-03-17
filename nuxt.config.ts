@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     safelistColors: ["primary", "red", "orange", "green"],
   },
   i18n: {
-    lazy: true,
     langDir: "locales/",
     detectBrowserLanguage: false,
     strategy: "prefix_except_default",

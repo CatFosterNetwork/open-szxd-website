@@ -1,8 +1,7 @@
 import { createSharedComposable } from "@vueuse/core";
 
-const localePath = useLocalePath();
-
 const _checkLogin = () => {
+  const localePath = useLocalePath();
   const toast = useToast();
   const session_tokenCookie = useCookie<string>("session_token", {
     readonly: true,

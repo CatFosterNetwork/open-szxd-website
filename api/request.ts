@@ -26,6 +26,7 @@ const responseSuccess = (response: any) => {
 }
 
 function clearAllCookie() {
+  if (!document) return
   var date=new Date();
   date.setTime(date.getTime()-10000);
   var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
@@ -42,6 +43,7 @@ const responseFailed = (error: any) => {
     // cons error = new Error(response.data.msg)
     if (response.status === 400) {
       clearAllCookie()
+      if (!window) return;
       window.location.href = '/login'
     }
     return Promise.reject()

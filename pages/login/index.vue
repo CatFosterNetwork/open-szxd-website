@@ -31,7 +31,7 @@
 
         <template #footer>
           {{ $t("login.authform.footer") }}
-          <NuxtLinkLocale to="/" class="text-primary font-medium">
+          <NuxtLinkLocale to="/termOfService" class="text-primary font-medium">
             {{ $t("login.authform.terms") }} </NuxtLinkLocale
           >.
         </template>

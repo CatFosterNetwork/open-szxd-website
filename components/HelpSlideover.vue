@@ -41,7 +41,7 @@ const categories = computed(() => [
     title: "General",
     items: [
       { shortcuts: [metaSymbol.value, "K"], name: "Command menu" },
-      { shortcuts: ["N"], name: "Notifications" },
+      // { shortcuts: ["N"], name: "Notifications" },
       { shortcuts: ["?"], name: "Help & Support" },
       { shortcuts: ["/"], name: "Search" },
     ],
@@ -51,7 +51,7 @@ const categories = computed(() => [
     items: [
       { shortcuts: ["G", "H"], name: "Go to Home" },
       { shortcuts: ["G", "I"], name: "Go to Inbox" },
-      { shortcuts: ["G", "U"], name: "Go to Users" },
+      // { shortcuts: ["G", "U"], name: "Go to Users" },
       { shortcuts: ["G", "S"], name: "Go to Settings" },
     ],
   },

@@ -18,6 +18,7 @@
   <view class="grid lg:grid-cols-2 lg:items-center gap-8 min-h-5/6 m-10">
     <view class="big-title">
       <ULandingHero
+        class="whitespace-pre-wrap"
         :title="$t('index.landing.hero.title')"
         :description="$t('index.landing.hero.description')"
         :links="[
@@ -70,7 +71,6 @@ const switchLocalePath = useSwitchLocalePath();
 const session_token_cookie = useCookie("session_token");
 const startPosition = ref<string>("/login");
 
-
 startPosition.value =
   session_token_cookie.value != "" &&
   session_token_cookie.value != null &&
@@ -96,12 +96,12 @@ const availableLocales = [
 const links = computed(() => {
   return [
     {
-      label: t('header.links.home'),
+      label: t("header.links.home"),
       icon: "i-heroicons-book-open",
       to: localePath("/"),
     },
     {
-      label: t('header.links.dashboard'),
+      label: t("header.links.dashboard"),
       icon: "i-heroicons-square-3-stack-3d",
       to: localePath("/dashboard"),
     },

@@ -193,7 +193,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
       <UDashboardSection
         :title="$t('settings.general.deleteAccount.title')"
-        description="$t('settings.general.deleteAccount.description')"
+        :description="$t('settings.general.deleteAccount.description')"
       >
         <div>
           <UButton

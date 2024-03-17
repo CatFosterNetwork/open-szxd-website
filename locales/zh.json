@@ -203,7 +203,7 @@
     "deleteAccountModal": {
       "success": "账户已被删除",
       "failed": "删除账户失败",
-      "dashboardMoal": {
+      "dashboardModal": {
         "title": "删除账户",
         "description": "您确定要删除您的账户吗？"
       }
@@ -212,7 +212,7 @@
   "homeDateRangePicker": {
     "dashboardCard": {
       "description": "自动打卡服务",
-      "deactivate": "尚未激活",
+      "deactivate": "尚未激活。",
       "activateUntill": "已经激活至",
       "reactivate": "。请在服务过期后重新登陆以激活继续使用。"
     }

@@ -17,7 +17,7 @@ const selectedTab = ref(0);
 const dropdownItems = [
   [
     {
-      label: t("inbox.dropdownItems.read"),
+      label: t("inbox.dropdownItems.unread"),
       icon: "i-heroicons-check-circle",
       click: () => {
         if (selectedMail.value) {

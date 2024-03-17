@@ -143,7 +143,8 @@
         "invite": "Copy Invite Message",
         "help": "Help & Support",
         "inviteMsg": "I'm using an automatic check in service of DingTalk, go to https://open.szxd.swu.social/ to get it free!",
-        "inviteMsgCopied": "Copied!"
+        "inviteMsgCopied": "Copied!",
+        "inviteMsgNotCopied": "Failed to copy"
       },
       "lazyUDashboardSearch": {
         "groups": {
@@ -205,7 +206,7 @@
     "deleteAccountModal": {
       "success": "Account deleted",
       "failed": "Failed to delete account",
-      "dashboardMoal": {
+      "dashboardModal": {
         "title": "Delete account",
         "description": "Are you sure you want to delete your account?"
       }
@@ -213,10 +214,10 @@
   },
   "homeDateRangePicker": {
     "dashboardCard": {
-        "description": "Automatic check-in has been",
-        "deactivate": "Deactivated",
-        "activateUntill": "Activated until",
-        "reactivate": ". Please log in again to refresh after expiration."
+      "description": "Automatic check-in has been",
+      "deactivate": "Deactivated.",
+      "activateUntill": "Activated until",
+      "reactivate": ". Please log in again to refresh after expiration."
     }
   }
 }

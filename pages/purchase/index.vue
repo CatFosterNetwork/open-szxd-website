@@ -66,7 +66,6 @@
             $t('purchase.pricing.premium.features.2'),
             $t('purchase.pricing.premium.features.3'),
             $t('purchase.pricing.premium.features.4'),
-            $t('purchase.pricing.premium.features.5'),
           ]"
           align="bottom"
         />
