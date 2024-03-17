@@ -1,9 +1,18 @@
 <script setup lang="ts">
+import Api from "~/api/api";
 const route = useRoute();
 const appConfig = useAppConfig();
 const { isHelpSlideoverOpen } = useDashboard();
 
-const links = [
+const badge = ref(0);
+
+await useAsyncData(async () => {
+  Api.inbox().then((res) => {
+    badge.value = res.data.data.filter((mail: any) => !mail.is_checked).length;
+  });
+});
+
+const links = reactive([
   {
     id: "home",
     label: "Home",
@@ -29,7 +38,7 @@ const links = [
     label: "Inbox",
     icon: "i-heroicons-inbox",
     to: "/inbox",
-    badge: "4",
+    badge: badge.value,
     tooltip: {
       text: "Inbox",
       shortcuts: ["G", "I"],
@@ -56,10 +65,10 @@ const links = [
         to: "/settings",
         exact: true,
       },
-      {
-        label: "Members",
-        to: "/settings/members",
-      },
+      // {
+      //   label: "Members",
+      //   to: "/settings/members",
+      // },
       {
         label: "Notifications",
         to: "/settings/notifications",
@@ -70,7 +79,7 @@ const links = [
       shortcuts: ["G", "S"],
     },
   },
-];
+]);
 
 import { useClipboard } from "@vueuse/core";
 
@@ -182,7 +191,7 @@ const colors = computed(() =>
     <!-- ~/components/HelpSlideover.vue -->
     <HelpSlideover />
     <!-- ~/components/NotificationsSlideover.vue -->
-    <NotificationsSlideover />
+    <!-- <NotificationsSlideover /> -->
 
     <ClientOnly>
       <LazyUDashboardSearch :groups="groups" />

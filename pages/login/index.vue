@@ -40,6 +40,15 @@
 <script setup lang="ts">
 import type { FormError } from "#ui/types";
 
+const session_tokenCookie = useCookie("session_token", { readonly: true });
+if (
+  session_tokenCookie.value != "" &&
+  session_tokenCookie.value != null &&
+  session_tokenCookie.value != undefined
+) {
+  navigateTo("/dashboard");
+}
+
 const loading = ref(false);
 const toast = useToast();
 
@@ -92,17 +101,6 @@ const onSubmit = (data: any) => {
       });
     });
 };
-
-onMounted(() => {
-  const session_tokenCookie = useCookie("session_token", { readonly: true });
-  if (
-    session_tokenCookie.value != "" &&
-    session_tokenCookie.value != null &&
-    session_tokenCookie.value != undefined
-  ) {
-    navigateTo("/dashboard");
-  }
-});
 </script>
 
 <style lang="scss">

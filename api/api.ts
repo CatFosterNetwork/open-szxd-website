@@ -8,6 +8,10 @@ const Api = {
   inbox: () => http.get(apiUrl.inbox, {}),
   expire: () => http.get(apiUrl.expire, {}),
   profile: () => http.get(apiUrl.profile, {}),
+  delete: () => http.del(apiUrl.user, {}),
+  gardens: () => http.get(apiUrl.gardens, {}),
+  unread: (id: number) => http.get(apiUrl.inbox + `/${id}/unread`, {}),
+  read: (id: number) => http.get(apiUrl.inbox + `/${id}/read`, {}),
 };
 
 export default Api;

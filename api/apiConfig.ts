@@ -1,6 +1,6 @@
 
 // const baseUrl = "http://open.szxd.swu.social/api";
-const baseUrl = "http://localhost:8080";
+const baseUrl = "http://redmiax6s.lan:8080/api";
 // api 文档 https://app.apifox.com/project/4156592
 
 const apiUrl = {
@@ -16,6 +16,10 @@ const apiUrl = {
   expire: `${baseUrl}/expire`,
   // 账户
   profile: `${baseUrl}/users/profile`,
+  // 用户
+  user: `${baseUrl}/users`,
+  // 宿舍统计
+  gardens: `${baseUrl}/gardens`,
 };
 
 export default apiUrl;

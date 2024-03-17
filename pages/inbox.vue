@@ -17,36 +17,71 @@ const dropdownItems = [
     {
       label: "Mark as unread",
       icon: "i-heroicons-check-circle",
+      click: () => {
+        if (selectedMail.value) {
+          selectedMail.value.unread = true;
+          Api.unread(selectedMail.value.id);
+        }
+      },
     },
-    {
-      label: "Mark as important",
-      icon: "i-heroicons-exclamation-circle",
-    },
+    // {
+    //   label: "Mark as important",
+    //   icon: "i-heroicons-exclamation-circle",
+    // },
   ],
-  [
-    {
-      label: "Star thread",
-      icon: "i-heroicons-star",
-    },
-    {
-      label: "Mute thread",
-      icon: "i-heroicons-pause-circle",
-    },
-  ],
+  // [
+  //   {
+  //     label: "Star thread",
+  //     icon: "i-heroicons-star",
+  //   },
+  //   {
+  //     label: "Mute thread",
+  //     icon: "i-heroicons-pause-circle",
+  //   },
+  // ],
 ];
 
 const mails = ref<Mail[]>([]);
 
-const pending = ref(false);
-await Api.inbox().then((res) => {
-  mails.value = res.data.data;
-  pending.value = false;
-})
+// const pending = ref(false);
+// await Api.inbox().then((res) => {
+//   mails.value = res.data.data;
+//   pending.value = false;
+// })
+
+const { data } = await useAsyncData(
+  async () => {
+    const res = await Api.inbox();
+    res.data.data.forEach((item: any, index: number) => {
+      let from = {
+        id: item.from.id,
+        name: item.from.xm,
+        email: item.from.email,
+        avatar: {
+          src: item.from.avatar,
+        },
+        status: item.from.status,
+        location: item.from.location,
+      };
+      mails.value.push({
+        id: item.id,
+        from: from,
+        subject: item.subject,
+        date: item.date,
+        is_checked: item.is_checked,
+        body: item.body,
+        unread: !item.is_checked,
+      });
+      
+    });
+  },
+  { server: false, watch: []}
+);
 
 // Filter mails based on the selected tab
 const filteredMails = computed(() => {
   if (selectedTab.value === 1) {
-    return mails.value.filter((mail) => !!mail.is_checked);
+    return mails.value.filter((mail) => !!mail.unread);
   }
 
   return mails.value;
@@ -69,6 +104,13 @@ const isMailPanelOpen = computed({
 watch(filteredMails, () => {
   if (!filteredMails.value.find((mail) => mail.id === selectedMail.value?.id)) {
     selectedMail.value = null;
+  }
+});
+
+watch(selectedMail, (newMail) => {
+  if (newMail && newMail.unread) {
+    newMail.unread = false;
+    Api.read(newMail.id);
   }
 });
 </script>
@@ -110,7 +152,7 @@ watch(filteredMails, () => {
               <UDivider orientation="vertical" class="mx-1.5 lg:hidden" />
             </template>
 
-            <template #left>
+            <!-- <template #left>
               <UTooltip text="Archive">
                 <UButton
                   icon="i-heroicons-archive-box"
@@ -145,10 +187,10 @@ watch(filteredMails, () => {
                   <DatePicker @close="close" />
                 </template>
               </UPopover>
-            </template>
+            </template> -->
 
             <template #right>
-              <UTooltip text="Reply">
+              <!-- <UTooltip text="Reply">
                 <UButton
                   icon="i-heroicons-arrow-uturn-left"
                   color="gray"
@@ -162,7 +204,7 @@ watch(filteredMails, () => {
                   color="gray"
                   variant="ghost"
                 />
-              </UTooltip>
+              </UTooltip> -->
 
               <UDivider orientation="vertical" class="mx-1.5" />
 

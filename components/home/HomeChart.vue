@@ -34,9 +34,12 @@ const { data } = await useAsyncData<DataRecord[]>(async () => {
 
   let res = await Api.statistics()
   res.data.data = res.data.data.slice(0, dates.length).reverse()
+  res.data.data.pop()
+  dates.pop()
 
   return dates.map((date, index) => ({ date, amount: res.data.data[index] }))
 }, {
+  server: false,
   watch: [() => props.period, () => props.range],
   default: () => []
 })
@@ -72,7 +75,7 @@ const template = (d: DataRecord) => `${formatDate(d.date)}: ${formatNumber(d.amo
     <template #header>
       <div>
         <p class="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
-          Number of users today
+          Number of users yesterday
         </p>
         <p class="text-3xl text-gray-900 dark:text-white font-semibold">
           {{ formatNumber(data[data.length - 1]?.amount || 0) }}

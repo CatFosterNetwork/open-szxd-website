@@ -26,6 +26,7 @@ export interface Mail {
   subject: string
   body: string
   date: string
+  unread?: boolean
 }
 
 export interface Member {

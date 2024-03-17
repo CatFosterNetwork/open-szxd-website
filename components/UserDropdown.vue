@@ -73,7 +73,16 @@ const items = computed(() => [
 
 import Api from "~/api/api";
 
-const user = await Api.profile();
+const { data } = await useAsyncData(
+  async () => {
+    const user = (await Api.profile()).data.data;
+    return {
+      username: user.username,
+      avatar: user.avatar,
+    };
+  },
+  { server: false, watch: [] }
+);
 </script>
 
 <template>
@@ -89,16 +98,11 @@ const user = await Api.profile();
         color="gray"
         variant="ghost"
         class="w-full"
-        :label="user.data.data.username"
-        :class="[open && 'bg-gray-50 dark:bg-gray-avatar800']"
+        :label="data?.username"
+        :class="[open && 'bg-gray-50 dark:bg-gray-800']"
       >
         <template #leading>
-          <UAvatar
-            :src="
-              user.data.data.avatar || '/swulogo.png'
-            "
-            size="2xs"
-          />
+          <UAvatar :src="data?.avatar || '/swulogo.png'" size="2xs" />
         </template>
 
         <template #trailing>
@@ -111,7 +115,7 @@ const user = await Api.profile();
       <div class="text-left">
         <p>Signed in as</p>
         <p class="truncate font-medium text-gray-900 dark:text-white">
-          {{ user.data.data.username }}
+          {{ data?.username }}
         </p>
       </div>
     </template>

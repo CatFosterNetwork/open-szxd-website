@@ -6,6 +6,9 @@
 
     <template #right>
       <UColorModeButton />
+      <UDropdown :items="availableLocales" mode="hover">
+        <UButton icon="i-heroicons-language" variant="ghost" class="ml-2" />
+      </UDropdown>
     </template>
 
     <template #panel>
@@ -62,6 +65,29 @@
 <script setup lang="ts">
 import type { NavItem } from "@nuxt/content/dist/runtime/types";
 
+let session_token_cookie = useCookie("session_token");
+const startPosition = ref<string>("/login");
+
+startPosition.value =
+  session_token_cookie.value != "" &&
+  session_token_cookie.value != null &&
+  session_token_cookie.value != undefined
+    ? "/dashboard"
+    : "/login";
+
+const availableLocales = [
+  [
+    {
+      label: "English",
+      to: "/",
+    },
+    {
+      label: "简体中文",
+      to: "/zh",
+    },
+  ],
+];
+
 const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
 
 const links = [
@@ -76,24 +102,11 @@ const links = [
     to: "/dashboard",
   },
   {
-    label: "Settings",
+    label: "Product",
     icon: "i-heroicons-rocket-launch",
-    to: "/settings",
+    to: "/purchase",
   },
 ];
-
-const startPosition = ref<string>("/login");
-
-onMounted(() => {
-  let session_token_cookie = useCookie("session_token");
-
-  startPosition.value =
-    session_token_cookie.value != "" &&
-    session_token_cookie.value != null &&
-    session_token_cookie.value != undefined
-      ? "/dashboard"
-      : "/login";
-});
 </script>
 
 <style lang="scss" scoped>

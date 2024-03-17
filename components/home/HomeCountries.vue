@@ -1,46 +1,67 @@
 <script setup lang="ts">
-const countries = [
-  {
-    label: "橘园",
-    value: 31,
-    color: "red",
+import Api from "~/api/api";
+const { data } = await useAsyncData(
+  async () => {
+    const res = await Api.gardens();
+    const result = res.data.data
+    const colors = ["red", "orange", "yellow", "green", "teal", "blue"];
+    let sum = 0;
+    for (const key in result) {
+      sum += result[key];
+    }
+    let i = 0;
+    for (const key in result) {
+      result[key] = {
+        label: key,
+        value: result[key] / sum * 100,
+        color: colors[i],
+      };
+      i++;
+    }
+    const result2 = Object.keys(result).sort((a, b) => result[b].value - result[a].value).reduce(
+      (obj: any, key) => {
+        obj[key] = result[key];
+        return obj;
+      },
+      {}
+    );
+    return result2;
   },
-  {
-    label: "李园",
-    value: 21,
-    color: "orange",
-  },
-  {
-    label: "桃园",
-    value: 15,
-    color: "yellow",
-  },
-  {
-    label: "竹园",
-    value: 10,
-    color: "green",
-  },
-  {
-    label: "杏园",
-    value: 6,
-    color: "teal",
-  },
-  {
-    label: "梅园",
-    value: 1,
-    color: "blue",
-  },
-  {
-    label: "Brazil",
-    value: 1,
-    color: "indigo",
-  },
-  {
-    label: "China",
-    value: 1,
-    color: "pink",
-  },
-];
+  { server: false, watch: [] }
+);
+
+// const countries = [
+//   {
+//     label: "橘园",
+//     value: 31,
+//     color: "red",
+//   },
+//   {
+//     label: "李园",
+//     value: 21,
+//     color: "orange",
+//   },
+//   {
+//     label: "桃园",
+//     value: 15,
+//     color: "yellow",
+//   },
+//   {
+//     label: "竹园",
+//     value: 10,
+//     color: "green",
+//   },
+//   {
+//     label: "杏园",
+//     value: 6,
+//     color: "teal",
+//   },
+//   {
+//     label: "梅园",
+//     value: 1,
+//     color: "blue",
+//   },
+// ];
 </script>
 
 <template>
@@ -51,7 +72,7 @@ const countries = [
   >
     <div class="space-y-2">
       <UMeter
-        v-for="(country, index) in countries.slice(0, 6)"
+        v-for="(country, index) in data"
         :key="index"
         :value="country.value"
         :label="country.label"

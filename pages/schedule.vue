@@ -2,6 +2,8 @@
 import type { Schedule } from "~/types";
 import Api from "~/api/api";
 import { it } from "date-fns/locale";
+
+checkLogin();
 const defaultColumns = [
   {
     key: "id",
@@ -40,36 +42,58 @@ const columns = computed(() =>
   defaultColumns.filter((column) => selectedColumns.value.includes(column))
 );
 
-const query ={
+const query = {
   q: q.value,
   statuses: selectedStatuses.value,
   locations: selectedLocations.value,
   sort: sort.value.column,
   order: sort.value.direction,
-}
+};
 
 const schedules = ref<Schedule[]>([]);
-const pending = ref(true);
-await Api.checkinList(query).then((res) => {
-  res.data.data.forEach((item: any, index: number) => {
-    item.id = index + 1;
-  });
-  res.data.data.forEach((item: any) => {
-    item.date = new Date(item.date).toLocaleDateString();
-    item.status = item.status === -1 ? "Not Clocked In" : item.status === 0 ? "Manually Checked In" : item.status === 1 ? "Auto Checked In" : "No Need to Check In";
-  });
-  schedules.value = res.data.data;
-  pending.value = false;
-})
+// const pending = ref(true);
+// await Api.checkinList(query).then((res) => {
+//   res.data.data.forEach((item: any, index: number) => {
+//     item.id = index + 1;
+//   });
+//   res.data.data.forEach((item: any) => {
+//     item.date = new Date(item.date).toLocaleDateString();
+//     item.status = item.status === -1 ? "Not Clocked In" : item.status === 0 ? "Manually Checked In" : item.status === 1 ? "Auto Checked In" : "No Need to Check In";
+//   });
+//   schedules.value = res.data.data;
+//   pending.value = false;
+// })
 
-const defaultLocations = schedules.value.reduce((acc, user) => {
+const { data, pending } = await useAsyncData<Schedule[]>(
+  async () => {
+    const res = await Api.checkinList(query);
+    res.data.data.forEach((item: any, index: number) => {
+      item.id = index + 1;
+    });
+    res.data.data.forEach((item: any) => {
+      item.date = new Date(item.date).toLocaleDateString();
+      item.status =
+        item.status === -1
+          ? "Not Clocked In"
+          : item.status === 0
+          ? "Manually Checked In"
+          : item.status === 1
+          ? "Auto Checked In"
+          : "No Need to Check In";
+    });
+    return res.data.data || [];
+  },
+  { server: false, watch: [q, selectedStatuses, selectedLocations, sort] }
+);
+
+const defaultLocations = data.value?.reduce((acc, user) => {
   if (!acc.includes(user.address)) {
     acc.push(user.address);
   }
   return acc;
 }, [] as string[]);
 
-const defaultStatuses = schedules.value.reduce((acc, user) => {
+const defaultStatuses = data.value?.reduce((acc, user) => {
   if (!acc.includes(user.status)) {
     acc.push(user.status);
   }
@@ -91,16 +115,13 @@ defineShortcuts({
   },
 });
 
-onBeforeMount(() => {
-  checkLogin();
-});
 </script>
 
 <template>
   <NuxtLayout name="dashboard">
     <UDashboardPage>
       <UDashboardPanel grow>
-        <UDashboardNavbar title="Schedules" :badge="schedules.length">
+        <UDashboardNavbar title="Schedules" :badge="data?.length">
           <template #right>
             <UInput
               ref="input"
@@ -169,7 +190,7 @@ onBeforeMount(() => {
 
         <UTable
           v-model:sort="sort"
-          :rows="schedules"
+          :rows="data"
           :columns="columns"
           :loading="pending"
           sort-mode="manual"

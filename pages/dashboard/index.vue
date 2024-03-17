@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { sub } from "date-fns";
 import type { Period, Range } from "~/types";
-import { checkLogin } from "~/utils/checkLogin";
+
+checkLogin();
 
 const { isNotificationsSlideoverOpen } = useDashboard();
 
@@ -26,9 +27,6 @@ const range = ref<Range>({
 });
 const period = ref<Period>("daily");
 
-onMounted(() => {
-  checkLogin();
-});
 </script>
 
 <template>
@@ -37,7 +35,7 @@ onMounted(() => {
       <UDashboardPanel grow>
         <UDashboardNavbar title="Dashboard">
           <template #right>
-            <UTooltip text="Notifications" :shortcuts="['N']">
+            <!-- <UTooltip text="Notifications" :shortcuts="['N']">
               <UButton
                 color="gray"
                 variant="ghost"
@@ -48,7 +46,7 @@ onMounted(() => {
                   <UIcon name="i-heroicons-bell" class="w-5 h-5" />
                 </UChip>
               </UButton>
-            </UTooltip>
+            </UTooltip> -->
 
             <!-- <UDropdown :items="items">
               <UButton

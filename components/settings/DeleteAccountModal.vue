@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Api from '~/api/api';
 const model = defineModel({
   type: Boolean
 })
@@ -7,14 +8,31 @@ const toast = useToast()
 
 const loading = ref(false)
 
+function clearAllCookie() {
+  var date=new Date();
+  date.setTime(date.getTime()-10000);
+  var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
+  if (keys) {
+      for (var i = keys.length; i--;)
+        document.cookie=keys[i]+"=0; expire="+date.toString()+"; path=/";
+  }
+}
+
 function onDelete () {
   loading.value = true
 
-  setTimeout(() => {
-    loading.value = false
-    toast.add({ icon: 'i-heroicons-check-circle', title: 'Your account has been deleted', color: 'red' })
-    model.value = false
-  }, 2000)
+  Api.delete()
+    .then(() => {
+      loading.value = false
+      toast.add({ title: "Account deleted" })
+      clearAllCookie()
+      navigateTo("/")
+
+    })
+    .catch(() => {
+      loading.value = false
+      toast.add({ title: "Failed to delete account", color: "red" })
+    })
 }
 </script>
 
@@ -34,6 +52,7 @@ function onDelete () {
         base: 'ml-16'
       } as any
     }"
+
   >
     <template #footer>
       <UButton color="red" label="Delete" :loading="loading" @click="onDelete" />
