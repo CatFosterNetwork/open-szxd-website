@@ -8,10 +8,6 @@
       <UColorModeButton />
       <switchLanguage />
     </template>
-
-    <template #panel>
-      <UNavigationTree :links="mapContentNavigation(navigation)" />
-    </template>
   </UHeader>
   <UPageBody prose>
     <view
@@ -53,7 +49,10 @@
           :price="$t('purchase.pricing.premium.price')"
           :cycle="$t('purchase.pricing.premium.cycle')"
           :badge="{ label: $t('purchase.pricing.premium.badge') }"
-          :button="{ label: $t('purchase.pricing.premium.button'), color: 'black' }"
+          :button="{
+            label: $t('purchase.pricing.premium.button'),
+            color: 'black',
+          }"
           orientation="vertical"
           :features="[
             $t('purchase.pricing.premium.features.1'),
@@ -69,20 +68,18 @@
 </template>
 
 <script setup lang="ts">
-import type { NavItem } from "@nuxt/content/dist/runtime/types";
 const { t } = useI18n();
 const localePath = useLocalePath();
-const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
 
 const links = computed(() => {
   return [
     {
-      label: t('header.links.home'),
+      label: t("header.links.home"),
       icon: "i-heroicons-book-open",
       to: localePath("/"),
     },
     {
-      label: t('header.links.dashboard'),
+      label: t("header.links.dashboard"),
       icon: "i-heroicons-square-3-stack-3d",
       to: localePath("/dashboard"),
     },

@@ -2,8 +2,6 @@
 import type { Schedule } from "~/types";
 import Api from "~/api/api";
 
-const localePath = useLocalePath();
-
 checkLogin();
 const defaultColumns = [
   {
@@ -51,7 +49,9 @@ const query = {
   order: sort.value.direction,
 };
 
-const { data, pending } = await useAsyncData<Schedule[]>(
+const data = ref<Schedule[]>([]);
+
+const { pending } = await useAsyncData<void>(
   async () => {
     const res = await Api.checkinList(query);
     res.data.data.forEach((item: any, index: number) => {
@@ -66,9 +66,11 @@ const { data, pending } = await useAsyncData<Schedule[]>(
           ? "Manually Checked In"
           : item.status === 1
           ? "Auto Checked In"
-          : "No Need to Check In";
+          : item.status === 2
+          ? "No Need to Check In"
+          : "Unknown Status";
     });
-    return res.data.data || [];
+    data.value = res.data.data || [];
   },
   { server: false, watch: [q, selectedStatuses, selectedLocations, sort] }
 );
@@ -185,7 +187,7 @@ defineShortcuts({
           @select="onSelect"
         >
           <template #location-data="{ row }">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3" v-if="!!row.longitude">
               <span class="text-gray-900 dark:text-white font-medium">
                 {{ row.longitude }} ,
               </span>
@@ -206,7 +208,9 @@ defineShortcuts({
                   ? 'green'
                   : row.status === 'Manually Checked In'
                   ? 'orange'
-                  : 'red'
+                  : row.status === 'Not Clocked In'
+                  ? 'red'
+                  : 'blue'
               "
               variant="subtle"
               class="capitalize"

@@ -6,11 +6,16 @@ const { isHelpSlideoverOpen } = useDashboard();
 const { t } = useI18n();
 const badge = ref(0);
 
-await useAsyncData(async () => {
-  Api.inbox().then((res) => {
-    badge.value = res.data.data.filter((mail: any) => !mail.is_checked).length;
-  });
-});
+await useAsyncData(
+  async () => {
+    Api.inbox().then((res) => {
+      badge.value = res.data.data.filter(
+        (mail: any) => !mail.is_checked
+      ).length;
+    });
+  },
+  { server: false, watch: [] }
+);
 
 const links = computed(() => {
   return [

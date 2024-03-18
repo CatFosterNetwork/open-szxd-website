@@ -100,7 +100,7 @@
         "button": "Buy now",
         "features": {
           "1": "No worries for 365 days",
-          "2": "Modify exam scores (not available now)",
+          "2": "Customize exclusive functions",
           "3": "Become a beta member for all features",
           "4": "Online human service"
         }
@@ -197,10 +197,68 @@
   },
   "settings": {
     "general": {
+      "updateProfile": {
+        "failed": "Error updating profile",
+        "success": "Profile updated"
+      },
+      "dashboardPanelContent": {
+        "theme": {
+          "title": "Theme",
+          "description": "Customize the look and feel of your dashboard."
+        },
+        "profile": {
+          "title": "Profile",
+          "description": "This information will be modified so be careful what you changed.",
+          "username": {
+            "label": "Username",
+            "description": "Your username is used to log in and identify you."
+          },
+          "avatar": {
+            "label": "Avatar",
+            "help": "JPG, GIF or PNG. 1MB Max.",
+            "button": "Choose"
+          },
+          "email": {
+            "label": "Email",
+            "description": "Used to notifications, for email receipts and product updates."
+          }
+        },
+        "button": "Save changes"
+      },
       "deleteAccount": {
         "title": "Delete Account",
         "description": "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.",
         "button": "Delete Account"
+      }
+    },
+    "notifications": {
+      "sections": {
+        "title": "Notification channels",
+        "description": "Where can we notify you?",
+        "fields": {
+          "email": {
+            "label": "Email",
+            "description": "Receive a daily email digest."
+          },
+          "desktop": {
+            "label": "Desktop notification",
+            "description": "Receive notifications on your device."
+          },
+          "wechat": {
+            "label": "WeChat subscription",
+            "description": "Receive push notifications on Tecent WeChat."
+          }
+        }
+      },
+      "toast": {
+        "email": {
+          "success": "Email notification subscribed",
+          "failed": "Failed to subscribe to email notification, please enter your email address on the settings page."
+        },
+        "wechat": {
+          "success": "WeChat notification subscribed",
+          "failed": "Failed to subscribe to WeChat notification"
+        }
       }
     },
     "deleteAccountModal": {

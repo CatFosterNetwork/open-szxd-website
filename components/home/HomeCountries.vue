@@ -9,6 +9,7 @@ const { data } = await useAsyncData(
     for (const key in result) {
       sum += result[key];
     }
+
     let i = 0;
     for (const key in result) {
       result[key] = {

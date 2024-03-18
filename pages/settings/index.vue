@@ -12,7 +12,7 @@ const { data } = await useAsyncData(
     return {
       username: user.username,
       avatar: user.avatar,
-      bio: user.bio,
+      email: user.email,
     };
   },
   {
@@ -26,10 +26,8 @@ const isDeleteAccountModalOpen = ref(false);
 
 const state = reactive({
   username: data.value?.username || "",
+  email: data.value?.email || "",
   avatar: data.value?.avatar || "",
-  bio: data.value?.bio || "",
-  password_current: "",
-  password_new: "",
 });
 
 const toast = useToast();
@@ -40,14 +38,6 @@ function validate(state: any): FormError[] {
     errors.push({ path: "name", message: "Please enter your name." });
   if (!state.email)
     errors.push({ path: "email", message: "Please enter your email." });
-  if (
-    (state.password_current && !state.password_new) ||
-    (!state.password_current && state.password_new)
-  )
-    errors.push({
-      path: "password",
-      message: "Please enter a valid password.",
-    });
   return errors;
 }
 
@@ -66,10 +56,14 @@ function onFileClick() {
 }
 
 async function onSubmit(event: FormSubmitEvent<any>) {
-  // Do something with data
-  console.log(event.data);
-
-  toast.add({ title: "Profile updated", icon: "i-heroicons-check-circle" });
+  const res = await Api.updateProfile(state);
+  if (res.status !== 200) {
+    toast.add({ title: t("settings.general.updateProfile.failed"), icon: "i-heroicons-x-circle" });
+    return;
+  }
+  else{
+    toast.add({ title: t("settings.general.updateProfile.success"), icon: "i-heroicons-check-circle" });
+  }
 }
 </script>
 
@@ -77,8 +71,8 @@ async function onSubmit(event: FormSubmitEvent<any>) {
   <NuxtLayout name="dashboard">
     <UDashboardPanelContent class="pb-24">
       <UDashboardSection
-        title="Theme"
-        description="Customize the look and feel of your dashboard."
+        :title="$t('settings.general.dashboardPanelContent.theme.title')"
+        :description="$t('settings.general.dashboardPanelContent.theme.description')"
       >
         <template #links>
           <UColorModeSelect color="gray" />
@@ -94,22 +88,17 @@ async function onSubmit(event: FormSubmitEvent<any>) {
         @submit="onSubmit"
       >
         <UDashboardSection
-          title="Profile"
-          description="This information will be displayed publicly so be careful what you share."
+          :title="$t('settings.general.dashboardPanelContent.profile.title')"
+          :description="$t('settings.general.dashboardPanelContent.profile.description')"
         >
           <template #links>
-            <UButton
-              type="submit"
-              label="Save changes"
-              color="black"
-              :disabled="true"
-            />
+            <UButton type="submit" :label="$t('settings.general.dashboardPanelContent.button')" color="black" @click="onSubmit" />
           </template>
 
           <UFormGroup
             name="username"
-            label="Username"
-            description="Your unique username for logging in and your profile URL."
+            :label="$t('settings.general.dashboardPanelContent.profile.username.label')"
+            :description="$t('settings.general.dashboardPanelContent.profile.username.description')"
             required
             class="grid grid-cols-2 gap-2"
             :ui="{ container: '' }"
@@ -119,14 +108,15 @@ async function onSubmit(event: FormSubmitEvent<any>) {
               type="username"
               autocomplete="off"
               size="md"
+              :disabled="true"
             />
           </UFormGroup>
 
           <UFormGroup
             name="avatar"
-            label="Avatar"
+            :label="$t('settings.general.dashboardPanelContent.profile.avatar.label')"
             class="grid grid-cols-2 gap-2"
-            help="JPG, GIF or PNG. 1MB Max."
+            :help="$t('settings.general.dashboardPanelContent.profile.avatar.help')"
             :ui="{
               container: 'flex flex-wrap items-center gap-3',
               help: 'mt-0',
@@ -135,7 +125,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             <UAvatar :src="state.avatar" :alt="state.username" size="lg" />
 
             <UButton
-              label="Choose"
+              :label="$t('settings.general.dashboardPanelContent.profile.avatar.button')"
               color="white"
               size="md"
               @click="onFileClick"
@@ -152,6 +142,23 @@ async function onSubmit(event: FormSubmitEvent<any>) {
           </UFormGroup>
 
           <UFormGroup
+            name="email"
+            :label="$t('settings.general.dashboardPanelContent.profile.email.label')"
+            :description="$t('settings.general.dashboardPanelContent.profile.email.description')"
+            required
+            class="grid grid-cols-2 gap-2"
+            :ui="{ container: '' }"
+          >
+            <UInput
+              v-model="state.email"
+              type="email"
+              autocomplete="off"
+              icon="i-heroicons-envelope"
+              size="md"
+            />
+          </UFormGroup>
+
+          <!-- <UFormGroup
             name="bio"
             label="Bio"
             description="Brief description for your profile. URLs are hyperlinked."
@@ -159,9 +166,9 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             :ui="{ container: '' }"
           >
             <UTextarea v-model="state.bio" :rows="5" autoresize size="md" />
-          </UFormGroup>
+          </UFormGroup> -->
 
-          <UFormGroup
+          <!-- <UFormGroup
             name="password"
             label="Password"
             description="Confirm your current password before setting a new one."
@@ -185,7 +192,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
               class="mt-2"
               :disabled="true"
             />
-          </UFormGroup>
+          </UFormGroup> -->
         </UDashboardSection>
       </UForm>
 

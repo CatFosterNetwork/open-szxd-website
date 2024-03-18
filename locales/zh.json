@@ -98,7 +98,7 @@
         "button": "立即购买",
         "features": {
           "1": "365天无忧体验",
-          "2": "修改考试成绩（即将到来）",
+          "2": "为您定制专属功能",
           "3": "成为所有功能的测试版会员",
           "4": "在线人工服务"
         }
@@ -194,10 +194,68 @@
   },
   "settings": {
     "general": {
+      "updateProfile": {
+        "failed": "更新个人资料失败",
+        "success": "更新个人资料成功"
+      },
+      "dashboardPanelContent": {
+        "theme": {
+          "title": "主题",
+          "description": "自定义仪表板的外观和风格。"
+        },
+        "profile": {
+          "title": "个人资料",
+          "description": "信息将被修改，因此请小心您所做的更改。",
+          "username": {
+            "label": "用户名",
+            "description": "您的用户名用于登录并识别您的身份。"
+          },
+          "avatar": {
+            "label": "头像",
+            "help": "JPG、GIF 或 PNG。 最大 1MB。",
+            "button": "选择文件"
+          },
+          "email": {
+            "label": "电子邮件",
+            "description": "用于通知、电子邮件收据和产品更新。"
+          }
+        },
+        "button": "保存更改"
+      },
       "deleteAccount": {
         "title": "删除账户",
         "description": "不再想使用我们的服务了吗？您可以在这里删除您的账户。此操作不可逆。与此账户相关的所有信息将被永久删除。",
         "button": "删除账户"
+      }
+    },
+    "notifications": {
+      "sections": {
+        "title": "通知渠道",
+        "description": "我们可以在哪里通知您？",
+        "fields": {
+          "email": {
+            "label": "电子邮件",
+            "description": "接收每日电子邮件摘要。"
+          },
+          "desktop": {
+            "label": "桌面通知",
+            "description": "在您的设备上接收通知。"
+          },
+          "wechat": {
+            "label": "微信订阅",
+            "description": "接收腾讯微信推送通知。"
+          }
+        }
+      },
+      "toast": {
+        "email": {
+          "success": "成功订阅电子邮件通知",
+          "failed": "订阅电子邮件通知失败，请在设置页面输入您的电子邮件地址。"
+        },
+        "wechat": {
+          "success": "成功订阅微信通知",
+          "failed": "订阅微信通知失败"
+        }
       }
     },
     "deleteAccountModal": {

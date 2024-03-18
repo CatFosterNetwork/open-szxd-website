@@ -71,9 +71,14 @@ const del = (url: string, data: any) => {
   return http.delete(url, data)
 }
 
+const patch = (url: string, data: any) => {
+  return http.patch(url, data)
+}
+
 export default {
   get,
   post,
   put,
-  del
+  del,
+  patch,
 }

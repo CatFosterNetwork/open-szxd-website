@@ -12,6 +12,8 @@ const Api = {
   gardens: () => http.get(apiUrl.gardens, {}),
   unread: (id: number) => http.get(apiUrl.inbox + `/${id}/unread`, {}),
   read: (id: number) => http.get(apiUrl.inbox + `/${id}/read`, {}),
+  updateProfile: (data: any) => http.patch(apiUrl.profile, data),
+  notifications: (data: any) => http.patch(apiUrl.user + '/notifications', data),
 };
 
 export default Api;
