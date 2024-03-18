@@ -6,13 +6,7 @@
 
     <template #right>
       <UColorModeButton />
-      <UDropdown
-        :items="availableLocales"
-        mode="hover"
-        :ui="{ item: { disabled: 'cursor-text select-text' } }"
-      >
-        <UButton icon="i-heroicons-language" variant="ghost" class="ml-2" />
-      </UDropdown>
+      <switchLanguage />
     </template>
 
     <template #panel>
@@ -79,7 +73,6 @@ import type { NavItem } from "@nuxt/content/dist/runtime/types";
 const { t } = useI18n();
 const localePath = useLocalePath();
 const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
-const switchLocalePath = useSwitchLocalePath()
 
 const links = computed(() => {
   return [
@@ -100,19 +93,4 @@ const links = computed(() => {
     },
   ];
 });
-
-const availableLocales = [
-  [
-    {
-      label: "English",
-      to: switchLocalePath("en"),
-    },
-  ],
-  [
-    {
-      label: "简体中文",
-      to: switchLocalePath("zh"),
-    },
-  ],
-];
 </script>

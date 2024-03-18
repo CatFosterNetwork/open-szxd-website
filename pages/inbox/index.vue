@@ -80,10 +80,9 @@ const { data } = await useAsyncData(
         body: item.body,
         unread: !item.is_checked,
       });
-      
     });
   },
-  { server: false, watch: []}
+  { server: false, watch: [] }
 );
 
 // Filter mails based on the selected tab

@@ -101,7 +101,6 @@ defineShortcuts({
     input.value?.input?.focus();
   },
 });
-
 </script>
 
 <template>

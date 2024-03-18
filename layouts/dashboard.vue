@@ -52,7 +52,7 @@ const links = computed(() => {
       to: localePath("/schedule"),
       tooltip: {
         text: t("layouts.dashboard.links.schedule.text"),
-        shortcuts: ["G", "S"],
+        shortcuts: ["G", "F"],
       },
     },
     {

@@ -5468,11 +5468,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >INTRODUCTION</span
         ></strong
       ><span
@@ -5515,11 +5511,7 @@ const { locale } = useI18n();
       ><strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >services</span
         ></strong
       ><span
@@ -5529,11 +5521,7 @@ const { locale } = useI18n();
       ><strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >our services</span
         ></strong
       ><span
@@ -5543,11 +5531,7 @@ const { locale } = useI18n();
       ><strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >Terms</span
         ></strong
       ><span
@@ -5620,11 +5604,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >These Terms apply to you if you are a user of our services anywhere
           in the world.</span
         ></strong
@@ -5647,11 +5627,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >Please review these Terms and our policies and instructions to
           understand how you can and cannot use our services. You must comply
           with these Terms in your use of our services and only use our services
@@ -5677,11 +5653,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >If you do not agree to these Terms, you must not use our
           services.</span
         ></strong
@@ -5785,11 +5757,7 @@ const { locale } = useI18n();
         ><strong
           ><span
             lang="EN-US"
-            style="
-              font-size: 10.5pt;
-              font-family: 'Helvetica Neue';
-              
-            "
+            style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
             >Organisation</span
           ></strong
         ></span
@@ -5836,11 +5804,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >SCOPE AND LIMITATIONS OF SERVICE<o:p></o:p></span
       ></strong>
     </p>
@@ -5879,11 +5843,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >ADDITIONAL TERMS AND POLICIES</span
         ></strong
       ><span
@@ -5985,11 +5945,7 @@ const { locale } = useI18n();
       ><strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >EULA</span
         ></strong
       ><span
@@ -6462,11 +6418,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >CHANGES TO TERMS AND OUR SERVICES</span
         ></strong
       ><span
@@ -6525,11 +6477,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >Where we consider that any changes to these Terms or our services are
           reasonably material, we will (where reasonably practicable) notify you
           (via our website, direct communication to you, or other means), prior
@@ -6554,11 +6502,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >By continuing to use our services after we make any changes to these
           Terms or our services, with or without notice from us, you are
           agreeing to be bound by these revised Terms.</span
@@ -6582,11 +6526,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >YOUR ACCOUNT</span
         ></strong
       ><span
@@ -6726,11 +6666,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >PAYMENTS</span
         ></strong
       ><span
@@ -6775,11 +6711,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >YOUR CONTENT</span
         ></strong
       ><span
@@ -6807,11 +6739,7 @@ const { locale } = useI18n();
       ><strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >Your Content</span
         ></strong
       ><span
@@ -7447,11 +7375,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >INFRINGEMENT OF RIGHTS</span
         ></strong
       ><span
@@ -7493,11 +7417,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >THIRD PARTY CONTENT AND SERVICES</span
         ></strong
       ><span
@@ -7615,11 +7535,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >ADVERTISING CONTENT ON OUR SERVICES</span
         ></strong
       ><span
@@ -7663,11 +7579,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >OUR INTELLECTUAL PROPERTY RIGHTS</span
         ></strong
       ><span
@@ -7786,11 +7698,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >USE OF YOUR DEVICE BY OUR SERVICES</span
         ></strong
       ><span
@@ -7882,11 +7790,7 @@ const { locale } = useI18n();
       ><strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >WARRANTY AND DISCLAIMER</span
         ></strong
       ><span
@@ -7990,11 +7894,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >LIABILITY FOR OUR SERVICES</span
         ></strong
       ><span
@@ -8192,11 +8092,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >&nbsp;</span
         ></strong
       ><span
@@ -8260,11 +8156,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >Termination</span
         ></strong
       ><span
@@ -8366,11 +8258,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >GENERAL</span
         ></strong
       ><span
@@ -8446,11 +8334,7 @@ const { locale } = useI18n();
       <strong
         ><span
           lang="EN-US"
-          style="
-            font-size: 10.5pt;
-            font-family: 'Helvetica Neue';
-            
-          "
+          style="font-size: 10.5pt; font-family: 'Helvetica Neue'"
           >GOVERNING LAW AND DISPUTE RESOLUTION</span
         ></strong
       ><span

@@ -9,7 +9,6 @@ const range = ref<Range>({
   end: new Date(),
 });
 const period = ref<Period>("daily");
-
 </script>
 
 <template>
@@ -38,6 +37,7 @@ const period = ref<Period>("daily");
                 class="ml-1.5 rounded-full"
               />
             </UDropdown> -->
+            <switchLanguage />
           </template>
         </UDashboardNavbar>
 

@@ -6,13 +6,7 @@
 
     <template #right>
       <UColorModeButton />
-      <UDropdown
-        :items="availableLocales"
-        mode="hover"
-        :ui="{ item: { disabled: 'cursor-text select-text' } }"
-      >
-        <UButton icon="i-heroicons-language" variant="ghost" class="ml-2" />
-      </UDropdown>
+      <switchLanguage />
     </template>
   </UHeader>
   <view class="grid lg:grid-cols-2 lg:items-center gap-8 min-h-5/6 m-10">
@@ -67,7 +61,6 @@
 const { t } = useI18n();
 
 const localePath = useLocalePath();
-const switchLocalePath = useSwitchLocalePath();
 const session_token_cookie = useCookie("session_token");
 const startPosition = ref<string>("/login");
 
@@ -77,21 +70,6 @@ startPosition.value =
   session_token_cookie.value != undefined
     ? "/dashboard"
     : "/login";
-
-const availableLocales = [
-  [
-    {
-      label: "English",
-      to: switchLocalePath("en"),
-    },
-  ],
-  [
-    {
-      label: "简体中文",
-      to: switchLocalePath("zh"),
-    },
-  ],
-];
 
 const links = computed(() => {
   return [
