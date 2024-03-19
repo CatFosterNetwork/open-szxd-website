@@ -6,12 +6,19 @@ const { t } = useI18n();
 
 checkLogin();
 
+const state = reactive({
+  username: "",
+  email: "",
+  avatar: "",
+});
+
 const { data } = await useAsyncData(
   async () => {
     const user = (await Api.profile()).data.data;
     state.username = user.username;
     state.email = user.email;
     state.avatar = user.avatar;
+    console.log(state);
     return {
       username: user.username,
       avatar: user.avatar,
@@ -26,12 +33,6 @@ const { data } = await useAsyncData(
 
 const fileRef = ref<{ input: HTMLInputElement }>();
 const isDeleteAccountModalOpen = ref(false);
-
-const state = reactive({
-  username: data.value?.username || "",
-  email: data.value?.email || "",
-  avatar: data.value?.avatar || "",
-});
 
 const toast = useToast();
 
