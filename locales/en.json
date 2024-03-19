@@ -206,6 +206,10 @@
           "title": "Theme",
           "description": "Customize the look and feel of your dashboard."
         },
+        "language": {
+          "title": "Language",
+          "description": "Change the language of the dashboard."
+        },
         "profile": {
           "title": "Profile",
           "description": "This information will be modified so be careful what you changed.",

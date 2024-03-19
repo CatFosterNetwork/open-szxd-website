@@ -203,6 +203,10 @@
           "title": "主题",
           "description": "自定义仪表板的外观和风格。"
         },
+        "language": {
+          "title": "语言",
+          "description": "选择您的首选语言。"
+        },
         "profile": {
           "title": "个人资料",
           "description": "信息将被修改，因此请小心您所做的更改。",

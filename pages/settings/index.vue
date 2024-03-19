@@ -62,13 +62,42 @@ function onFileClick() {
 async function onSubmit(event: FormSubmitEvent<any>) {
   const res = await Api.updateProfile(state);
   if (res.status !== 200) {
-    toast.add({ title: t("settings.general.updateProfile.failed"), icon: "i-heroicons-x-circle" });
+    toast.add({
+      title: t("settings.general.updateProfile.failed"),
+      icon: "i-heroicons-x-circle",
+    });
     return;
-  }
-  else{
-    toast.add({ title: t("settings.general.updateProfile.success"), icon: "i-heroicons-check-circle" });
+  } else {
+    toast.add({
+      title: t("settings.general.updateProfile.success"),
+      icon: "i-heroicons-check-circle",
+    });
   }
 }
+
+const switchLocalePath = useSwitchLocalePath();
+const { locale } = useI18n();
+const languageLabel = ref<string>("");
+if (locale.value === "en") {
+  languageLabel.value = "English";
+} else if (locale.value === "zh") {
+  languageLabel.value = "简体中文";
+}
+
+const availableLocales = [
+  [
+    {
+      label: "English",
+      to: switchLocalePath("en"),
+    },
+  ],
+  [
+    {
+      label: "简体中文",
+      to: switchLocalePath("zh"),
+    },
+  ],
+];
 </script>
 
 <template>
@@ -76,10 +105,29 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     <UDashboardPanelContent class="pb-24">
       <UDashboardSection
         :title="$t('settings.general.dashboardPanelContent.theme.title')"
-        :description="$t('settings.general.dashboardPanelContent.theme.description')"
+        :description="
+          $t('settings.general.dashboardPanelContent.theme.description')
+        "
       >
         <template #links>
           <UColorModeSelect color="gray" />
+        </template>
+      </UDashboardSection>
+
+      <UDashboardSection
+        :title="$t('settings.general.dashboardPanelContent.language.title')"
+        :description="
+          $t('settings.general.dashboardPanelContent.language.description')
+        "
+      >
+        <template #links>
+          <UDropdown
+            :items="availableLocales"
+            mode="hover"
+            :ui="{ item: { disabled: 'cursor-text select-text' } }"
+          >
+          <UButton color="white" :label="languageLabel" trailing-icon="i-heroicons-chevron-down-20-solid" />
+          </UDropdown>
         </template>
       </UDashboardSection>
 
@@ -93,16 +141,31 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       >
         <UDashboardSection
           :title="$t('settings.general.dashboardPanelContent.profile.title')"
-          :description="$t('settings.general.dashboardPanelContent.profile.description')"
+          :description="
+            $t('settings.general.dashboardPanelContent.profile.description')
+          "
         >
           <template #links>
-            <UButton type="submit" :label="$t('settings.general.dashboardPanelContent.button')" color="black" @click="onSubmit" />
+            <UButton
+              type="submit"
+              :label="$t('settings.general.dashboardPanelContent.button')"
+              color="black"
+              @click="onSubmit"
+            />
           </template>
 
           <UFormGroup
             name="username"
-            :label="$t('settings.general.dashboardPanelContent.profile.username.label')"
-            :description="$t('settings.general.dashboardPanelContent.profile.username.description')"
+            :label="
+              $t(
+                'settings.general.dashboardPanelContent.profile.username.label'
+              )
+            "
+            :description="
+              $t(
+                'settings.general.dashboardPanelContent.profile.username.description'
+              )
+            "
             required
             class="grid grid-cols-2 gap-2"
             :ui="{ container: '' }"
@@ -118,9 +181,13 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
           <UFormGroup
             name="avatar"
-            :label="$t('settings.general.dashboardPanelContent.profile.avatar.label')"
+            :label="
+              $t('settings.general.dashboardPanelContent.profile.avatar.label')
+            "
             class="grid grid-cols-2 gap-2"
-            :help="$t('settings.general.dashboardPanelContent.profile.avatar.help')"
+            :help="
+              $t('settings.general.dashboardPanelContent.profile.avatar.help')
+            "
             :ui="{
               container: 'flex flex-wrap items-center gap-3',
               help: 'mt-0',
@@ -129,7 +196,11 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             <UAvatar :src="state.avatar" :alt="state.username" size="lg" />
 
             <UButton
-              :label="$t('settings.general.dashboardPanelContent.profile.avatar.button')"
+              :label="
+                $t(
+                  'settings.general.dashboardPanelContent.profile.avatar.button'
+                )
+              "
               color="white"
               size="md"
               @click="onFileClick"
@@ -147,8 +218,14 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
           <UFormGroup
             name="email"
-            :label="$t('settings.general.dashboardPanelContent.profile.email.label')"
-            :description="$t('settings.general.dashboardPanelContent.profile.email.description')"
+            :label="
+              $t('settings.general.dashboardPanelContent.profile.email.label')
+            "
+            :description="
+              $t(
+                'settings.general.dashboardPanelContent.profile.email.description'
+              )
+            "
             required
             class="grid grid-cols-2 gap-2"
             :ui="{ container: '' }"
