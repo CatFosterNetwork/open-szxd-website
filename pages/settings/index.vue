@@ -9,6 +9,9 @@ checkLogin();
 const { data } = await useAsyncData(
   async () => {
     const user = (await Api.profile()).data.data;
+    state.username = user.username;
+    state.email = user.email;
+    state.avatar = user.avatar;
     return {
       username: user.username,
       avatar: user.avatar,
