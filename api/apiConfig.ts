@@ -1,7 +1,13 @@
-
-// const baseUrl = "https://open.szxd.swu.social/api";
-const baseUrl = "http://redmiax6s.lan:8080/api";
+let baseUrl = "http://redmiax6s.lan:8080/api";
 // api 文档 https://app.apifox.com/project/4156592
+
+if (process.env.NODE_ENV === "development") {
+  baseUrl = "http://redmiax6s.lan:8080/api";
+}
+else {
+  baseUrl = "https://open.szxd.swu.social/api";
+
+}
 
 const apiUrl = {
   // 注册
