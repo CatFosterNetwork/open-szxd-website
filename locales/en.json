@@ -80,10 +80,10 @@
       "basic": {
         "title": "Basic",
         "description": "Monthly membership, you can enjoy all advanced features but only pay a few fees",
-        "price": "$1.99",
+        "price": "$2333.33",
         "cycle": "/month",
         "badge": "Most popular",
-        "button": "Buy now",
+        "button": "No way to buy",
         "features": {
           "1": "No worries for 30 days",
           "2": "Daily notifications from all channels",
@@ -94,10 +94,10 @@
       "premium": {
         "title": "Premium",
         "description": "Premium annual paid membership, become a member of us, experience unprecedented freedom, and break all school restrictions",
-        "price": "$19.99",
+        "price": "$6666.66",
         "cycle": "/year",
         "badge": "Cost-effectiveness",
-        "button": "Buy now",
+        "button": "You can't afford it",
         "features": {
           "1": "No worries for 365 days",
           "2": "Customize exclusive functions",

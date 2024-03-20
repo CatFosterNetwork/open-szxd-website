@@ -18,7 +18,6 @@ const { data } = await useAsyncData(
     state.username = user.username;
     state.email = user.email;
     state.avatar = user.avatar;
-    console.log(state);
     return {
       username: user.username,
       avatar: user.avatar,
