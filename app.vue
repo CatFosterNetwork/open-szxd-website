@@ -64,7 +64,7 @@ useHead({
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     { key: "theme-color", name: "theme-color", content: color },
   ],
-  link: [{ rel: "icon", href: "/swulogo.png" }],
+  link: [{ rel: "icon", href: "/swulogo.png" }, { rel: "apple-touch-icon", href: "/swulogo.png" }],
   htmlAttrs: {
     lang: "en",
   },
