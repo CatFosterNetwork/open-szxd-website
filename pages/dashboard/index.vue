@@ -10,7 +10,7 @@ const range = ref<Range>({
 });
 const period = ref<Period>("daily");
 
-const hasOpened = localStorage.getItem("hasOpened");
+const hasOpened = localStorage ? localStorage.getItem("hasOpened") : "false";
 
 const isOpened = ref(hasOpened === "true" ? false : true);
 
