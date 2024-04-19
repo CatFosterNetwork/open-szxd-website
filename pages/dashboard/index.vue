@@ -12,23 +12,18 @@ const period = ref<Period>("daily");
 
 let hasOpened = useCookie("hasOpened");
 
-console.log(hasOpened.value)
-console.log(hasOpened.value == true)
-console.log(typeof hasOpened.value )
-console.log(typeof "true")
-
-if (hasOpened.value != "true") {
+if (hasOpened.value as any != true) {
   hasOpened = useCookie("hasOpened", {
     maxAge: 3600 * 1000 * 24 * 6,
   });
 }
 
-const isOpened = ref(hasOpened.value == "true" ? false : true);
+const isOpened = ref(hasOpened.value as any == true ? false : true);
 
 console.log(isOpened.value)
 
 const close = () => {
-  hasOpened.value = "true";
+  hasOpened.value as unknown as true;
   isOpened.value = false;
 };
 </script>
