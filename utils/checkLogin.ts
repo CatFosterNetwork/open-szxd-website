@@ -13,7 +13,7 @@ const _checkLogin = () => {
     session_tokenCookie.value == null
   ) {
     toast.add({ title: "Please login first", color: "red" });
-    // navigateTo(localePath("/login"));
+    navigateTo(localePath("/login"));
   }
 };
 
