@@ -44,6 +44,7 @@ const responseFailed = (error: any) => {
     if (response.status === 400) {
       clearAllCookie()
       if (!window) return;
+      if (window.location.pathname === '/login') return;
       window.location.href = '/login'
     }
     return Promise.reject()
