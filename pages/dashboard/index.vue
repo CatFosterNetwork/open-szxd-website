@@ -22,6 +22,8 @@ if (hasOpened.value != "true") {
 
 const isOpened = ref(hasOpened.value == "true" ? false : true);
 
+console.log(isOpened.value)
+
 const close = () => {
   hasOpened.value = "true";
   isOpened.value = false;
