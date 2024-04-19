@@ -10,11 +10,15 @@ const range = ref<Range>({
 });
 const period = ref<Period>("daily");
 
-const hasOpened = useCookie("hasOpened", {
-  maxAge: 3600 * 1000 * 24 * 6,
-});
+let hasOpened = useCookie("hasOpened");
 
-const isOpened = ref(hasOpened.value === "true" ? false : true);
+if (hasOpened.value != "true") {
+  hasOpened = useCookie("hasOpened", {
+    maxAge: 3600 * 1000 * 24 * 6,
+  });
+}
+
+const isOpened = ref(hasOpened.value == "true" ? false : true);
 
 const close = () => {
   hasOpened.value = "true";
