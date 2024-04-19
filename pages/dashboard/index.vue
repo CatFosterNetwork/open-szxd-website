@@ -13,6 +13,7 @@ const period = ref<Period>("daily");
 let hasOpened = useCookie("hasOpened");
 
 console.log(hasOpened.value)
+console.log(hasOpened.value == "true")
 
 if (hasOpened.value != "true") {
   hasOpened = useCookie("hasOpened", {
