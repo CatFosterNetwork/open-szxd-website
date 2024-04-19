@@ -11,7 +11,7 @@ const range = ref<Range>({
 const period = ref<Period>("daily");
 
 if (typeof localStorage === "undefined" || localStorage === null) {
-  localStorage = {
+  var localStorage = {
     getItem: (key: string) => {
       return null;
     },
