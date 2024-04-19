@@ -14,7 +14,7 @@ let hasOpened = useCookie("hasOpened");
 
 if (hasOpened.value as any != true) {
   hasOpened = useCookie("hasOpened", {
-    maxAge: 3600 * 1000 * 24 * 6,
+    maxAge: 3600 * 24 * 6,
   });
 }
 
@@ -23,7 +23,7 @@ const isOpened = ref(hasOpened.value as any == true ? false : true);
 console.log(isOpened.value)
 
 const close = () => {
-  hasOpened.value as unknown as true;
+  hasOpened.value = true as any;
   isOpened.value = false;
 };
 </script>
