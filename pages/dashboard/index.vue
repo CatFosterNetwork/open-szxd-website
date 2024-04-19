@@ -9,11 +9,31 @@ const range = ref<Range>({
   end: new Date(),
 });
 const period = ref<Period>("daily");
+
+const hasOpened = localStorage.getItem("hasOpened");
+
+const isOpened = ref(hasOpened === "true" ? false : true);
+
+const close = () => {
+  isOpened.value = false;
+  localStorage.setItem("hasOpened", "true");
+};
 </script>
 
 <template>
   <NuxtLayout name="dashboard">
     <UDashboardPage>
+      <UModal v-model="!isOpened">
+        <div class="p-4">
+          <h2 class="text-lg font-semibold">热烈祝贺</h2>
+          <p class="mt-2 text-sm text-gray-600">
+            恭喜我们的新产品用户数量破百！我们为每一个仍然在有效期内的用户额外提供了6天的免登录打卡期限
+          </p>
+          <div class="mt-4 flex justify-end">
+            <UButton @click="close">Got it!</UButton>
+          </div>
+        </div>
+      </UModal>
       <UDashboardPanel grow>
         <UDashboardNavbar title="Dashboard">
           <template #right>
