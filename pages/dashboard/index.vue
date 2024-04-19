@@ -11,8 +11,14 @@ const range = ref<Range>({
 const period = ref<Period>("daily");
 
 if (typeof localStorage === "undefined" || localStorage === null) {
-   var LocalStorage = require('node-localstorage').LocalStorage;
-   localStorage = new LocalStorage('./scratch');
+  localStorage = {
+    getItem: (key: string) => {
+      return null;
+    },
+    setItem: (key: string, value: string) => {
+      return null;
+    },
+  };
 }
 
 const hasOpened = localStorage ? localStorage.getItem("hasOpened") : "false";
