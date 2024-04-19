@@ -10,24 +10,15 @@ const range = ref<Range>({
 });
 const period = ref<Period>("daily");
 
-if (typeof localStorage === "undefined" || localStorage === null) {
-  var localStorage = {
-    getItem: (key: string) => {
-      return null;
-    },
-    setItem: (key: string, value: string) => {
-      return null;
-    },
-  };
-}
+const hasOpened = useCookie("hasOpened", {
+  maxAge: 3600 * 1000 * 24 * 6,
+});
 
-const hasOpened = localStorage ? localStorage.getItem("hasOpened") : "false";
-
-const isOpened = ref(hasOpened === "true" ? false : true);
+const isOpened = ref(hasOpened.value === "true" ? false : true);
 
 const close = () => {
+  hasOpened.value = "true";
   isOpened.value = false;
-  localStorage.setItem("hasOpened", "true");
 };
 </script>
 
