@@ -20,8 +20,6 @@ if (hasOpened.value as any != true) {
 
 const isOpened = ref(hasOpened.value as any == true ? false : true);
 
-console.log(isOpened.value)
-
 const close = () => {
   hasOpened.value = true as any;
   isOpened.value = false;
