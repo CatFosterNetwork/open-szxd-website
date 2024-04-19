@@ -23,7 +23,7 @@ const close = () => {
 <template>
   <NuxtLayout name="dashboard">
     <UDashboardPage>
-      <UModal v-model="!isOpened">
+      <UModal v-model="isOpened">
         <div class="p-4">
           <h2 class="text-lg font-semibold">热烈祝贺</h2>
           <p class="mt-2 text-sm text-gray-600">
