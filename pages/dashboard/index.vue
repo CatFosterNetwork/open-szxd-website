@@ -12,6 +12,8 @@ const period = ref<Period>("daily");
 
 let hasOpened = useCookie("hasOpened");
 
+console.log(hasOpened.value)
+
 if (hasOpened.value != "true") {
   hasOpened = useCookie("hasOpened", {
     maxAge: 3600 * 1000 * 24 * 6,
