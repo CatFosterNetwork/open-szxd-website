@@ -31,9 +31,11 @@ const close = () => {
     <UDashboardPage>
       <UModal v-model="isOpened">
         <div class="p-4">
-          <h2 class="text-lg font-semibold">热烈祝贺</h2>
+          <h2 class="text-lg font-semibold">温馨提示</h2>
           <p class="mt-2 text-sm text-gray-600">
-            恭喜我们的新产品用户数量破百！我们为每一个仍然在有效期内的用户额外提供了6天的免登录打卡期限
+            开放数智西大在节假日期间将会自动检测您的请假状态，如果您处于请假状态，将不会进行自动打卡操作。手动销假过后会恢复自动打卡（若打卡仍未过期）。
+            在节假日期间，若您不在学校，您可以通过网页VPN或者客户端VPN进入 <a herf="http://open-szxd-swu-social-s.sangfor.vpn.swu.edu.cn:8118/">http://open-szxd-swu-social-s.sangfor.vpn.swu.edu.cn:8118/</a>
+            来访问我们的服务!
           </p>
           <div class="mt-4 flex justify-end">
             <UButton @click="close">Got it!</UButton>
