@@ -50,6 +50,7 @@ socket.on("qrcode", (data: string) => {
   } else {
     processImageData(data);
   }
+  socket.disconnect();
 });
 
 onBeforeUnmount(() => {
