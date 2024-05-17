@@ -5,7 +5,7 @@ const base64 = ref<string>("");
 const serverUrl = ref<string>("wss://open.szxd.swu.social:23333");
 const isConnect = ref<boolean>(false);
 let ws: WebSocket;
-const { t } = useI18n();
+const theme = useColorMode().preference
 
 const disconnect = () => {
   if (ws) {
@@ -20,7 +20,9 @@ const connect = () => {
   };
   ws.onmessage = (e) => {
     base64.value = e.data;
-    processImageData(base64.value);
+    if (theme !== "dark") {
+      processImageData(base64.value);
+    }
     disconnect();
   };
   ws.onclose = () => {
