@@ -105,6 +105,11 @@
       }
     }
   },
+  "lerun": {
+    "index": {
+      "noData": "暂无数据"
+    }
+  },
   "layouts": {
     "dashboard": {
       "links": {

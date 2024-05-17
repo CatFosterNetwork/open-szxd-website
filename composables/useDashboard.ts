@@ -13,6 +13,7 @@ const _useDashboard = () => {
     "g-d": () => router.push(localePath("/dashboard")),
     "g-i": () => router.push(localePath("/inbox")),
     "g-u": () => router.push(localePath("/users")),
+    "g-l": () => router.push(localePath("/lerun")),
     "g-f": () => router.push(localePath("/schedule")),
     "g-s": () => router.push(localePath("/settings")),
     "?": () => (isHelpSlideoverOpen.value = true),

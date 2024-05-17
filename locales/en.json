@@ -107,6 +107,11 @@
       }
     }
   },
+  "lerun": {
+    "index": {
+      "noData": "No data"
+    }
+  },
   "layouts": {
     "dashboard": {
       "links": {
