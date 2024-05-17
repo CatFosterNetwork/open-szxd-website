@@ -130,6 +130,10 @@
           "label": "Schedule",
           "text": "Schedule"
         },
+        "lerun": {
+          "label": "LeRun",
+          "text": "LeRun"
+        },
         "settings": {
           "label": "Settings",
           "children": {

@@ -14,6 +14,7 @@ const Api = {
   read: (id: number) => http.get(apiUrl.inbox + `/${id}/read`, {}),
   updateProfile: (data: any) => http.patch(apiUrl.profile, data),
   notifications: (data: any) => http.patch(apiUrl.user + '/notifications', data),
+  lerun: () => http.get(apiUrl.lerun, {}),
 };
 
 export default Api;

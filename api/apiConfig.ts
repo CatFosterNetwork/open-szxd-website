@@ -26,6 +26,8 @@ const apiUrl = {
   user: `${baseUrl}/users`,
   // 宿舍统计
   gardens: `${baseUrl}/gardens`,
+  // 乐跑
+  lerun: `${baseUrl}/lerun`,
 };
 
 export default apiUrl;

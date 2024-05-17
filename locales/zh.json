@@ -128,6 +128,10 @@
           "label": "安排计划",
           "text": "安排计划"
         },
+        "lerun": {
+          "label": "自动乐跑",
+          "text": "自动乐跑"
+        },
         "settings": {
           "label": "设置",
           "children": {
