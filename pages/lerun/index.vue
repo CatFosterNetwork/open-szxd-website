@@ -226,7 +226,7 @@ const startLerun = () => {
           </view>
         </view>
         <view
-          class="flex justify-center items-center h-full"
+          class="flex justify-center items-center h-full w-full"
           v-else-if="status == 0"
         >
           <NuxtImg
@@ -234,7 +234,7 @@ const startLerun = () => {
             alt="QR Code"
             v-if="base64.length"
           />
-          <view class="w-full mx-20" v-else>
+          <view class="w-5/6" v-else>
             <view class="font-bold text-2xl">{{
               $t("lerun.index.noData")
             }}</view>
