@@ -174,6 +174,22 @@ const groups = [
       },
     ],
   },
+  {
+    key: "telegram",
+    label: t("layouts.dashboard.lazyUDashboardSearch.groups.telegram.label"),
+    commands: [
+      {
+        id: "source",
+        label: t(
+          "layouts.dashboard.lazyUDashboardSearch.groups.telegram.commands.label"
+        ),
+        icon: "i-simple-icons-telegram",
+        click: () => {
+          window.open(`https://t.me/+kLfUSbSYh7M2ZjQ9`, "_blank");
+        },
+      },
+    ],
+  }
 ];
 
 const defaultColors = ref(

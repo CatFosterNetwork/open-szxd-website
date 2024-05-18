@@ -177,6 +177,12 @@
             "commands": {
               "label": "Contact us on GitHub"
             }
+          },
+          "telegram": {
+            "label": "Telegram",
+            "commands": {
+              "label": "Join our Telegram group"
+            }
           }
         }
       }
