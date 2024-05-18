@@ -297,7 +297,7 @@ const startLerun = () => {
             :src="base64"
             alt="QR Code"
             v-if="base64.length && !isLoggedIn"
-            sizes="100vw sm:50vw md:400px"
+            class="size-80"
           />
           <view class="w-5/6" v-else-if="isLoggedIn">
             {{ $t("lerun.index.loggedIn") }}
