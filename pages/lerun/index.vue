@@ -74,7 +74,6 @@ const processImageData = (base64Data: string) => {
 
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
-    console.log(theme)
     // 根据颜色模式处理图像
     if (theme === "dark") {
       for (let i = 0; i < data.length; i += 4) {
@@ -128,12 +127,7 @@ socket.on("reconnect", () => {
     progress.value = 4;
     simulateProgress();
     base64.value = res;
-    if (theme === "dark") {
-      progress.value = 5;
-      return;
-    } else {
-      processImageData(res);
-    }
+    processImageData(res);
     progress.value = 5;
   });
 
