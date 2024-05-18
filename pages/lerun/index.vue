@@ -252,6 +252,9 @@ const startLerun = () => {
             <view class="font-bold text-3xl animate-pulse mb-3" v-else-if="progress < 2">{{
               $t("lerun.index.connecting")
             }}</view>
+            <view class="font-bold text-3xl mb-3 text-red-500" v-else-if="progress == 6">{{
+              $t("lerun.index.error")
+            }}</view>
             <view class="font-bold text-3xl animate-pulse mb-3" v-else>{{
               $t("lerun.index.loading")
             }}</view>
