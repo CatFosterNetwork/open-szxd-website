@@ -41,13 +41,6 @@ const { pending } = await useAsyncData<void>(
 
 import { io } from "socket.io-client";
 
-const socket = io(serverUrl.value, {
-  transports: ["websocket"],
-  path: "/api/socket.io",
-  reconnection: true,
-  autoConnect: true,
-});
-
 const processImageData = (base64Data: string) => {
   const img = new Image();
   img.src = `data:image/png;base64,` + base64Data;
@@ -112,6 +105,12 @@ const simulateProgress = () => {
 const startLerun = () => {
   start.value = true;
   status.value = 0;
+  const socket = io(serverUrl.value, {
+    transports: ["websocket"],
+    path: "/api/socket.io",
+    reconnection: true,
+    autoConnect: true,
+  });
   socket.connect();
   socket.on("ping", () => {
     progress.value = 0;
@@ -123,7 +122,10 @@ const startLerun = () => {
     const session_tokenCookie = useCookie<string>("session_token", {
       readonly: true,
     });
-    socket.emit("create", { id: user.value.id, token: session_tokenCookie.value });
+    socket.emit("create", {
+      id: user.value.id,
+      token: session_tokenCookie.value,
+    });
   });
   socket.on("createVM", () => {
     progress.value = 2;
