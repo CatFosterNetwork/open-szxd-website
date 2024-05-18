@@ -19,6 +19,7 @@ const steps = [
 const isRequestSend = ref(false);
 const isRequestComplete = ref(false);
 const isLoggedIn = ref(false);
+const isConnected = ref(false);
 const user = ref<any>({});
 const status = ref();
 
@@ -123,6 +124,7 @@ socket.on("reconnect_attempt", () => {
 });
 
 socket.on("reconnect", () => {
+  isConnected.value = true;
   socket.on("createVM", () => {
     progress.value = 2;
     simulateProgress();
@@ -163,6 +165,7 @@ const startLerun = () => {
   start.value = true;
   status.value = 0;
   socket.connect();
+  isConnected.value = true;
   socket.on("ping", () => {
     progress.value = 0;
     simulateProgress();
@@ -212,11 +215,13 @@ const startLerun = () => {
   socket.on("requestComplete", () => {
     isRequestComplete.value = true;
     socket.disconnect();
+    isConnected.value = false;
   });
 
   socket.on("error", (error: string) => {
     progress.value = 6;
     socket.disconnect();
+    isConnected.value = false;
   });
 };
 </script>
@@ -286,12 +291,12 @@ const startLerun = () => {
         </view>
         <view
           class="flex justify-center items-center h-full w-full"
-          v-else-if="status == 0"
+          v-else-if="status == 0 && isConnected"
         >
           <NuxtImg
             :src="base64"
             alt="QR Code"
-            v-if="socket.connect() && base64.length && !isLoggedIn"
+            v-if="base64.length && !isLoggedIn"
             sizes="100vw sm:50vw md:400px"
           />
           <view class="w-5/6" v-else-if="isLoggedIn">
