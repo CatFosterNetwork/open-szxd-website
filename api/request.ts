@@ -46,8 +46,8 @@ const responseFailed = (error: any) => {
     if (response.status === 400) {
       clearAllCookie()
       if (!window) return;
-      // if (window.location.pathname === '/login' || window.location.pathname === '/zh/login') return;
-      // window.location.href = localePath('/login')
+      if (window.location.pathname === '/login' || window.location.pathname === '/zh/login') return;
+      window.location.href = '/zh/login'
     }
     return Promise.reject()
   } else if (!window.navigator.onLine) {

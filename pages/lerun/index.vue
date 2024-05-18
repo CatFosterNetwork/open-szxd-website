@@ -19,7 +19,7 @@ const steps = [
 const isRequestSend = ref(false);
 const isRequestComplete = ref(false);
 const user = ref<any>({});
-const status = ref()
+const status = ref();
 
 const now = new Date();
 if (now.getHours() < 6 || now.getHours() > 23) {
@@ -180,9 +180,12 @@ const startLerun = () => {
           /> -->
           </template>
         </UDashboardNavbar>
-        <view v-if="status == 1">
-          <view class="flex justify-center items-center h-full">
-            <view class="font-bold text-2xl">
+        <view
+          v-if="status == 1"
+          class="flex justify-center items-center h-full"
+        >
+          <view class="flex justify-center items-center h-full flex-col">
+            <view class="font-bold text-4xl mb-10">
               {{ $t("lerun.index.ready") }}
             </view>
             <UButton
@@ -195,15 +198,21 @@ const startLerun = () => {
             </UButton>
           </view>
         </view>
-        <view v-else-if="status == 2">
-          <view class="flex justify-center items-center h-full">
+        <view
+          v-else-if="status == 2"
+          class="flex justify-center items-center h-full"
+        >
+          <view>
             <view class="font-bold text-2xl">
               {{ $t("lerun.index.inProgress") }}
             </view>
           </view>
         </view>
-        <view v-else-if="status == 3">
-          <view class="flex justify-center items-center h-full">
+        <view
+          v-else-if="status == 3"
+          class="flex justify-center items-center h-full"
+        >
+          <view>
             <view class="font-bold text-2xl">
               {{ $t("lerun.index.completed") }}
             </view>
@@ -216,7 +225,10 @@ const startLerun = () => {
             </view>
           </view>
         </view>
-        <view class="flex justify-center items-center h-full" v-else-if="status == 0">
+        <view
+          class="flex justify-center items-center h-full"
+          v-else-if="status == 0"
+        >
           <NuxtImg
             :src="`data:image/png;base64,` + base64"
             alt="QR Code"
@@ -236,7 +248,7 @@ const startLerun = () => {
               <template #indicator="{ percent }">
                 <div class="text-right" :style="{ width: `${percent}%` }">
                   <span v-if="progress == null || progress < 1">
-                    <span class="text-lime-500">
+                    <span class="text-red-500">
                       <UIcon name="i-mdi-connection" /> {{ steps[0] }}
                     </span>
                   </span>
@@ -261,7 +273,7 @@ const startLerun = () => {
                     </span>
                   </span>
                   <span v-else>
-                    <span class="primary">
+                    <span class="text-primary">
                       <UIcon name="i-mdi-check" /> {{ steps[5] }}
                     </span>
                   </span>
@@ -270,9 +282,12 @@ const startLerun = () => {
             </UProgress>
           </view>
         </view>
-        <view v-else>
-          <view class="flex justify-center items-center h-full">
-            <view class="font-bold text-2xl">
+        <view
+          class="flex justify-center items-center h-full content-center"
+          v-else
+        >
+          <view class="mx-28">
+            <view class="font-bold text-4xl italic">
               {{ $t("lerun.index.na") }}
             </view>
           </view>
