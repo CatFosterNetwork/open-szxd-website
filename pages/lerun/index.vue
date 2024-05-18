@@ -22,11 +22,11 @@ const user = ref<any>({});
 const status = ref();
 
 const socket = io(serverUrl.value, {
-    transports: ["websocket"],
-    path: "/api/socket.io",
-    reconnection: true,
-    autoConnect: false,
-  });
+  transports: ["websocket"],
+  path: "/api/socket.io",
+  reconnection: true,
+  autoConnect: false,
+});
 
 const color = computed(() => {
   switch (true) {
@@ -115,6 +115,43 @@ const simulateProgress = () => {
   }
 };
 
+socket.on("reconnect", () => {
+  socket.on("createVM", () => {
+    progress.value = 2;
+    simulateProgress();
+  });
+
+  socket.on("VMcreated", () => {
+    progress.value = 3;
+    simulateProgress();
+  });
+
+  socket.on("qrcode", (res: string) => {
+    progress.value = 4;
+    simulateProgress();
+    base64.value = res;
+    if (theme === "dark") {
+      progress.value = 5;
+      return;
+    } else {
+      processImageData(res);
+    }
+    progress.value = 5;
+  });
+
+  socket.on("requestSend", () => {
+    isRequestSend.value = true;
+  });
+
+  socket.on("requestComplete", () => {
+    isRequestComplete.value = true;
+    socket.disconnect();
+  });
+
+  socket.on("error", (error: string) => {
+    progress.value = 6;
+  });
+});
 const startLerun = () => {
   start.value = true;
   status.value = 0;
@@ -168,7 +205,6 @@ const startLerun = () => {
 
   socket.on("error", (error: string) => {
     progress.value = 6;
-
     socket.disconnect();
   });
 };
@@ -247,15 +283,21 @@ const startLerun = () => {
             v-if="base64.length"
           />
           <view class="w-5/6" v-else>
-            <view class="font-bold text-3xl animate-pulse mb-3" v-if="progress == null || progress == 0">{{
-              $t("lerun.index.noData")
-            }}</view>
-            <view class="font-bold text-3xl animate-pulse mb-3" v-else-if="progress < 2">{{
-              $t("lerun.index.connecting")
-            }}</view>
-            <view class="font-bold text-3xl mb-3 text-red-500" v-else-if="progress == 6">{{
-              $t("lerun.index.error")
-            }}</view>
+            <view
+              class="font-bold text-3xl animate-pulse mb-3"
+              v-if="progress == null || progress == 0"
+              >{{ $t("lerun.index.noData") }}</view
+            >
+            <view
+              class="font-bold text-3xl animate-pulse mb-3"
+              v-else-if="progress < 2"
+              >{{ $t("lerun.index.connecting") }}</view
+            >
+            <view
+              class="font-bold text-3xl mb-3 text-red-500"
+              v-else-if="progress == 6"
+              >{{ $t("lerun.index.error") }}</view
+            >
             <view class="font-bold text-3xl animate-pulse mb-3" v-else>{{
               $t("lerun.index.loading")
             }}</view>
