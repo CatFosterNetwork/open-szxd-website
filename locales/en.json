@@ -109,7 +109,18 @@
   },
   "lerun": {
     "index": {
-      "noData": "No data"
+      "noData": "No data",
+      "step1": "Connecting...",
+      "step2": "A good start is half the battle.",
+      "step3": "Configuring settings for a better experience.",
+      "step4": "Having a friend afar brings a distant land near.",
+      "step5": "Patience is a virtue; greatness is just around the corner.",
+      "step6": "A new adventure is about to begin.",
+      "outOfTime": "Current time is not a valid LeRun time",
+      "ready": "Ready to auto LeRun",
+      "start": "Start LeRun",
+      "inProgress": "LeRun in progress",
+      "completed": "LeRun completed"
     }
   },
   "layouts": {

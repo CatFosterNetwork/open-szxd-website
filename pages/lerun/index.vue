@@ -1,62 +1,48 @@
 <script lang="ts" setup>
+import Api from "~/api/api";
 checkLogin();
 
 const base64 = ref<string>("");
 const serverUrl = ref<string>("wss://open.szxd.swu.social/api");
-const isConnected = ref<boolean>(false);
-const transport = ref("N/A");
 const theme = useColorMode().preference;
+const progress = ref<number | null>(null);
+const { t } = useI18n();
+const start = ref(false);
+const steps = [
+  t("lerun.index.step1"),
+  t("lerun.index.step2"),
+  t("lerun.index.step3"),
+  t("lerun.index.step4"),
+  t("lerun.index.step5"),
+  t("lerun.index.step6"),
+];
+const isRequestSend = ref(false);
+const isRequestComplete = ref(false);
+const user = ref<any>({});
+const status = ref()
+
+const now = new Date();
+if (now.getHours() < 6 || now.getHours() > 23) {
+  status.value = -1;
+}
+
+const { pending } = await useAsyncData<void>(
+  async () => {
+    const res = await Api.profile();
+    user.value = res.data.data;
+    const statusRes = await Api.lerunStatus();
+    status.value = statusRes.data.data;
+  },
+  { server: false, watch: [] }
+);
+
 import { io } from "socket.io-client";
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
-  path: '/api/socket.io',
+  path: "/api/socket.io",
   reconnection: true,
   autoConnect: true,
-});
-
-if (socket.connected) {
-  onConnect();
-}
-
-function onConnect() {
-  isConnected.value = true;
-  transport.value = socket.io.engine.transport.name;
-
-  socket.io.engine.on("upgrade", (rawTransport) => {
-    transport.value = rawTransport.name;
-  });
-}
-
-function onDisconnect() {
-  isConnected.value = false;
-  transport.value = "N/A";
-}
-
-socket.on("connect", () => {
-  isConnected.value = true;
-  socket.emit("requestImage");
-});
-
-socket.on("disconnect", () => {
-  isConnected.value = false;
-});
-
-socket.on("connect", onConnect);
-socket.on("disconnect", onDisconnect);
-
-socket.on("qrcode", (data: string) => {
-  if (theme === "dark") {
-    base64.value = data;
-  } else {
-    processImageData(data);
-  }
-  socket.disconnect();
-});
-
-onBeforeUnmount(() => {
-  socket.off("connect", onConnect);
-  socket.off("disconnect", onDisconnect);
 });
 
 const processImageData = (base64Data: string) => {
@@ -110,6 +96,74 @@ const connectSocket = () => {
 onMounted(() => {
   connectSocket();
 });
+
+// 定义缓慢增加 progress 的函数
+const simulateProgress = () => {
+  const interval = setInterval(() => {
+    if (progress.value !== null) {
+      const target = Math.ceil(progress.value) - 0.1;
+      if (progress.value < target) {
+        progress.value += 0.01;
+        if (progress.value > target) {
+          progress.value = target;
+        }
+      } else {
+        clearInterval(interval);
+      }
+    }
+  }, 100); // 每 100 毫秒增加一次
+};
+
+const startLerun = () => {
+  start.value = true;
+  socket.on("ping", () => {
+    progress.value = 0;
+    simulateProgress();
+  });
+  socket.on("connect", () => {
+    progress.value = 1;
+    simulateProgress();
+    const session_tokenCookie = useCookie<string>("session_token", {
+      readonly: true,
+    });
+    socket.emit("user", { id: user.value.id, token: session_tokenCookie });
+  });
+  socket.on("createVM", () => {
+    progress.value = 2;
+    simulateProgress();
+  });
+
+  socket.on("VMcreated", () => {
+    progress.value = 3;
+    simulateProgress();
+  });
+
+  socket.on("qrcode", (res: string) => {
+    progress.value = 4;
+    simulateProgress();
+    base64.value = res;
+    if (theme === "dark") {
+      progress.value = 5;
+      return;
+    } else {
+      processImageData(res);
+    }
+    progress.value = 5;
+  });
+
+  socket.on("requestSend", () => {
+    isRequestSend.value = true;
+  });
+
+  socket.on("requestComplete", () => {
+    isRequestComplete.value = true;
+    socket.disconnect();
+  });
+
+  socket.on("error", (error: string) => {
+    socket.disconnect();
+  });
+};
 </script>
 
 <template>
@@ -126,15 +180,95 @@ onMounted(() => {
           /> -->
           </template>
         </UDashboardNavbar>
-        <view class="flex justify-center items-center h-full">
+        <view v-if="status == 1">
+          <view class="flex justify-center items-center h-full">
+            <view class="font-bold text-2xl">
+              {{ $t("lerun.index.ready") }}
+            </view>
+            <UButton
+              color="primary"
+              @click="startLerun"
+              class="ml-2"
+              v-if="!start"
+            >
+              {{ $t("lerun.index.start") }}
+            </UButton>
+          </view>
+        </view>
+        <view v-else-if="status == 2">
+          <view class="flex justify-center items-center h-full">
+            <view class="font-bold text-2xl">
+              {{ $t("lerun.index.inProgress") }}
+            </view>
+          </view>
+        </view>
+        <view v-else-if="status == 3">
+          <view class="flex justify-center items-center h-full">
+            <view class="font-bold text-2xl">
+              {{ $t("lerun.index.completed") }}
+            </view>
+          </view>
+        </view>
+        <view v-else-if="status == -1">
+          <view class="flex justify-center items-center h-full">
+            <view class="font-bold text-2xl">
+              {{ $t("lerun.index.outOfTime") }}
+            </view>
+          </view>
+        </view>
+        <view class="flex justify-center items-center h-full" v-else-if="status == 0">
           <NuxtImg
             :src="`data:image/png;base64,` + base64"
             alt="QR Code"
             v-if="base64.length"
           />
-          <view class="font-bold text-2xl" v-else>{{
-            $t("lerun.index.noData")
-          }}</view>
+          <view class="w-full mx-96" v-else>
+            <view class="font-bold text-2xl">{{
+              $t("lerun.index.noData")
+            }}</view>
+            <UProgress
+              :value="progress"
+              :max="steps"
+              animation="carousel"
+              indicator
+              class="w-full mt-3"
+            >
+              <template #indicator="{ percent }">
+                <div class="text-right" :style="{ width: `${percent}%` }">
+                  <span v-if="progress == null || progress < 1">
+                    <span class="text-lime-500">
+                      <UIcon name="i-mdi-connection" /> {{ steps[0] }}
+                    </span>
+                  </span>
+                  <span v-else-if="progress < 2">
+                    <span class="text-amber-500">
+                      <UIcon name="i-mdi-ray-start" /> {{ steps[1] }}
+                    </span>
+                  </span>
+                  <span v-else-if="progress < 3">
+                    <span class="text-blue-500">
+                      <UIcon name="i-mdi-progress-wrench" /> {{ steps[2] }}
+                    </span>
+                  </span>
+                  <span v-else-if="progress < 4">
+                    <span class="text-amber-500">
+                      <UIcon name="i-mdi-nature-people" /> {{ steps[3] }}
+                    </span>
+                  </span>
+                  <span v-else-if="progress < 5">
+                    <span class="text-amber-500">
+                      <UIcon name="i-clarity-music-note-solid" /> {{ steps[4] }}
+                    </span>
+                  </span>
+                  <span v-else>
+                    <span class="primary">
+                      <UIcon name="i-mdi-check" /> {{ steps[5] }}
+                    </span>
+                  </span>
+                </div>
+              </template>
+            </UProgress>
+          </view>
         </view>
       </UDashboardPanel>
     </UDashboardPage>
