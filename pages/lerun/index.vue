@@ -21,6 +21,13 @@ const isRequestComplete = ref(false);
 const user = ref<any>({});
 const status = ref();
 
+const socket = io(serverUrl.value, {
+    transports: ["websocket"],
+    path: "/api/socket.io",
+    reconnection: true,
+    autoConnect: false,
+  });
+
 const color = computed(() => {
   switch (true) {
     case progress.value == 6:
@@ -111,12 +118,6 @@ const simulateProgress = () => {
 const startLerun = () => {
   start.value = true;
   status.value = 0;
-  const socket = io(serverUrl.value, {
-    transports: ["websocket"],
-    path: "/api/socket.io",
-    reconnection: true,
-    autoConnect: true,
-  });
   socket.connect();
   socket.on("ping", () => {
     progress.value = 0;
