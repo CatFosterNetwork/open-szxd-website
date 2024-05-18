@@ -91,7 +91,7 @@ const simulateProgress = () => {
     const target = progress.value + 0.9;
     const interval = setInterval(() => {
       if (progress.value && progress.value < target) {
-        progress.value += 0.00005;
+        progress.value += 0.00009;
       } else {
         clearInterval(interval);
       }
