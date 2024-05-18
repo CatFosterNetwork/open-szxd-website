@@ -78,16 +78,26 @@ const processImageData = (base64Data: string) => {
     // 根据颜色模式处理图像
     if (theme === "dark") {
       for (let i = 0; i < data.length; i += 4) {
-        // 替换灰色和黑色为白色
-        // 这里假设灰色和黑色的RGB值总和小于384（即128 * 3）
-        const sum = data[i] + data[i + 1] + data[i + 2];
-        if (sum < 384) {
-          data[i] = 255;
-          data[i + 1] = 255;
-          data[i + 2] = 255;
+        // 替换白色（255, 255, 255）为黑色（0, 0, 0）
+        if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
+          data[i] = 0;
+          data[i + 1] = 0;
+          data[i + 2] = 0;
         }
       }
-    }
+    } 
+    // else {
+    //   for (let i = 0; i < data.length; i += 4) {
+    //     // 替换灰色和黑色为白色
+    //     // 这里假设灰色和黑色的RGB值总和小于384（即128 * 3）
+    //     const sum = data[i] + data[i + 1] + data[i + 2];
+    //     if (sum < 384) {
+    //       data[i] = 255;
+    //       data[i + 1] = 255;
+    //       data[i + 2] = 255;
+    //     }
+    //   }
+    // }
 
     ctx.putImageData(imageData, 0, 0);
     const updatedBase64 = canvas.toDataURL("image/png");
