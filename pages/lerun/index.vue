@@ -74,7 +74,7 @@ const processImageData = (base64Data: string) => {
 
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
-
+    console.log(theme)
     // 根据颜色模式处理图像
     if (theme === "dark") {
       for (let i = 0; i < data.length; i += 4) {
