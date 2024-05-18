@@ -291,7 +291,7 @@ const startLerun = () => {
           <NuxtImg
             :src="base64"
             alt="QR Code"
-            v-if="socket.connect() || base64.length && !isLoggedIn"
+            v-if="socket.connect() && base64.length && !isLoggedIn"
             sizes="100vw sm:50vw md:400px"
           />
           <view class="w-5/6" v-else-if="isLoggedIn">
