@@ -120,7 +120,7 @@ const startLerun = () => {
       readonly: true,
     });
     socket.emit("create", {
-      id: user.value.id,
+      id: user.value.username,
       token: session_tokenCookie.value,
     });
   });
