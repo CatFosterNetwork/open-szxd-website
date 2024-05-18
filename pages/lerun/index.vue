@@ -89,14 +89,6 @@ const processImageData = (base64Data: string) => {
   };
 };
 
-const connectSocket = () => {
-  socket.connect();
-};
-
-onMounted(() => {
-  connectSocket();
-});
-
 // 定义缓慢增加 progress 的函数
 const simulateProgress = () => {
   const interval = setInterval(() => {
@@ -116,6 +108,8 @@ const simulateProgress = () => {
 
 const startLerun = () => {
   start.value = true;
+  status.value = 0;
+  socket.connect();
   socket.on("ping", () => {
     progress.value = 0;
     simulateProgress();
@@ -193,6 +187,7 @@ const startLerun = () => {
               @click="startLerun"
               class="ml-2"
               v-if="!start"
+              :disabled="start"
             >
               {{ $t("lerun.index.start") }}
             </UButton>
