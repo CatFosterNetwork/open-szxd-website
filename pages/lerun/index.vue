@@ -181,15 +181,15 @@ const startLerun = () => {
     simulateProgress();
   });
 
-  socket.on("qrcode", (res: string) => {
+  socket.on("qrcode", (res: any) => {
     progress.value = 4;
     simulateProgress();
-    base64.value = res;
+    base64.value = res.data;
     if (theme === "dark") {
       progress.value = 5;
       return;
     } else {
-      processImageData(res);
+      processImageData(res.data);
     }
     progress.value = 5;
   });
