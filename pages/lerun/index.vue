@@ -30,9 +30,11 @@ const { pending } = await useAsyncData<void>(
   async () => {
     const res = await Api.profile();
     user.value = res.data.data;
-    const statusRes = await Api.lerunStatus();
-    if (!statusRes.data) return;
-    status.value = statusRes.data.data;
+    Api.lerunStatus().then((res) => {
+      if (res.data) {
+        status.value = res.data.data;
+      }
+    });
   },
   { server: false, watch: [] }
 );
