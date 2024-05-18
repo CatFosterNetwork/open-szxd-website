@@ -85,8 +85,10 @@ const processImageData = (base64Data: string) => {
       }
     } else {
       for (let i = 0; i < data.length; i += 4) {
-        // 替换黑色（0, 0, 0）为白色（255, 255, 255）
-        if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0) {
+        // 替换灰色和黑色为白色
+        // 这里假设灰色和黑色的RGB值总和小于384（即128 * 3）
+        const sum = data[i] + data[i + 1] + data[i + 2];
+        if (sum < 384) {
           data[i] = 255;
           data[i + 1] = 255;
           data[i + 2] = 255;
@@ -97,7 +99,7 @@ const processImageData = (base64Data: string) => {
     ctx.putImageData(imageData, 0, 0);
     const updatedBase64 = canvas.toDataURL("image/png");
     // 更新图像数据
-    base64.value = updatedBase64.replace("data:image/png;base64,", "");
+    base64.value = updatedBase64;
   };
 };
 
@@ -278,9 +280,10 @@ const startLerun = () => {
           v-else-if="status == 0"
         >
           <NuxtImg
-            :src="`data:image/png;base64,` + base64"
+            :src="base64"
             alt="QR Code"
             v-if="base64.length"
+            sizes="100vw sm:50vw md:400px"
           />
           <view class="w-5/6" v-else>
             <view
