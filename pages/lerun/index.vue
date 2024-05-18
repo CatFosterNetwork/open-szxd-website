@@ -96,7 +96,7 @@ const processImageData = (base64Data: string) => {
 const simulateProgress = () => {
   const interval = setInterval(() => {
     if (progress.value !== null) {
-      const target = Math.ceil(progress.value) - 0.1;
+      const target = progress.value + 0.9;
       if (progress.value < target) {
         progress.value += 0.01;
         if (progress.value > target) {
@@ -123,7 +123,7 @@ const startLerun = () => {
     const session_tokenCookie = useCookie<string>("session_token", {
       readonly: true,
     });
-    socket.emit("create", { id: user.value.id, token: session_tokenCookie });
+    socket.emit("create", { id: user.value.id, token: session_tokenCookie.value });
   });
   socket.on("createVM", () => {
     progress.value = 2;
