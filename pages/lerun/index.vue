@@ -167,6 +167,7 @@ const startLerun = () => {
 
   socket.on("error", (error: string) => {
     progress.value = 6;
+
     socket.disconnect();
   });
 };
@@ -282,7 +283,7 @@ const startLerun = () => {
                       <UIcon name="i-clarity-music-note-solid" /> {{ steps[4] }}
                     </span>
                   </span>
-                  <span v-else-if="(progress = 5)">
+                  <span v-else-if="progress === 5">
                     <span class="text-primary">
                       <UIcon name="i-mdi-check" /> {{ steps[5] }}
                     </span>
