@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     "nuxt-socket-io",
   ],
   ui: {
-    icons: "all",
+    icons: {},
     safelistColors: ["primary", "red", "orange", "green"],
   },
   i18n: {
