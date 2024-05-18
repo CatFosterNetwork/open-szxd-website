@@ -4,7 +4,7 @@ checkLogin();
 
 const base64 = ref<string>("");
 const serverUrl = ref<string>("wss://open.szxd.swu.social/api");
-const theme = useColorMode().preference;
+const theme = useColorMode().value;
 const progress = ref<number | null>(null);
 const { t } = useI18n();
 const start = ref(false);
@@ -153,8 +153,10 @@ socket.on("reconnect", () => {
   });
 
   socket.on("requestComplete", () => {
+    status.value = 3;
     isRequestComplete.value = true;
     socket.disconnect();
+    isConnected.value = false;
   });
 
   socket.on("error", (error: string) => {
@@ -213,6 +215,7 @@ const startLerun = () => {
   });
 
   socket.on("requestComplete", () => {
+    status.value = 3;
     isRequestComplete.value = true;
     socket.disconnect();
     isConnected.value = false;
