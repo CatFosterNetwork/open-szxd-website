@@ -120,7 +120,8 @@
       "ready": "Ready to auto LeRun",
       "start": "Start LeRun",
       "inProgress": "LeRun in progress",
-      "completed": "LeRun completed"
+      "completed": "LeRun completed",
+      "na": "LeRun is not available now, we have notified our engineers, they will fix this problem as soon as possible"
     }
   },
   "layouts": {

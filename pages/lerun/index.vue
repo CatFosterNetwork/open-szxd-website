@@ -270,6 +270,13 @@ const startLerun = () => {
             </UProgress>
           </view>
         </view>
+        <view v-else>
+          <view class="flex justify-center items-center h-full">
+            <view class="font-bold text-2xl">
+              {{ $t("lerun.index.na") }}
+            </view>
+          </view>
+        </view>
       </UDashboardPanel>
     </UDashboardPage>
   </NuxtLayout>
