@@ -63,7 +63,7 @@ const links = computed(() => {
     {
       id: "lerun",
       label: t("layouts.dashboard.links.lerun.label"),
-      icon: "i-material-symbols:directions-run-rounded",
+      icon: "i-material-symbols-directions-run-rounded",
       to: localePath("/lerun"),
       tooltip: {
         text: t("layouts.dashboard.links.lerun.text"),
