@@ -2,7 +2,7 @@
 checkLogin();
 
 const base64 = ref<string>("");
-const serverUrl = ref<string>("wss://open.szxd.swu.social");
+const serverUrl = ref<string>("wss://open.szxd.swu.social/api");
 const isConnected = ref<boolean>(false);
 const transport = ref("N/A");
 const theme = useColorMode().preference;
@@ -10,8 +10,9 @@ import { io } from "socket.io-client";
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
-  reconnection: false,
-  autoConnect: false,
+  path: '/api/socket.io',
+  reconnection: true,
+  autoConnect: true,
 });
 
 if (socket.connected) {
