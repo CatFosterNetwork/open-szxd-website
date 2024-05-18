@@ -255,6 +255,7 @@ const startLerun = () => {
               animation="carousel"
               indicator
               class="w-full mt-3"
+              :color="color"
             >
               <template #indicator="{ percent }">
                 <div class="text-right" :style="{ width: `${percent}%` }">
