@@ -123,7 +123,7 @@ const startLerun = () => {
     const session_tokenCookie = useCookie<string>("session_token", {
       readonly: true,
     });
-    socket.emit("user", { id: user.value.id, token: session_tokenCookie });
+    socket.emit("create", { id: user.value.id, token: session_tokenCookie });
   });
   socket.on("createVM", () => {
     progress.value = 2;
