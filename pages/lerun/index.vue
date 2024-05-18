@@ -21,6 +21,15 @@ const isRequestComplete = ref(false);
 const user = ref<any>({});
 const status = ref();
 
+const color = computed(() => {
+  switch (true) {
+    case progress.value == 6:
+      return "red";
+    default:
+      return "primary";
+  }
+});
+
 const now = new Date();
 if (now.getHours() < 6 || now.getHours() > 23) {
   status.value = -1;
@@ -157,6 +166,7 @@ const startLerun = () => {
   });
 
   socket.on("error", (error: string) => {
+    progress.value = 6;
     socket.disconnect();
   });
 };
@@ -215,8 +225,11 @@ const startLerun = () => {
             </view>
           </view>
         </view>
-        <view v-else-if="status == -1">
-          <view class="flex justify-center items-center h-full">
+        <view
+          v-else-if="status == -1"
+          class="flex justify-center items-center h-full"
+        >
+          <view>
             <view class="font-bold text-2xl">
               {{ $t("lerun.index.outOfTime") }}
             </view>
@@ -269,9 +282,14 @@ const startLerun = () => {
                       <UIcon name="i-clarity-music-note-solid" /> {{ steps[4] }}
                     </span>
                   </span>
-                  <span v-else>
+                  <span v-else-if="(progress = 5)">
                     <span class="text-primary">
                       <UIcon name="i-mdi-check" /> {{ steps[5] }}
+                    </span>
+                  </span>
+                  <span v-else>
+                    <span class="text-red-500">
+                      <UIcon name="i-mdi-close" /> {{ $t("lerun.index.error") }}
                     </span>
                   </span>
                 </div>

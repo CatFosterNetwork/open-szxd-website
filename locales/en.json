@@ -121,7 +121,8 @@
       "start": "Start LeRun",
       "inProgress": "LeRun in progress",
       "completed": "LeRun completed",
-      "na": "LeRun is not available now, we have notified our engineers, they will fix this problem as soon as possible"
+      "na": "LeRun is not available now, we have notified our engineers, they will fix this problem as soon as possible",
+      "error": "An error occurred, please try again later"
     }
   },
   "layouts": {
