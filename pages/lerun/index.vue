@@ -232,7 +232,7 @@ const startLerun = () => {
             v-if="base64.length"
           />
           <view class="w-5/6" v-else>
-            <view class="font-bold text-2xl">{{
+            <view class="font-bold text-3xl animate-pulse mb-3">{{
               $t("lerun.index.noData")
             }}</view>
             <UProgress
