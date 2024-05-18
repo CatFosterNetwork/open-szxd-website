@@ -118,9 +118,9 @@ const simulateProgress = () => {
   }
 };
 
-socket.on('reconnect_attempt', () => {
+socket.on("reconnect_attempt", () => {
   progress.value = 0;
-})
+});
 
 socket.on("reconnect", () => {
   socket.on("createVM", () => {
@@ -291,12 +291,12 @@ const startLerun = () => {
           <NuxtImg
             :src="base64"
             alt="QR Code"
-            v-if="base64.length && !isLoggedIn"
+            v-if="socket.connect() || base64.length && !isLoggedIn"
             sizes="100vw sm:50vw md:400px"
           />
-          <view class='w-5/6' v-else-if='isLoggedIn'>
+          <view class="w-5/6" v-else-if="isLoggedIn">
             {{ $t("lerun.index.loggedIn") }}
-            </view>
+          </view>
           <view class="w-5/6" v-else>
             <view
               class="font-bold text-3xl animate-pulse mb-3"
