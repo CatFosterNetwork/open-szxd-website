@@ -87,16 +87,16 @@ const processImageData = (base64Data: string) => {
 
 // 定义缓慢增加 progress 的函数
 const simulateProgress = () => {
+  const target = progress.value + 0.9;
   const interval = setInterval(() => {
     if (progress.value !== null) {
-      const target = progress.value + 0.9;
       if (progress.value < target) {
-        progress.value += 0.0005;
+        progress.value += 0.00005;
       } else {
         clearInterval(interval);
       }
     }
-  }, 10); 
+  }, 1); 
 };
 
 const startLerun = () => {
