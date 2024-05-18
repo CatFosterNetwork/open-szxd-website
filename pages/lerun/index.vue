@@ -91,12 +91,12 @@ const simulateProgress = () => {
     if (progress.value !== null) {
       const target = progress.value + 0.9;
       if (progress.value < target) {
-        progress.value += 0.009;
+        progress.value += 0.0005;
       } else {
         clearInterval(interval);
       }
     }
-  }, 100); // 每 100 毫秒增加一次
+  }, 10); 
 };
 
 const startLerun = () => {
