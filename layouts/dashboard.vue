@@ -172,14 +172,8 @@ const groups = [
           window.open(`https://github.com/CatFosterNetwork`, "_blank");
         },
       },
-    ],
-  },
-  {
-    key: "telegram",
-    label: t("layouts.dashboard.lazyUDashboardSearch.groups.telegram.label"),
-    commands: [
       {
-        id: "source",
+        id: "telegram",
         label: t(
           "layouts.dashboard.lazyUDashboardSearch.groups.telegram.commands.label"
         ),
@@ -189,7 +183,7 @@ const groups = [
         },
       },
     ],
-  }
+  },
 ];
 
 const defaultColors = ref(
