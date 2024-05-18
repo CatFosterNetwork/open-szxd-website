@@ -18,6 +18,7 @@ const steps = [
 ];
 const isRequestSend = ref(false);
 const isRequestComplete = ref(false);
+const isLoggedIn = ref(false);
 const user = ref<any>({});
 const status = ref();
 
@@ -117,6 +118,10 @@ const simulateProgress = () => {
   }
 };
 
+socket.on('reconnect_attempt', () => {
+  progress.value = 0;
+})
+
 socket.on("reconnect", () => {
   socket.on("createVM", () => {
     progress.value = 2;
@@ -198,6 +203,10 @@ const startLerun = () => {
 
   socket.on("requestSend", () => {
     isRequestSend.value = true;
+  });
+
+  socket.on("loggedIn", () => {
+    isLoggedIn.value = true;
   });
 
   socket.on("requestComplete", () => {
@@ -282,9 +291,12 @@ const startLerun = () => {
           <NuxtImg
             :src="base64"
             alt="QR Code"
-            v-if="base64.length"
+            v-if="base64.length && !isLoggedIn"
             sizes="100vw sm:50vw md:400px"
           />
+          <view class='w-5/6' v-else-if='isLoggedIn'>
+            {{ $t("lerun.index.loggedIn") }}
+            </view>
           <view class="w-5/6" v-else>
             <view
               class="font-bold text-3xl animate-pulse mb-3"

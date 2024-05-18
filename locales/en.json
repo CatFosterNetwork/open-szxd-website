@@ -24,7 +24,6 @@
           "title": "Professional Maintenance",
           "description": "Our projects are maintained by skilled experts. The reliability and stability are far ahead among similar products."
         },
-
         "clockin": {
           "title": "Automatic Clock-in",
           "description": "Use DingTalk API for automatic daily health check-in and bed check-in, so you no longer have to worry about missing out, the counselor's anger, and affecting your study."
@@ -124,7 +123,8 @@
       "na": "LeRun is not available now, we have notified our engineers, they will fix this problem as soon as possible",
       "error": "An error occurred, please try again later",
       "connecting": "Connecting...",
-      "loading": "Loading..."
+      "loading": "Loading...",
+      "loggedIn": "Successfully logged in, please wait for the result"
     }
   },
   "layouts": {
