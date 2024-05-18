@@ -232,7 +232,7 @@ const startLerun = () => {
             alt="QR Code"
             v-if="base64.length"
           />
-          <view class="w-full mx-96" v-else>
+          <view class="w-full mx-20" v-else>
             <view class="font-bold text-2xl">{{
               $t("lerun.index.noData")
             }}</view>
