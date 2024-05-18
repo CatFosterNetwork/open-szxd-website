@@ -246,8 +246,14 @@ const startLerun = () => {
             v-if="base64.length"
           />
           <view class="w-5/6" v-else>
-            <view class="font-bold text-3xl animate-pulse mb-3">{{
+            <view class="font-bold text-3xl animate-pulse mb-3" v-if="progress == null || progress == 0">{{
               $t("lerun.index.noData")
+            }}</view>
+            <view class="font-bold text-3xl animate-pulse mb-3" v-else-if="progress < 2">{{
+              $t("lerun.index.connecting")
+            }}</view>
+            <view class="font-bold text-3xl animate-pulse mb-3" v-else>{{
+              $t("lerun.index.loading")
             }}</view>
             <UProgress
               :value="progress"
