@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+// const localePath = useLocalePath();
+
 // 创建一个实例，此后都在此实例上改造
 const http = axios.create({
   // timeout: 1000 * 4,
@@ -44,8 +46,8 @@ const responseFailed = (error: any) => {
     if (response.status === 400) {
       clearAllCookie()
       if (!window) return;
-      if (window.location.pathname === '/login') return;
-      window.location.href = '/login'
+      // if (window.location.pathname === '/login' || window.location.pathname === '/zh/login') return;
+      // window.location.href = localePath('/login')
     }
     return Promise.reject()
   } else if (!window.navigator.onLine) {
