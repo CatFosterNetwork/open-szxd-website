@@ -100,7 +100,7 @@ const simulateProgress = () => {
     const target = progress.value + 0.9;
     const interval = setInterval(() => {
       if (progress.value && progress.value < target) {
-        progress.value += 0.00009;
+        progress.value += 0.00015;
       } else {
         clearInterval(interval);
       }
@@ -306,16 +306,14 @@ onUnmounted(() => {
               <view class="font-bold text-3xl animate-pulse mb-3">{{
                 $t("lerun.index.loggedIn")
               }}</view>
-              <div
-                class="flex space-x-2 justify-center items-center bg-white h-screen dark:invert"
-              >
+              <div class="flex space-x-2 justify-center items-center">
                 <div
-                  class="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]"
+                  class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"
                 ></div>
                 <div
-                  class="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]"
+                  class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"
                 ></div>
-                <div class="h-8 w-8 bg-black rounded-full animate-bounce"></div>
+                <div class="h-8 w-8 bg-white rounded-full animate-bounce"></div>
               </div>
             </view>
             <view class="w-5/6" v-auto-animate v-else>
