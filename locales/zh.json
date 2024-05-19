@@ -122,7 +122,8 @@
       "error": "出现了错误，请稍后再试",
       "connecting": "正在连接...",
       "loading": "数据加载中...",
-      "loggedIn": "登录成功，请等待结果状态"
+      "loggedIn": "登录成功，请等待结果状态",
+      "toastError": "发生了内部错误。请刷新页面或等待。"
     }
   },
   "layouts": {

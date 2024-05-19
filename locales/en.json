@@ -124,7 +124,8 @@
       "error": "An error occurred, please try again later",
       "connecting": "Connecting...",
       "loading": "Loading...",
-      "loggedIn": "Successfully logged in, please wait for the result"
+      "loggedIn": "Successfully logged in, please wait for the result",
+      "toastError": "An error occerred. Please refresh this page and wait for a moment."
     }
   },
   "layouts": {

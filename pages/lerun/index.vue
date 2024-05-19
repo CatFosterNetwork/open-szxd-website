@@ -4,7 +4,7 @@ checkLogin();
 
 const base64 = ref<string>("");
 const serverUrl = ref<string>("wss://open.szxd.swu.social/api");
-const theme = useColorMode().value;
+const theme = ref(useColorMode().value);
 const progress = ref<number | null>(null);
 const { t } = useI18n();
 const start = ref(false);
@@ -22,6 +22,7 @@ const isLoggedIn = ref(false);
 const isConnected = ref(false);
 const user = ref<any>({});
 const status = ref();
+const toast = useToast();
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -75,7 +76,7 @@ const processImageData = (base64Data: string) => {
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
     // 根据颜色模式处理图像
-    if (theme == "dark") {
+    if (theme.value == "dark") {
       for (let i = 0; i < data.length; i += 4) {
         const sum = data[i] + data[i + 1] + data[i + 2];
         if (sum < 384) {
@@ -169,6 +170,7 @@ const startLerun = () => {
       token: session_tokenCookie.value,
     });
   });
+
   socket.on("createVM", () => {
     progress.value = 2;
     simulateProgress();
@@ -178,6 +180,18 @@ const startLerun = () => {
     progress.value = 3;
     simulateProgress();
   });
+
+  socket.on("searched", () => {
+    
+    simulateProgress();
+  });
+
+  socket.on("loginLerun", () => {
+    progress.value = 2;
+    simulateProgress();
+  });
+
+
 
   socket.on("qrcode", (res: any) => {
     progress.value = 4;
@@ -204,8 +218,11 @@ const startLerun = () => {
 
   socket.on("error", (error: string) => {
     progress.value = 6;
-    socket.disconnect();
     isConnected.value = false;
+    toast.add({
+      title: t("lerun.index.toastError"),
+      color: "red",
+    });
   });
 };
 
@@ -278,6 +295,7 @@ onUnmounted(() => {
           </view>
         </view>
         <view
+          v-auto-animate
           class="flex justify-center items-center h-full w-full"
           v-else-if="status == 0 && isConnected"
         >
