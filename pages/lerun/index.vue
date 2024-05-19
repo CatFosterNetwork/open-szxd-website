@@ -234,7 +234,7 @@ onUnmounted(() => {
 <template>
   <NuxtLayout name="dashboard">
     <UDashboardPage>
-      <UDashboardPanel grow>
+      <UDashboardPanel grow v-auto-animate>
         <UDashboardNavbar title="LeRun">
           <template #right>
             <!-- <UButton
@@ -244,7 +244,7 @@ onUnmounted(() => {
             @click="isNewUserModalOpen = true"
           /> -->
           </template>
-        </UDashboardNavbar>
+        </UDashboardNavbar> 
         <view
           v-if="status == 1"
           class="flex justify-center items-center h-full"
@@ -295,7 +295,6 @@ onUnmounted(() => {
           </view>
         </view>
         <view
-          v-auto-animate
           class="flex justify-center items-center h-full w-full"
           v-else-if="status == 0 && isConnected"
         >
