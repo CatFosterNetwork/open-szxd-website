@@ -74,15 +74,15 @@ const processImageData = (base64Data: string) => {
 
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
-    // 根据颜色模式处理图像
-    console.log(theme)
+
     if (theme === "dark") {
       for (let i = 0; i < data.length; i += 4) {
         const sum = data[i] + data[i + 1] + data[i + 2];
+        // 检查是否是深色像素（假设深色为RGB值总和小于384）
         if (sum < 384) {
-          data[i] = 255;
-          data[i + 1] = 255;
-          data[i + 2] = 255;
+          data[i] = 255;     // Red
+          data[i + 1] = 255; // Green
+          data[i + 2] = 255; // Blue
         }
       }
     }
@@ -93,6 +93,7 @@ const processImageData = (base64Data: string) => {
     base64.value = updatedBase64;
   };
 };
+
 
 // 定义缓慢增加 progress 的函数
 const simulateProgress = () => {
@@ -145,6 +146,8 @@ socket.on("reconnect", () => {
 
   socket.on("error", (error: string) => {
     progress.value = 6;
+    socket.disconnect();
+    isConnected.value = false;
   });
 });
 const startLerun = () => {
@@ -211,6 +214,10 @@ const startLerun = () => {
     isConnected.value = false;
   });
 };
+
+onUnmounted(() => {
+  socket.disconnect();
+});
 </script>
 
 <template>
