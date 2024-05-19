@@ -53,7 +53,6 @@
 
 <script setup lang="ts">
 const colorMode = useColorMode();
-
 colorMode.preference = "dark";
 
 const color = computed(() =>
