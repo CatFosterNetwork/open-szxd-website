@@ -24,6 +24,7 @@ const user = ref<any>({});
 const status = ref();
 const toast = useToast();
 const WindowsError = ref<string>(t("lerun.index.loggedIn"));
+const expire = ref(120);
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -109,51 +110,6 @@ const simulateProgress = () => {
   }
 };
 
-socket.on("reconnect_attempt", () => {
-  progress.value = 0;
-});
-
-socket.on("reconnect", () => {
-  isConnected.value = true;
-  socket.on("createVM", () => {
-    progress.value = 2;
-    simulateProgress();
-  });
-
-  socket.on("VMcreated", () => {
-    progress.value = 3;
-    simulateProgress();
-  });
-
-  socket.on("qrcode", (res: any) => {
-    progress.value = 4;
-    simulateProgress();
-    base64.value = res.data;
-    processImageData(res.data);
-    progress.value = 5;
-  });
-
-  socket.on("requestSend", () => {
-    isRequestSend.value = true;
-  });
-
-  socket.on("requestComplete", () => {
-    status.value = 3;
-    isRequestComplete.value = true;
-    socket.disconnect();
-    isConnected.value = false;
-  });
-
-  socket.on("error", (error: string) => {
-    progress.value = 6;
-    socket.disconnect();
-    isConnected.value = false;
-  });
-
-  socket.on("catchWindowsError", () => {
-    WindowsError.value = t("lerun.index.windowsError");
-  });
-});
 const startLerun = () => {
   start.value = true;
   status.value = 0;
@@ -200,6 +156,13 @@ const startLerun = () => {
     base64.value = res.data;
     processImageData(res.data);
     progress.value = 5;
+    const timer = setInterval(() => {
+      if (expire.value > 0) {
+        expire.value -= 1;
+      } else {
+        clearInterval(timer);
+      }
+    }, 1000);
   });
 
   socket.on("requestSend", () => {
@@ -229,17 +192,11 @@ const startLerun = () => {
       color: "red",
     });
   });
+
+  socket.on("catchWindowsError", () => {
+    WindowsError.value = t("lerun.index.windowsError");
+  });
 };
-
-const expire = ref(120);
-
-const timer = setInterval(() => {
-  if (expire.value > 0) {
-    expire.value -= 1;
-  } else {
-    clearInterval(timer);
-  }
-}, 1000);
 
 onUnmounted(() => {
   socket.disconnect();
@@ -315,10 +272,13 @@ onUnmounted(() => {
             v-auto-animate
             v-else-if="status == 0"
           >
-            <view v-if="base64.length && !isLoggedIn">
-              <NuxtImg :src="base64" alt="QR Code" class="size-80" />
+            <view
+              v-if="base64.length && !isLoggedIn"
+              class="flex flex-col justify-center items-center"
+            >
+              <NuxtImg :src="base64" alt="QR Code" class="size-80 mb-4" />
               <view class="font-bold text-2xl mt-5">
-                {{ $t("lerun.index.scan", {expire: expire}) }}
+                {{ $t("lerun.index.scan", { expire: expire }) }}
               </view>
             </view>
 
