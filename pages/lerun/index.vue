@@ -74,15 +74,24 @@ const processImageData = (base64Data: string) => {
 
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
-
-    if (theme === "dark") {
+    // 根据颜色模式处理图像
+    console.log(theme);
+    if (theme == "dark") {
+      for (let i = 0; i < data.length; i += 4) {
+        // 替换白色（255, 255, 255）为黑色（0, 0, 0）
+        if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
+          data[i] = 0;
+          data[i + 1] = 0;
+          data[i + 2] = 0;
+        }
+      }
+    } else {
       for (let i = 0; i < data.length; i += 4) {
         const sum = data[i] + data[i + 1] + data[i + 2];
-        // 检查是否是深色像素（假设深色为RGB值总和小于384）
         if (sum < 384) {
-          data[i] = 255;     // Red
-          data[i + 1] = 255; // Green
-          data[i + 2] = 255; // Blue
+          data[i] = 255;
+          data[i + 1] = 255;
+          data[i + 2] = 255;
         }
       }
     }
