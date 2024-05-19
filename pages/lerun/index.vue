@@ -78,15 +78,6 @@ const processImageData = (base64Data: string) => {
     console.log(theme);
     if (theme == "dark") {
       for (let i = 0; i < data.length; i += 4) {
-        // 替换白色（255, 255, 255）为黑色（0, 0, 0）
-        if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
-          data[i] = 0;
-          data[i + 1] = 0;
-          data[i + 2] = 0;
-        }
-      }
-    } else {
-      for (let i = 0; i < data.length; i += 4) {
         const sum = data[i] + data[i + 1] + data[i + 2];
         if (sum < 384) {
           data[i] = 255;
@@ -134,11 +125,11 @@ socket.on("reconnect", () => {
     simulateProgress();
   });
 
-  socket.on("qrcode", (res: string) => {
+  socket.on("qrcode", (res: any) => {
     progress.value = 4;
     simulateProgress();
-    base64.value = res;
-    processImageData(res);
+    base64.value = res.data;
+    processImageData(res.data);
     progress.value = 5;
   });
 
@@ -193,12 +184,7 @@ const startLerun = () => {
     progress.value = 4;
     simulateProgress();
     base64.value = res.data;
-    if (theme === "dark") {
-      progress.value = 5;
-      return;
-    } else {
-      processImageData(res.data);
-    }
+    processImageData(res.data);
     progress.value = 5;
   });
 
