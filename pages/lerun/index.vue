@@ -186,6 +186,10 @@ const startLerun = () => {
     WindowsError.value = t("lerun.index.openMiniProgram");
   });
 
+  socket.on("loginLerun", () => {
+    WindowsError.value = t("lerun.index.loginLerun");
+  });
+
   socket.on("requestComplete", () => {
     status.value = 3;
     isRequestComplete.value = true;
@@ -265,12 +269,12 @@ onUnmounted(() => {
             v-else-if="status == 3"
             class="flex justify-center items-center h-full"
           >
-            <view v-auto-animate class="flex justify-center items-center h-full">
-              <view class="font-bold text-2xl">
+            <view v-auto-animate class="flex flex-col justify-center items-center h-full">
+              <view class="font-bold text-2xl mb-3">
                 {{ $t("lerun.index.completed") }}
               </view>
-              <view v-if="isMapShowed">
-                <NuxtImg src="https://open.szxd.swu.social/playground_2nd.png" alt="Map" />
+              <view v-if="isMapShowed" class="mt-2">
+                <NuxtImg src="https://open.szxd.swu.social/playground_2nd.PNG" alt="Map" />
               </view>
             </view>
           </view>
