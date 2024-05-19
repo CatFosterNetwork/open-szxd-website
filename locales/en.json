@@ -124,9 +124,11 @@
       "error": "An error occurred, please try again later",
       "connecting": "Connecting...",
       "loading": "Loading...",
-      "loggedIn": "Successfully logged in, please wait for the result",
+      "loggedIn": "Attempting to log you in. Please wait for the result.",
       "toastError": "An error occerred. Please refresh this page and wait for a moment.",
-      "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later."
+      "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later.",
+      "scan": "Please scan the QR code as soon as possible, it will expire in {expire} seconds.",
+      "openMiniProgram": "Patience is a virtue; greatness is just around the corner."
     }
   },
   "layouts": {

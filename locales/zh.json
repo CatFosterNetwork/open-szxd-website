@@ -122,9 +122,11 @@
       "error": "出现了错误，请稍后再试",
       "connecting": "正在连接...",
       "loading": "数据加载中...",
-      "loggedIn": "登录成功，请等待结果状态",
+      "loggedIn": "正在为你登录，请等待结果状态",
       "toastError": "发生了内部错误。请刷新页面或等待。",
-      "windowsError": "出现了错误，我们正在尝试恢复。请耐心等待或者稍后重试。"
+      "windowsError": "出现了错误，我们正在尝试恢复。请耐心等待或者稍后重试。",
+      "scan": "请尽快扫码，二维码将在 {expire} 秒后过期",
+      "openMiniProgram": "保持耐心，精彩即将呈现。"
     }
   },
   "layouts": {

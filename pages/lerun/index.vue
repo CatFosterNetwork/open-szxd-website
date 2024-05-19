@@ -23,7 +23,7 @@ const isConnected = ref(false);
 const user = ref<any>({});
 const status = ref();
 const toast = useToast();
-const WindowsError = ref<string>("");
+const WindowsError = ref<string>(t("lerun.index.loggedIn"));
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -151,7 +151,7 @@ socket.on("reconnect", () => {
   });
 
   socket.on("catchWindowsError", () => {
-      WindowsError.value = t("lerun.index.windowsError");
+    WindowsError.value = t("lerun.index.windowsError");
   });
 });
 const startLerun = () => {
@@ -210,6 +210,10 @@ const startLerun = () => {
     isLoggedIn.value = true;
   });
 
+  socket.on("openMiniProgram", () => {
+    WindowsError.value = t("lerun.index.openMiniProgram");
+  });
+
   socket.on("requestComplete", () => {
     status.value = 3;
     isRequestComplete.value = true;
@@ -226,6 +230,16 @@ const startLerun = () => {
     });
   });
 };
+
+const expire = ref(120);
+
+const timer = setInterval(() => {
+  if (expire.value > 0) {
+    expire.value -= 1;
+  } else {
+    clearInterval(timer);
+  }
+}, 1000);
 
 onUnmounted(() => {
   socket.disconnect();
@@ -301,19 +315,20 @@ onUnmounted(() => {
             v-auto-animate
             v-else-if="status == 0"
           >
-            <NuxtImg
-              :src="base64"
-              alt="QR Code"
-              v-if="base64.length && !isLoggedIn"
-              class="size-80"
-            />
+            <view v-if="base64.length && !isLoggedIn">
+              <NuxtImg :src="base64" alt="QR Code" class="size-80" />
+              <view class="font-bold text-2xl mt-5">
+                {{ $t("lerun.index.scan", {expire: expire}) }}
+              </view>
+            </view>
+
             <view
               class="w-5/6 flex space-x-2 justify-center items-center flex-col"
               v-else-if="isLoggedIn"
             >
               <view
                 class="flex space-x-2 justify-center items-center font-bold text-3xl animate-pulse mb-3"
-                >{{ WindowsError || $t("lerun.index.loggedIn") }}</view
+                >{{ WindowsError }}</view
               >
               <div class="flex space-x-2 justify-center items-center mt-5">
                 <div
