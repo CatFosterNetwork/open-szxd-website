@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "nuxt-icon",
     "nuxt-socket-io",
+    "@formkit/auto-animate/nuxt",
   ],
   ui: {
     icons: {},
