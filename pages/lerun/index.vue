@@ -94,7 +94,6 @@ const processImageData = (base64Data: string) => {
   };
 };
 
-
 // 定义缓慢增加 progress 的函数
 const simulateProgress = () => {
   if (progress.value !== null) {
@@ -182,7 +181,6 @@ const startLerun = () => {
   });
 
   socket.on("searched", () => {
-    
     simulateProgress();
   });
 
@@ -190,8 +188,6 @@ const startLerun = () => {
     progress.value = 2;
     simulateProgress();
   });
-
-
 
   socket.on("qrcode", (res: any) => {
     progress.value = 4;
@@ -234,7 +230,7 @@ onUnmounted(() => {
 <template>
   <NuxtLayout name="dashboard">
     <UDashboardPage>
-      <UDashboardPanel grow v-auto-animate>
+      <UDashboardPanel grow>
         <UDashboardNavbar title="LeRun">
           <template #right>
             <!-- <UButton
@@ -244,145 +240,149 @@ onUnmounted(() => {
             @click="isNewUserModalOpen = true"
           /> -->
           </template>
-        </UDashboardNavbar> 
-        <view
-          v-if="status == 1"
-          class="flex justify-center items-center h-full"
-        >
-          <view class="flex justify-center items-center h-full flex-col">
-            <view class="font-bold text-4xl mb-10">
-              {{ $t("lerun.index.ready") }}
-            </view>
-            <UButton
-              color="primary"
-              @click="startLerun"
-              class="ml-2"
-              v-if="!start"
-              :disabled="start"
-            >
-              {{ $t("lerun.index.start") }}
-            </UButton>
-          </view>
-        </view>
-        <view
-          v-else-if="status == 2"
-          class="flex justify-center items-center h-full"
-        >
-          <view>
-            <view class="font-bold text-2xl">
-              {{ $t("lerun.index.inProgress") }}
+        </UDashboardNavbar>
+        <view v-auto-animate class="flex justify-center items-center h-full">
+          <view
+            v-if="status == 1"
+            class="flex justify-center items-center h-full"
+          >
+            <view class="flex justify-center items-center h-full flex-col">
+              <view class="font-bold text-4xl mb-10">
+                {{ $t("lerun.index.ready") }}
+              </view>
+              <UButton
+                color="primary"
+                @click="startLerun"
+                class="ml-2"
+                v-if="!start"
+                :disabled="start"
+              >
+                {{ $t("lerun.index.start") }}
+              </UButton>
             </view>
           </view>
-        </view>
-        <view
-          v-else-if="status == 3"
-          class="flex justify-center items-center h-full"
-        >
-          <view>
-            <view class="font-bold text-2xl">
-              {{ $t("lerun.index.completed") }}
+          <view
+            v-else-if="status == 2"
+            class="flex justify-center items-center h-full"
+          >
+            <view>
+              <view class="font-bold text-2xl">
+                {{ $t("lerun.index.inProgress") }}
+              </view>
             </view>
           </view>
-        </view>
-        <view
-          v-else-if="status == -1"
-          class="flex justify-center items-center h-full"
-        >
-          <view>
-            <view class="font-bold text-2xl">
-              {{ $t("lerun.index.outOfTime") }}
+          <view
+            v-else-if="status == 3"
+            class="flex justify-center items-center h-full"
+          >
+            <view>
+              <view class="font-bold text-2xl">
+                {{ $t("lerun.index.completed") }}
+              </view>
             </view>
           </view>
-        </view>
-        <view
-          class="flex justify-center items-center h-full w-full"
-          v-else-if="status == 0 && isConnected"
-        >
-          <NuxtImg
-            :src="base64"
-            alt="QR Code"
-            v-if="base64.length && !isLoggedIn"
-            class="size-80"
-          />
-          <view class="w-5/6" v-else-if="isLoggedIn">
-            {{ $t("lerun.index.loggedIn") }}
+          <view
+            v-else-if="status == -1"
+            class="flex justify-center items-center h-full"
+          >
+            <view>
+              <view class="font-bold text-2xl">
+                {{ $t("lerun.index.outOfTime") }}
+              </view>
+            </view>
           </view>
-          <view class="w-5/6" v-else>
-            <view
-              class="font-bold text-3xl animate-pulse mb-3"
-              v-if="progress == null || progress == 0"
-              >{{ $t("lerun.index.noData") }}</view
-            >
-            <view
-              class="font-bold text-3xl animate-pulse mb-3"
-              v-else-if="progress < 2"
-              >{{ $t("lerun.index.connecting") }}</view
-            >
-            <view
-              class="font-bold text-3xl mb-3 text-red-500"
-              v-else-if="progress == 6"
-              >{{ $t("lerun.index.error") }}</view
-            >
-            <view class="font-bold text-3xl animate-pulse mb-3" v-else>{{
-              $t("lerun.index.loading")
-            }}</view>
-            <UProgress
-              :value="progress"
-              :max="steps"
-              animation="carousel"
-              indicator
-              class="w-full mt-3"
-              :color="color"
-            >
-              <template #indicator="{ percent }">
-                <div class="text-right" :style="{ width: `${percent}%` }">
-                  <span v-if="progress == null || progress < 1">
-                    <span class="text-red-500">
-                      <UIcon name="i-mdi-connection" /> {{ steps[0] }}
+          <view
+            class="flex justify-center items-center h-full w-full"
+            v-else-if="status == 0"
+          >
+            <NuxtImg
+              :src="base64"
+              alt="QR Code"
+              v-if="base64.length && !isLoggedIn"
+              class="size-80"
+            />
+            <view class="w-5/6" v-else-if="isLoggedIn">
+              {{ $t("lerun.index.loggedIn") }}
+            </view>
+            <view class="w-5/6" v-else>
+              <view
+                class="font-bold text-3xl animate-pulse mb-3"
+                v-if="progress == null || progress == 0"
+                >{{ $t("lerun.index.noData") }}</view
+              >
+              <view
+                class="font-bold text-3xl animate-pulse mb-3"
+                v-else-if="progress < 2"
+                >{{ $t("lerun.index.connecting") }}</view
+              >
+              <view
+                class="font-bold text-3xl mb-3 text-red-500"
+                v-else-if="progress == 6"
+                >{{ $t("lerun.index.error") }}</view
+              >
+              <view class="font-bold text-3xl animate-pulse mb-3" v-else>{{
+                $t("lerun.index.loading")
+              }}</view>
+              <UProgress
+                :value="progress"
+                :max="steps"
+                animation="carousel"
+                indicator
+                class="w-full mt-3"
+                :color="color"
+              >
+                <template #indicator="{ percent }">
+                  <div class="text-right" :style="{ width: `${percent}%` }">
+                    <span v-if="progress == null || progress < 1">
+                      <span class="text-red-500">
+                        <UIcon name="i-mdi-connection" /> {{ steps[0] }}
+                      </span>
                     </span>
-                  </span>
-                  <span v-else-if="progress < 2">
-                    <span class="text-amber-500">
-                      <UIcon name="i-mdi-ray-start" /> {{ steps[1] }}
+                    <span v-else-if="progress < 2">
+                      <span class="text-amber-500">
+                        <UIcon name="i-mdi-ray-start" /> {{ steps[1] }}
+                      </span>
                     </span>
-                  </span>
-                  <span v-else-if="progress < 3">
-                    <span class="text-blue-500">
-                      <UIcon name="i-mdi-progress-wrench" /> {{ steps[2] }}
+                    <span v-else-if="progress < 3">
+                      <span class="text-blue-500">
+                        <UIcon name="i-mdi-progress-wrench" /> {{ steps[2] }}
+                      </span>
                     </span>
-                  </span>
-                  <span v-else-if="progress < 4">
-                    <span class="text-amber-500">
-                      <UIcon name="i-mdi-nature-people" /> {{ steps[3] }}
+                    <span v-else-if="progress < 4">
+                      <span class="text-amber-500">
+                        <UIcon name="i-mdi-nature-people" /> {{ steps[3] }}
+                      </span>
                     </span>
-                  </span>
-                  <span v-else-if="progress < 5">
-                    <span class="text-amber-500">
-                      <UIcon name="i-clarity-music-note-solid" /> {{ steps[4] }}
+                    <span v-else-if="progress < 5">
+                      <span class="text-amber-500">
+                        <UIcon name="i-clarity-music-note-solid" />
+                        {{ steps[4] }}
+                      </span>
                     </span>
-                  </span>
-                  <span v-else-if="progress === 5">
-                    <span class="text-primary">
-                      <UIcon name="i-mdi-check" /> {{ steps[5] }}
+                    <span v-else-if="progress === 5">
+                      <span class="text-primary">
+                        <UIcon name="i-mdi-check" /> {{ steps[5] }}
+                      </span>
                     </span>
-                  </span>
-                  <span v-else>
-                    <span class="text-red-500">
-                      <UIcon name="i-mdi-close" /> {{ $t("lerun.index.error") }}
+                    <span v-else>
+                      <span class="text-red-500">
+                        <UIcon name="i-mdi-close" />
+                        {{ $t("lerun.index.error") }}
+                      </span>
                     </span>
-                  </span>
-                </div>
-              </template>
-            </UProgress>
+                  </div>
+                </template>
+              </UProgress>
+            </view>
           </view>
-        </view>
-        <view
-          class="flex justify-center items-center h-full content-center"
-          v-else
-        >
-          <view class="mx-28">
-            <view class="font-bold text-4xl italic">
-              {{ $t("lerun.index.na") }}
+          <view
+            class="flex justify-center items-center h-full content-center"
+            v-else
+          >
+            <view class="mx-28">
+              <view class="font-bold text-4xl italic">
+                {{ $t("lerun.index.na") }}
+              </view>
             </view>
           </view>
         </view>
