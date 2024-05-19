@@ -128,7 +128,8 @@
       "toastError": "An error occerred. Please refresh this page and wait for a moment.",
       "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later.",
       "scan": "Please scan the QR code as soon as possible, it will expire in {expire} seconds.",
-      "openMiniProgram": "Patience is a virtue; greatness is just around the corner."
+      "openMiniProgram": "Patience is a virtue; greatness is just around the corner.",
+      "windowsDie": "A serious error occurred. Please try again in one minute."
     }
   },
   "layouts": {

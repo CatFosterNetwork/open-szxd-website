@@ -126,7 +126,8 @@
       "toastError": "发生了内部错误。请刷新页面或等待。",
       "windowsError": "出现了错误，我们正在尝试恢复。请耐心等待或者稍后重试。",
       "scan": "请尽快扫码，二维码将在 {expire} 秒后过期",
-      "openMiniProgram": "保持耐心，精彩即将呈现。"
+      "openMiniProgram": "保持耐心，精彩即将呈现。",
+      "windowsDie": "出现了严重错误，请一分钟后重试！"
     }
   },
   "layouts": {

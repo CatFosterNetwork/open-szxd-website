@@ -151,6 +151,14 @@ const startLerun = () => {
     simulateProgress();
   });
 
+  socket.on("catchWindowsDie", () => {
+    WindowsError.value = t("lerun.index.windowsDie");
+    toast.add({
+      title: t("lerun.index.toastError"),
+      color: "red",
+    });
+  });
+
   socket.on("qrcode", (res: any) => {
     progress.value = 4;
     simulateProgress();
