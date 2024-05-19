@@ -293,6 +293,7 @@ onUnmounted(() => {
           </view>
           <view
             class="flex justify-center items-center h-full w-full"
+            v-auto-animate
             v-else-if="status == 0"
           >
             <NuxtImg
@@ -302,9 +303,22 @@ onUnmounted(() => {
               class="size-80"
             />
             <view class="w-5/6" v-else-if="isLoggedIn">
-              {{ $t("lerun.index.loggedIn") }}
+              <view class="font-bold text-3xl animate-pulse mb-3">{{
+                $t("lerun.index.loggedIn")
+              }}</view>
+              <div
+                class="flex space-x-2 justify-center items-center bg-white h-screen dark:invert"
+              >
+                <div
+                  class="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]"
+                ></div>
+                <div
+                  class="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]"
+                ></div>
+                <div class="h-8 w-8 bg-black rounded-full animate-bounce"></div>
+              </div>
             </view>
-            <view class="w-5/6" v-else>
+            <view class="w-5/6" v-auto-animate v-else>
               <view
                 class="font-bold text-3xl animate-pulse mb-3"
                 v-if="progress == null || progress == 0"
