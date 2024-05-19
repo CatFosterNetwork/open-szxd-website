@@ -25,6 +25,7 @@ const status = ref();
 const toast = useToast();
 const WindowsError = ref<string>(t("lerun.index.loggedIn"));
 const expire = ref(120);
+const isMapShowed = ref(false);
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -182,6 +183,11 @@ const startLerun = () => {
     isRequestComplete.value = true;
     socket.disconnect();
     isConnected.value = false;
+    // 等待一秒
+    setTimeout(() => {
+      isMapShowed.value = true;
+    }, 1000);
+
   });
 
   socket.on("error", (error: string) => {
@@ -251,9 +257,12 @@ onUnmounted(() => {
             v-else-if="status == 3"
             class="flex justify-center items-center h-full"
           >
-            <view>
+            <view v-auto-animate class="flex justify-center items-center h-full">
               <view class="font-bold text-2xl">
                 {{ $t("lerun.index.completed") }}
+              </view>
+              <view v-if="isMapShowed">
+                <NuxtImg src="https://open.szxd.swu.social/playground_2nd.png" alt="Map" />
               </view>
             </view>
           </view>
