@@ -302,11 +302,11 @@ onUnmounted(() => {
               v-if="base64.length && !isLoggedIn"
               class="size-80"
             />
-            <view class="w-5/6" v-else-if="isLoggedIn">
-              <view class="font-bold text-3xl animate-pulse mb-3">{{
+            <view class="w-5/6 flex space-x-2 justify-center items-center" v-else-if="isLoggedIn">
+              <view class="flex space-x-2 justify-center items-center font-bold text-3xl animate-pulse mb-3">{{
                 $t("lerun.index.loggedIn")
               }}</view>
-              <div class="flex space-x-2 justify-center items-center">
+              <div class="flex space-x-2 justify-center items-center mt-5">
                 <div
                   class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"
                 ></div>
