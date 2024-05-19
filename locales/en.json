@@ -125,7 +125,8 @@
       "connecting": "Connecting...",
       "loading": "Loading...",
       "loggedIn": "Successfully logged in, please wait for the result",
-      "toastError": "An error occerred. Please refresh this page and wait for a moment."
+      "toastError": "An error occerred. Please refresh this page and wait for a moment.",
+      "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later."
     }
   },
   "layouts": {

@@ -23,6 +23,7 @@ const isConnected = ref(false);
 const user = ref<any>({});
 const status = ref();
 const toast = useToast();
+const WindowsError = ref<string>("");
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -147,6 +148,10 @@ socket.on("reconnect", () => {
     progress.value = 6;
     socket.disconnect();
     isConnected.value = false;
+  });
+
+  socket.on("catchWindowsError", () => {
+      WindowsError.value = t("lerun.index.windowsError");
   });
 });
 const startLerun = () => {
@@ -302,10 +307,14 @@ onUnmounted(() => {
               v-if="base64.length && !isLoggedIn"
               class="size-80"
             />
-            <view class="w-5/6 flex space-x-2 justify-center items-center flex-col" v-else-if="isLoggedIn">
-              <view class="flex space-x-2 justify-center items-center font-bold text-3xl animate-pulse mb-3">{{
-                $t("lerun.index.loggedIn")
-              }}</view>
+            <view
+              class="w-5/6 flex space-x-2 justify-center items-center flex-col"
+              v-else-if="isLoggedIn"
+            >
+              <view
+                class="flex space-x-2 justify-center items-center font-bold text-3xl animate-pulse mb-3"
+                >{{ WindowsError || $t("lerun.index.loggedIn") }}</view
+              >
               <div class="flex space-x-2 justify-center items-center mt-5">
                 <div
                   class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"
