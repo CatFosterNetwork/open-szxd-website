@@ -142,7 +142,13 @@ const startLerun = () => {
     simulateProgress();
   });
 
+  socket.on("powerOn", () => {
+    progress.value = 4;
+    simulateProgress();
+  });
+
   socket.on("searched", () => {
+    WindowsError.value = t("lerun.index.searched");
     simulateProgress();
   });
 
@@ -160,11 +166,10 @@ const startLerun = () => {
   });
 
   socket.on("qrcode", (res: any) => {
-    progress.value = 4;
+    progress.value = 5;
     simulateProgress();
     base64.value = res.data;
     processImageData(res.data);
-    progress.value = 5;
     const timer = setInterval(() => {
       if (expire.value > 0) {
         expire.value -= 1;
@@ -273,7 +278,7 @@ onUnmounted(() => {
               <view class="font-bold text-2xl mb-3">
                 {{ $t("lerun.index.completed") }}
               </view>
-              <view v-if="isMapShowed" class="mt-2">
+              <view v-if="isMapShowed" class="mt-2 size-40">
                 <NuxtImg src="https://open.szxd.swu.social/playground_2nd.PNG" alt="Map" />
               </view>
             </view>
@@ -371,7 +376,7 @@ onUnmounted(() => {
                       </span>
                     </span>
                     <span v-else-if="progress < 5">
-                      <span class="text-amber-500">
+                      <span class="text-primary-500">
                         <UIcon name="i-clarity-music-note-solid" />
                         {{ steps[4] }}
                       </span>
