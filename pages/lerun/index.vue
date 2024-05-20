@@ -355,9 +355,9 @@ onUnmounted(() => {
             <view
               class="grid justify-center items-center h-full w-full grid-rows-2 grid-cols-1 lg:grid-cols-4 lg:grid-rows-1 lg:space-x-10"
             >
-              <view class="lg:visible hidden"/>
+              <view class="lg:flex hidden"/>
               <view
-                class="flex flex-col justify-center items-center h-full w-full lg:w-5/6 mr-1 mb-4"
+                class="flex flex-col justify-center items-center h-full w-full lg:w-5/6 mr-1 mb-2"
                 v-auto-animate
               >
                 <view
@@ -411,7 +411,7 @@ onUnmounted(() => {
                   <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
                 </view>
               </view>
-              <view class="lg:visible hidden"/>
+              <view class="lg:flex hidden"/>
             </view>
           </view>
           <view
