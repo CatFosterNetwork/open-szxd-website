@@ -129,7 +129,11 @@
       "openMiniProgram": "保持耐心，精彩即将呈现。",
       "windowsDie": "出现了严重错误，请一分钟后重试！",
       "loginLerun": "新的冒险即将开始。",
-      "searched": "现在，你一直在等待的那一刻"
+      "searched": "现在，你一直在等待的那一刻",
+      "distance": "乐跑距离",
+      "time": "本次耗时 {min} 分 {sec} 秒",
+      "calories": "本次乐跑相当于",
+      "pace": "本次配速"
     }
   },
   "layouts": {

@@ -131,7 +131,11 @@
       "openMiniProgram": "Patience is a virtue; greatness is just around the corner.",
       "windowsDie": "A serious error occurred. Please try again in one minute.",
       "loginLerun": "A new adventure is about to begin.",
-      "searched": "And now, the moment you've been waiting for"
+      "searched": "And now, the moment you've been waiting for",
+      "distance": "LeRun Distance",
+      "time": "Time consuming: {min}min {sec}s",
+      "calories": "This fun run is equivalent to",
+      "pace": "Pace"
     }
   },
   "layouts": {

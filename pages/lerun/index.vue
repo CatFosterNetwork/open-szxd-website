@@ -4,7 +4,7 @@ checkLogin();
 
 const base64 = ref<string>("");
 const serverUrl = ref<string>("wss://open.szxd.swu.social/api");
-const theme = ref(useColorMode().value);
+const theme = useColorMode().value;
 const progress = ref<number | null>(null);
 const { t } = useI18n();
 const start = ref(false);
@@ -26,6 +26,17 @@ const toast = useToast();
 const WindowsError = ref<string>(t("lerun.index.loggedIn"));
 const expire = ref(120);
 const isMapShowed = ref(false);
+const lerunData = ref<any>({});
+const paceMin = ref(0);
+const paceSec = ref(0);
+const totalTime = ref(0);
+const distance = ref(0);
+const caloriesDesc = ref();
+const caloriesUrl = ref("");
+const isPaceShowed = ref(false);
+const isDistanceShowed = ref(false);
+const isCaloriesShowed = ref(false);
+const isTimeShowed = ref(false);
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -48,6 +59,25 @@ if (now.getHours() < 6 || now.getHours() > 23) {
   status.value = -1;
 }
 
+const delay = (ms: any) => new Promise(resolve => setTimeout(resolve, ms));
+
+const showValues = async () => {
+  isMapShowed.value = true;
+  await delay(1000);
+
+  isPaceShowed.value = true;
+  await delay(500);
+
+  isDistanceShowed.value = true;
+  await delay(500);
+
+  isCaloriesShowed.value = true;
+  await delay(500);
+
+  isTimeShowed.value = true;
+  await delay(500);
+};
+
 const { pending } = await useAsyncData<void>(
   async () => {
     const res = await Api.profile();
@@ -55,6 +85,17 @@ const { pending } = await useAsyncData<void>(
     Api.lerunStatus().then((res) => {
       if (res.data) {
         status.value = res.data.data;
+      }
+      if (status.value == 3) {
+        lerunData.value = res.data.data;
+        totalTime.value = lerunData.value.time;
+        distance.value = lerunData.value.distance;
+        const paceInSeconds = totalTime.value / distance.value;
+        paceMin.value = Math.floor(paceInSeconds / 60);
+        paceSec.value = Math.floor(paceInSeconds % 60);
+        caloriesDesc.value = lerunData.value.calDesc;
+        caloriesUrl.value = lerunData.value.calUrl;
+        showValues();
       }
     });
   },
@@ -79,7 +120,7 @@ const processImageData = (base64Data: string) => {
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
     const data = imageData.data;
     // 根据颜色模式处理图像
-    if (theme.value == "dark") {
+    if (theme == "dark") {
       for (let i = 0; i < data.length; i += 4) {
         const sum = data[i] + data[i + 1] + data[i + 2];
         if (sum < 384) {
@@ -284,19 +325,50 @@ onUnmounted(() => {
           <view
             v-else-if="status == 3"
             class="flex justify-center items-center h-full"
+            v-auto-animate
           >
-            <view
-              v-auto-animate
-              class="flex flex-col justify-center items-center h-full"
-            >
-              <view class="font-bold text-2xl mb-3">
-                {{ $t("lerun.index.completed") }}
+            <view class="flex justify-center items-center h-full">
+              <view
+                v-auto-animate
+                class="flex flex-col justify-center items-center h-full"
+              >
+                <view class="font-bold text-4xl mb-3">
+                  {{ $t("lerun.index.completed") }}
+                </view>
+                <view v-if="isMapShowed" class="mt-2 size-60">
+                  <NuxtImg
+                    src="https://open.szxd.swu.social/playground_2nd.PNG"
+                    alt="Map"
+                  />
+                </view>
               </view>
-              <view v-if="isMapShowed" class="mt-2 size-40">
-                <NuxtImg
-                  src="https://open.szxd.swu.social/playground_2nd.PNG"
-                  alt="Map"
-                />
+              <view
+                v-auto-animate
+                class="flex flex-col justify-center items-center h-full space-y-4"
+              >
+                <view class="font-bold text-2xl mb-2" v-if="isDistanceShowed">
+                  {{ $t("lerun.index.distance") }}: {{ distance }} km
+                </view>
+                <view class="font-bold text-2xl mb-2" v-if="isTimeShowed">
+                  {{
+                    $t("lerun.index.time", {
+                      min: Math.floor(totalTime / 60),
+                      sec: totalTime % 60,
+                    })
+                  }}
+                </view>
+                <view class="font-bold text-2xl mb-2" v-if="isPaceShowed">
+                  {{ $t("lerun.index.pace") }}: {{ paceMin }}'{{ paceSec }}"
+                </view>
+                <view
+                  class="flex space-x-2 justify-center items-center"
+                  v-if="isPaceShowed"
+                >
+                  <view class="font-bold text-2xl mb-2">
+                    {{ $t("lerun.index.calories") }} {{ caloriesDesc }}
+                  </view>
+                  <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
+                </view>
               </view>
             </view>
           </view>
@@ -340,7 +412,9 @@ onUnmounted(() => {
                 <div
                   class="h-8 w-8 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.15s]"
                 ></div>
-                <div class="h-8 w-8 dark:bg-white bg-black rounded-full animate-bounce"></div>
+                <div
+                  class="h-8 w-8 dark:bg-white bg-black rounded-full animate-bounce"
+                ></div>
               </div>
             </view>
             <view class="w-5/6" v-auto-animate v-else>
