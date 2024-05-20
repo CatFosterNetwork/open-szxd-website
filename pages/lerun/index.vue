@@ -327,7 +327,7 @@ onUnmounted(() => {
             class="flex justify-center items-center h-full"
             v-auto-animate
           >
-            <view class="flex justify-center items-center h-full">
+            <view class="flex flex-row justify-center items-center h-full">
               <view
                 v-auto-animate
                 class="flex flex-col justify-center items-center h-full"
@@ -343,7 +343,7 @@ onUnmounted(() => {
                 </view>
               </view>
               <view
-                class="flex flex-col justify-center items-center h-full space-y-4"
+                class="flex flex-col justify-center items-center space-y-4"
               >
                 <view class="font-bold text-2xl mb-2" v-if="isDistanceShowed">
                   {{ $t("lerun.index.distance") }}: {{ distance }} km
