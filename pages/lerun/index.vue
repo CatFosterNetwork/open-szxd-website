@@ -240,7 +240,7 @@ const startLerun = () => {
     socket.disconnect();
     isConnected.value = false;
     requestComplete.value = true;
-    lerunData.value = res.data.data.record;
+    lerunData.value = res.data.record;
     totalTime.value = lerunData.value.time;
     distance.value = lerunData.value.distance;
     const paceInSeconds = totalTime.value / distance.value;
