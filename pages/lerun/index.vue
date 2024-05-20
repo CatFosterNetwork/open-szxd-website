@@ -335,12 +335,12 @@ onUnmounted(() => {
               >
               <div class="flex space-x-2 justify-center items-center mt-5">
                 <div
-                  class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"
+                  class="h-8 w-8 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.3s]"
                 ></div>
                 <div
-                  class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"
+                  class="h-8 w-8 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.15s]"
                 ></div>
-                <div class="h-8 w-8 bg-white rounded-full animate-bounce"></div>
+                <div class="h-8 w-8 dark:bg-white bg-black rounded-full animate-bounce"></div>
               </div>
             </view>
             <view class="w-5/6" v-auto-animate v-else>
