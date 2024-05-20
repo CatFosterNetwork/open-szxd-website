@@ -9,38 +9,54 @@
 </template>
 
 <script setup lang="ts">
+const { setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 
 const availableLocales = [
   [
     {
       label: "English",
-      to: switchLocalePath("en-US"),
+      to: () => {
+        setLocale("en-US");
+        switchLocalePath("en-US");
+      },
     },
   ],
   [
     {
       label: "简体中文",
-      to: switchLocalePath("zh-CN"),
+      to: () => {
+        setLocale("zh-CN");
+        switchLocalePath("zh-CN");
+      },
     },
   ],
   [
     {
       label: "繁體中文",
-      to: switchLocalePath("zh-TW"),
+      to: () => {
+        setLocale("zh-TW");
+        switchLocalePath("zh-TW");
+      },
     },
   ],
   [
     {
       label: "日本語",
-      to: switchLocalePath("ja-JP"),
+      to: () => {
+        setLocale("ja-JP");
+        switchLocalePath("ja-JP");
+      },
     },
   ],
   [
     {
       label: "Русский",
-      to: switchLocalePath("ru-RU"),
+      to: () => {
+        setLocale("ru-RU");
+        switchLocalePath("ru-RU");
+      },
     },
-  ]
+  ],
 ];
 </script>
