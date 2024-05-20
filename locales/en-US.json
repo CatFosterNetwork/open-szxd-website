@@ -124,7 +124,7 @@
       "error": "An error occurred, please try again later",
       "connecting": "Connecting...",
       "loading": "Loading...",
-      "loggedIn": "Attempting to log you in. Please wait for the result.",
+      "loggingIn": "Attempting to log you in. Please wait for the result.",
       "toastError": "An error occerred. Please refresh this page and wait for a moment.",
       "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later.",
       "scan": "Please scan the QR code by WeChat, it will expire in {expire} seconds.",
@@ -135,7 +135,8 @@
       "distance": "LeRun Distance",
       "time": "Time consuming: {min}min {sec}s",
       "calories": "This fun run is equivalent to",
-      "pace": "Pace"
+      "pace": "Pace",
+      "loggedIn": "You have successfully logged in to WeChat. Continuing..."
     }
   },
   "layouts": {

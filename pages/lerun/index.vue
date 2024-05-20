@@ -16,14 +16,14 @@ const steps = [
   t("lerun.index.step5"),
   t("lerun.index.step6"),
 ];
-const isRequestSend = ref(false);
+const requestComplete = ref(false);
 const isRequestComplete = ref(false);
 const isLoggedIn = ref(false);
 const isConnected = ref(false);
 const user = ref<any>({});
 const status = ref();
 const toast = useToast();
-const WindowsError = ref<string>(t("lerun.index.loggedIn"));
+const WindowsError = ref<string>(t("lerun.index.loggingIn"));
 const expire = ref(120);
 const isMapShowed = ref(false);
 const lerunData = ref<any>({});
@@ -64,19 +64,19 @@ const delay = (ms: any) => new Promise(resolve => setTimeout(resolve, ms));
 
 const showValues = async () => {
   isMapShowed.value = true;
-  await delay(1000);
+  await delay(500);
 
   isPaceShowed.value = true;
-  await delay(500);
+  await delay(300);
 
   isDistanceShowed.value = true;
-  await delay(500);
+  await delay(300);
 
   isCaloriesShowed.value = true;
-  await delay(500);
+  await delay(300);
 
   isTimeShowed.value = true;
-  await delay(500);
+  await delay(300);
 };
 
 const { pending } = await useAsyncData<void>(
@@ -233,11 +233,21 @@ const startLerun = () => {
     clearTimeout(progressTimer);
   });
 
-  socket.on("requestSend", () => {
-    isRequestSend.value = true;
+  socket.on("requestComplete", (res) => {
+    requestComplete.value = true;
+    lerunData.value = res.data;
+    totalTime.value = lerunData.value.time;
+    distance.value = lerunData.value.distance;
+    const paceInSeconds = totalTime.value / distance.value;
+    paceMin.value = Math.floor(paceInSeconds / 60);
+    paceSec.value = Math.floor(paceInSeconds % 60);
+    caloriesDesc.value = lerunData.value.calDesc;
+    caloriesUrl.value = lerunData.value.calUrl;
+    showValues();
   });
 
   socket.on("loggedIn", () => {
+    WindowsError.value = t("lerun.index.loggedIn");
     isLoggedIn.value = true;
   });
 
@@ -334,7 +344,6 @@ onUnmounted(() => {
           >
             <view class="flex flex-row justify-center items-center h-full">
               <view
-                v-auto-animate
                 class="flex flex-col justify-center items-center h-full"
               >
                 <view class="font-bold text-4xl mb-3">
