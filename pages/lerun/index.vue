@@ -343,7 +343,6 @@ onUnmounted(() => {
                 </view>
               </view>
               <view
-                v-auto-animate
                 class="flex flex-col justify-center items-center h-full space-y-4"
               >
                 <view class="font-bold text-2xl mb-2" v-if="isDistanceShowed">
