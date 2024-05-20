@@ -354,13 +354,13 @@ onUnmounted(() => {
             v-auto-animate
           >
             <view
-              class="flex flex-row justify-center items-center h-full space-x-5 w-max"
+              class="flex flex-row justify-center items-center h-full space-x-5 w-full"
             >
               <view
                 class="flex flex-col justify-center items-center h-full w-2/5"
                 v-auto-animate
               >
-                <view class="font-bold text-4xl mb-3">
+                <view class="font-bold text-4xl mb-3 w-full">
                   {{ $t("lerun.index.completed") }}
                 </view>
                 <view v-if="isMapShowed" class="mt-2 size-60">
@@ -374,10 +374,10 @@ onUnmounted(() => {
                 class="flex flex-col justify-center items-center space-y-4 w-2/5"
                 v-auto-animate
               >
-                <view class="font-bold text-2xl mb-2 w-max" v-if="isDistanceShowed">
+                <view class="font-bold text-2xl mb-2 w-full" v-if="isDistanceShowed">
                   {{ $t("lerun.index.distance") }}: {{ distance }} km
                 </view>
-                <view class="font-bold text-2xl mb-2 w-max" v-if="isTimeShowed">
+                <view class="font-bold text-2xl mb-2 w-full" v-if="isTimeShowed">
                   {{
                     $t("lerun.index.time", {
                       min: Math.floor(totalTime / 60),
@@ -385,7 +385,7 @@ onUnmounted(() => {
                     })
                   }}
                 </view>
-                <view class="font-bold text-2xl mb-2 w-max" v-if="isPaceShowed">
+                <view class="font-bold text-2xl mb-2 w-full" v-if="isPaceShowed">
                   {{ $t("lerun.index.pace") }}: {{ paceMin }}'{{ paceSec }}"
                 </view>
                 <view
