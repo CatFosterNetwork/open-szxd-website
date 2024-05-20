@@ -16,46 +16,36 @@ const availableLocales = [
   [
     {
       label: "English",
-      to: () => {
-        setLocale("en-US");
-        switchLocalePath("en-US");
-      },
+      to: switchLocalePath("en-US"),
+      click: () => setLocale("en-US"),
     },
   ],
   [
     {
       label: "简体中文",
-      to: () => {
-        setLocale("zh-CN");
-        switchLocalePath("zh-CN");
-      },
+      to: switchLocalePath("zh-CN"),
+      click: () => setLocale("zh-CN"),
     },
   ],
   [
     {
       label: "繁體中文",
-      to: () => {
-        setLocale("zh-TW");
-        switchLocalePath("zh-TW");
-      },
+      to: switchLocalePath("zh-TW"),
+      click: () => setLocale("zh-TW"),
     },
   ],
   [
     {
       label: "日本語",
-      to: () => {
-        setLocale("ja-JP");
-        switchLocalePath("ja-JP");
-      },
+      to: switchLocalePath("ja-JP"),
+      click: () => setLocale("ja-JP"),
     },
   ],
   [
     {
       label: "Русский",
-      to: () => {
-        setLocale("ru-RU");
-        switchLocalePath("ru-RU");
-      },
+      to: switchLocalePath("ru-RU"),
+      click: () => setLocale("ru-RU"),
     },
   ],
 ];
