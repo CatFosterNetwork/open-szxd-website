@@ -64,19 +64,20 @@ const delay = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const showValues = async () => {
   isMapShowed.value = true;
+  await delay(1000);
+
+  isDistanceShowed.value = true;
+  await delay(500);
+
+  isTimeShowed.value = true;
   await delay(500);
 
   isPaceShowed.value = true;
-  await delay(300);
-
-  isDistanceShowed.value = true;
-  await delay(300);
+  await delay(500);
 
   isCaloriesShowed.value = true;
-  await delay(300);
+  await delay(500);
 
-  isTimeShowed.value = true;
-  await delay(300);
 };
 
 const { pending } = await useAsyncData<void>(
@@ -236,7 +237,7 @@ const startLerun = () => {
 
   socket.on("requestComplete", (res) => {
     requestComplete.value = true;
-    lerunData.value = res.data.record;
+    lerunData.value = res.data.data.record;
     totalTime.value = lerunData.value.time;
     distance.value = lerunData.value.distance;
     const paceInSeconds = totalTime.value / distance.value;
@@ -269,6 +270,14 @@ const startLerun = () => {
     setTimeout(() => {
       isMapShowed.value = true;
     }, 1000);
+  });
+
+  socket.on("disconnect", () => {
+    isConnected.value = false;
+    toast.add({
+      title: t("lerun.index.toastDisconnect"),
+      color: "red",
+    });
   });
 
   socket.on("error", (error: string) => {
@@ -382,7 +391,7 @@ onUnmounted(() => {
                   class="flex space-x-2 justify-center items-center"
                   v-if="isPaceShowed"
                 >
-                  <view class="font-bold text-2xl mb-2">
+                  <view class="font-bold text-2xl mb-2 mr-2">
                     {{ $t("lerun.index.calories") }} {{ caloriesDesc }}
                   </view>
                   <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
