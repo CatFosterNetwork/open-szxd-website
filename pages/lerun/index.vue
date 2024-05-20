@@ -360,10 +360,10 @@ onUnmounted(() => {
                 class="flex flex-col justify-center items-center h-full w-full"
                 v-auto-animate
               >
-                <view class="font-bold text-4xl mb-3 w-full">
+                <view class="flex justify-center items-center font-bold text-4xl mb-3 w-2/5">
                   {{ $t("lerun.index.completed") }}
                 </view>
-                <view v-if="isMapShowed" class="mt-2 size-60 w-full">
+                <view v-if="isMapShowed" class="mt-2 size-60 w-2/5">
                   <NuxtImg
                     src="https://open.szxd.swu.social/playground_2nd.PNG"
                     alt="Map"
@@ -374,10 +374,10 @@ onUnmounted(() => {
                 class="flex flex-col justify-center items-center space-y-4 h-full w-full"
                 v-auto-animate
               >
-                <view class="font-bold text-2xl mb-2 w-full" v-if="isDistanceShowed">
+                <view class="flex justify-center items-center font-bold text-2xl mb-2 w-full" v-if="isDistanceShowed">
                   {{ $t("lerun.index.distance") }}: {{ distance }} km
                 </view>
-                <view class="font-bold text-2xl mb-2 w-full" v-if="isTimeShowed">
+                <view class="flex justify-center items-center font-bold text-2xl mb-2 w-full" v-if="isTimeShowed">
                   {{
                     $t("lerun.index.time", {
                       min: Math.floor(totalTime / 60),
@@ -385,17 +385,17 @@ onUnmounted(() => {
                     })
                   }}
                 </view>
-                <view class="font-bold text-2xl mb-2 w-full" v-if="isPaceShowed">
+                <view class="flex justify-center items-center font-bold text-2xl mb-2 w-full" v-if="isPaceShowed">
                   {{ $t("lerun.index.pace") }}: {{ paceMin }}'{{ paceSec }}"
                 </view>
                 <view
                   class="flex space-x-2 justify-center items-center mb-2 w-full"
                   v-if="isPaceShowed"
                 >
-                  <view class="font-bold text-2xl mb-2 mr-2 w-full">
+                  <view class="flex justify-center items-center font-bold text-2xl mb-2 mr-2 w-full">
                     {{ $t("lerun.index.calories") }} {{ caloriesDesc }}
                   </view>
-                  <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20 w-full" />
+                  <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
                 </view>
               </view>
             </view>
