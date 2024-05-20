@@ -236,6 +236,9 @@ const startLerun = () => {
   });
 
   socket.on("requestComplete", (res) => {
+    status.value = 3;
+    socket.disconnect();
+    isConnected.value = false;
     requestComplete.value = true;
     lerunData.value = res.data.data.record;
     totalTime.value = lerunData.value.time;
@@ -261,23 +264,8 @@ const startLerun = () => {
     WindowsError.value = t("lerun.index.loginLerun");
   });
 
-  socket.on("requestComplete", () => {
-    status.value = 3;
-    isRequestComplete.value = true;
-    socket.disconnect();
-    isConnected.value = false;
-    // 等待一秒
-    setTimeout(() => {
-      isMapShowed.value = true;
-    }, 1000);
-  });
-
   socket.on("disconnect", () => {
     isConnected.value = false;
-    toast.add({
-      title: t("lerun.index.toastDisconnect"),
-      color: "red",
-    });
   });
 
   socket.on("error", (error: string) => {
