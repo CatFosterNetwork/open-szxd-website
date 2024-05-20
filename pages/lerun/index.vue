@@ -37,7 +37,7 @@ const isPaceShowed = ref(false);
 const isDistanceShowed = ref(false);
 const isCaloriesShowed = ref(false);
 const isTimeShowed = ref(false);
-const storedColorMode = ref('light');
+const storedColorMode = ref("light");
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -60,7 +60,7 @@ if (now.getHours() < 6 || now.getHours() > 23) {
   status.value = -1;
 }
 
-const delay = (ms: any) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const showValues = async () => {
   isMapShowed.value = true;
@@ -85,18 +85,20 @@ const { pending } = await useAsyncData<void>(
     user.value = res.data.data;
     Api.lerunStatus().then((res) => {
       if (res.data) {
-        status.value = res.data.data;
-      }
-      if (status.value == 3) {
-        lerunData.value = res.data.data;
-        totalTime.value = lerunData.value.time;
-        distance.value = lerunData.value.distance;
-        const paceInSeconds = totalTime.value / distance.value;
-        paceMin.value = Math.floor(paceInSeconds / 60);
-        paceSec.value = Math.floor(paceInSeconds % 60);
-        caloriesDesc.value = lerunData.value.calDesc;
-        caloriesUrl.value = lerunData.value.calUrl;
-        showValues();
+        if (res.data.data.status == 3) {
+          status.value = 3;
+          lerunData.value = res.data.data.record;
+          totalTime.value = lerunData.value.time;
+          distance.value = lerunData.value.distance;
+          const paceInSeconds = totalTime.value / distance.value;
+          paceMin.value = Math.floor(paceInSeconds / 60);
+          paceSec.value = Math.floor(paceInSeconds % 60);
+          caloriesDesc.value = lerunData.value.calDesc;
+          caloriesUrl.value = lerunData.value.calUrl;
+          showValues();
+        } else {
+          status.value = res.data.data;
+        }
       }
     });
   },
@@ -229,13 +231,12 @@ const startLerun = () => {
         clearInterval(timer);
       }
     }, 1000);
-    // 移除 progress 定时器
     clearTimeout(progressTimer);
   });
 
   socket.on("requestComplete", (res) => {
     requestComplete.value = true;
-    lerunData.value = res.data;
+    lerunData.value = res.data.record;
     totalTime.value = lerunData.value.time;
     distance.value = lerunData.value.distance;
     const paceInSeconds = totalTime.value / distance.value;
@@ -247,7 +248,7 @@ const startLerun = () => {
   });
 
   socket.on("loggedIn", () => {
-    WindowsError.value = t("lerun.index.loggedIn");
+    WindowsError.value = t("lerun.index.loggingIn");
     isLoggedIn.value = true;
   });
 
@@ -285,8 +286,8 @@ const startLerun = () => {
 };
 
 onMounted(() => {
-  storedColorMode.value = localStorage.getItem('nuxt-color-mode') as string;
-})
+  storedColorMode.value = localStorage.getItem("nuxt-color-mode") as string;
+});
 
 onUnmounted(() => {
   socket.disconnect();
@@ -342,9 +343,12 @@ onUnmounted(() => {
             class="flex justify-center items-center h-full"
             v-auto-animate
           >
-            <view class="flex flex-row justify-center items-center h-full">
+            <view
+              class="flex flex-row justify-center items-center h-full space-x-5"
+            >
               <view
                 class="flex flex-col justify-center items-center h-full"
+                v-auto-animate
               >
                 <view class="font-bold text-4xl mb-3">
                   {{ $t("lerun.index.completed") }}
@@ -358,6 +362,7 @@ onUnmounted(() => {
               </view>
               <view
                 class="flex flex-col justify-center items-center space-y-4"
+                v-auto-animate
               >
                 <view class="font-bold text-2xl mb-2" v-if="isDistanceShowed">
                   {{ $t("lerun.index.distance") }}: {{ distance }} km
