@@ -317,7 +317,7 @@ onUnmounted(() => {
           /> -->
           </template>
         </UDashboardNavbar>
-        <view v-auto-animate class="flex justify-center items-center h-full">
+        <view v-auto-animate class="flex justify-center h-full">
           <view
             v-if="status == 1"
             class="flex justify-center items-center h-full"
