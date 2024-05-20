@@ -37,7 +37,7 @@ const isPaceShowed = ref(false);
 const isDistanceShowed = ref(false);
 const isCaloriesShowed = ref(false);
 const isTimeShowed = ref(false);
-const storedColorMode = localStorage.getItem('nuxt-color-mode');
+const storedColorMode = ref('light');
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -273,6 +273,10 @@ const startLerun = () => {
     WindowsError.value = t("lerun.index.windowsError");
   });
 };
+
+onMounted(() => {
+  storedColorMode.value = localStorage.getItem('nuxt-color-mode');
+})
 
 onUnmounted(() => {
   socket.disconnect();
