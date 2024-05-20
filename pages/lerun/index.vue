@@ -124,7 +124,7 @@ const startLerun = () => {
       title: t("lerun.index.toastError"),
       color: "red",
     });
-  }, 600000);
+  }, 300000);
 
   socket.on("ping", () => {
     progress.value = 0;
