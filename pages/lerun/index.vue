@@ -116,6 +116,16 @@ const startLerun = () => {
   status.value = 0;
   socket.connect();
   isConnected.value = true;
+
+  const progressTimer = setTimeout(() => {
+    start.value = false;
+    progress.value = 6;
+    toast.add({
+      title: t("lerun.index.toastError"),
+      color: "red",
+    });
+  }, 600000);
+
   socket.on("ping", () => {
     progress.value = 0;
     simulateProgress();
@@ -177,6 +187,8 @@ const startLerun = () => {
         clearInterval(timer);
       }
     }, 1000);
+    // 移除 progress 定时器
+    clearTimeout(progressTimer);
   });
 
   socket.on("requestSend", () => {
@@ -204,7 +216,6 @@ const startLerun = () => {
     setTimeout(() => {
       isMapShowed.value = true;
     }, 1000);
-
   });
 
   socket.on("error", (error: string) => {
@@ -274,12 +285,18 @@ onUnmounted(() => {
             v-else-if="status == 3"
             class="flex justify-center items-center h-full"
           >
-            <view v-auto-animate class="flex flex-col justify-center items-center h-full">
+            <view
+              v-auto-animate
+              class="flex flex-col justify-center items-center h-full"
+            >
               <view class="font-bold text-2xl mb-3">
                 {{ $t("lerun.index.completed") }}
               </view>
               <view v-if="isMapShowed" class="mt-2 size-40">
-                <NuxtImg src="https://open.szxd.swu.social/playground_2nd.PNG" alt="Map" />
+                <NuxtImg
+                  src="https://open.szxd.swu.social/playground_2nd.PNG"
+                  alt="Map"
+                />
               </view>
             </view>
           </view>

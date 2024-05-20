@@ -127,7 +127,7 @@
       "loggedIn": "Attempting to log you in. Please wait for the result.",
       "toastError": "An error occerred. Please refresh this page and wait for a moment.",
       "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later.",
-      "scan": "Please scan the QR code as soon as possible, it will expire in {expire} seconds.",
+      "scan": "Please scan the QR code by WeChat, it will expire in {expire} seconds.",
       "openMiniProgram": "Patience is a virtue; greatness is just around the corner.",
       "windowsDie": "A serious error occurred. Please try again in one minute.",
       "loginLerun": "A new adventure is about to begin.",
