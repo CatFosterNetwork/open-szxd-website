@@ -349,7 +349,7 @@ onUnmounted(() => {
           </view>
           <view
             v-else-if="status == 3"
-            class="flex justify-center mt-4 h-full w-full"
+            class="flex justify-center mt-4 w-full"
             v-auto-animate
           >
             <view
@@ -357,7 +357,7 @@ onUnmounted(() => {
             >
               <view />
               <view
-                class="flex flex-col justify-center items-center h-full w-full mr-1"
+                class="flex flex-col justify-center items-center h-full w-5/6 mr-1"
                 v-auto-animate
               >
                 <view
@@ -373,7 +373,7 @@ onUnmounted(() => {
                 </view>
               </view>
               <view
-                class="flex flex-col justify-center items-center space-y-4 h-full w-full ml-1"
+                class="flex flex-col justify-center items-center space-y-4 h-full w-5/6 ml-1"
                 v-auto-animate
               >
                 <view
