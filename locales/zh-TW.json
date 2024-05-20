@@ -270,7 +270,10 @@
     "landing": {
       "hero": {
         "title": "保持自由\n不受控制",
-        "description": "與我們一起\n見證您的夢想在您眼前實現。"
+        "description": "與我們一起\n見證您的夢想在您眼前實現。",
+        "links": {
+          "label": "開始使用"
+        }
       },
       "cards": {
         "visualization": {

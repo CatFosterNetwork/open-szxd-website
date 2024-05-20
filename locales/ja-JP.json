@@ -270,7 +270,10 @@
     "landing": {
       "hero": {
         "title": "自由を保ち\n支配されないでください",
-        "description": "私たちと一緒に\nあなたの夢が目の前で実現するのを見てください。"
+        "description": "私たちと一緒に\nあなたの夢が目の前で実現するのを見てください。",
+        "links": {
+          "label": "始めましょう"
+        }
       },
       "cards": {
         "visualization": {
