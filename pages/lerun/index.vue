@@ -71,13 +71,13 @@ const showValues = async () => {
   await delay(500);
 
   isTimeShowed.value = true;
-  await delay(400);
+  await delay(500);
 
   isPaceShowed.value = true;
-  await delay(300);
+  await delay(500);
 
   isCaloriesShowed.value = true;
-  await delay(200);
+  await delay(500);
 
 };
 
@@ -354,16 +354,16 @@ onUnmounted(() => {
             v-auto-animate
           >
             <view
-              class="flex flex-row justify-center items-center h-full space-x-5 w-full"
+              class="grid justify-center items-center h-full w-full grid-cols-1 lg:grid-cols-2 lg:space-x-10"
             >
               <view
-                class="flex flex-col justify-center items-center h-full w-2/5"
+                class="flex flex-col justify-center items-center h-full w-full"
                 v-auto-animate
               >
                 <view class="font-bold text-4xl mb-3 w-full">
                   {{ $t("lerun.index.completed") }}
                 </view>
-                <view v-if="isMapShowed" class="mt-2 size-60">
+                <view v-if="isMapShowed" class="mt-2 size-60 w-full">
                   <NuxtImg
                     src="https://open.szxd.swu.social/playground_2nd.PNG"
                     alt="Map"
@@ -371,7 +371,7 @@ onUnmounted(() => {
                 </view>
               </view>
               <view
-                class="flex flex-col justify-center items-center space-y-4 w-2/5"
+                class="flex flex-col justify-center items-center space-y-4 h-full w-full"
                 v-auto-animate
               >
                 <view class="font-bold text-2xl mb-2 w-full" v-if="isDistanceShowed">
@@ -389,13 +389,13 @@ onUnmounted(() => {
                   {{ $t("lerun.index.pace") }}: {{ paceMin }}'{{ paceSec }}"
                 </view>
                 <view
-                  class="flex space-x-2 justify-center items-center mb-2 w-max"
+                  class="flex space-x-2 justify-center items-center mb-2 w-full"
                   v-if="isPaceShowed"
                 >
-                  <view class="font-bold text-2xl mb-2 mr-2 w-max">
+                  <view class="font-bold text-2xl mb-2 mr-2 w-full">
                     {{ $t("lerun.index.calories") }} {{ caloriesDesc }}
                   </view>
-                  <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
+                  <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20 w-full" />
                 </view>
               </view>
             </view>
