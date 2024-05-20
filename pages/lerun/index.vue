@@ -337,7 +337,7 @@ onUnmounted(() => {
           </view>
           <view
             v-else-if="status == 3"
-            class="flex justify-center mt-4 w-full"
+            class="flex justify-center mt-4 h-full w-full"
             v-auto-animate
           >
             <view
@@ -353,7 +353,7 @@ onUnmounted(() => {
                 >
                   {{ $t("lerun.index.completed") }}
                 </view>
-                <view v-if="isMapShowed" class="flex justify-center mt-2 size-60">
+                <view v-if="isMapShowed" class="flex justify-center mt-2">
                   <NuxtImg
                     src="https://open.szxd.swu.social/playground_2nd.PNG"
                     alt="Map"
