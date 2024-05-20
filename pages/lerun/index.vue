@@ -63,6 +63,7 @@ if (now.getHours() < 6 || now.getHours() > 23) {
 const delay = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const showValues = async () => {
+  await delay(700);
   isMapShowed.value = true;
   await delay(1000);
 
@@ -70,13 +71,13 @@ const showValues = async () => {
   await delay(500);
 
   isTimeShowed.value = true;
-  await delay(500);
+  await delay(400);
 
   isPaceShowed.value = true;
-  await delay(500);
+  await delay(300);
 
   isCaloriesShowed.value = true;
-  await delay(500);
+  await delay(200);
 
 };
 
@@ -356,7 +357,7 @@ onUnmounted(() => {
               class="flex flex-row justify-center items-center h-full space-x-5"
             >
               <view
-                class="flex flex-col justify-center items-center h-full"
+                class="flex flex-col justify-center items-center h-full w-2/5"
                 v-auto-animate
               >
                 <view class="font-bold text-4xl mb-3">
@@ -370,13 +371,13 @@ onUnmounted(() => {
                 </view>
               </view>
               <view
-                class="flex flex-col justify-center items-center space-y-4"
+                class="flex flex-col justify-center items-center space-y-4 w-2/5"
                 v-auto-animate
               >
-                <view class="font-bold text-2xl mb-2" v-if="isDistanceShowed">
+                <view class="font-bold text-2xl mb-2 w-max" v-if="isDistanceShowed">
                   {{ $t("lerun.index.distance") }}: {{ distance }} km
                 </view>
-                <view class="font-bold text-2xl mb-2" v-if="isTimeShowed">
+                <view class="font-bold text-2xl mb-2 w-max" v-if="isTimeShowed">
                   {{
                     $t("lerun.index.time", {
                       min: Math.floor(totalTime / 60),
@@ -384,14 +385,14 @@ onUnmounted(() => {
                     })
                   }}
                 </view>
-                <view class="font-bold text-2xl mb-2" v-if="isPaceShowed">
+                <view class="font-bold text-2xl mb-2 w-max" v-if="isPaceShowed">
                   {{ $t("lerun.index.pace") }}: {{ paceMin }}'{{ paceSec }}"
                 </view>
                 <view
-                  class="flex space-x-2 justify-center items-center"
+                  class="flex space-x-2 justify-center items-center mb-2 w-max"
                   v-if="isPaceShowed"
                 >
-                  <view class="font-bold text-2xl mb-2 mr-2">
+                  <view class="font-bold text-2xl mb-2 mr-2 w-max">
                     {{ $t("lerun.index.calories") }} {{ caloriesDesc }}
                   </view>
                   <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
