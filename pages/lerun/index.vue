@@ -275,7 +275,7 @@ const startLerun = () => {
 };
 
 onMounted(() => {
-  storedColorMode.value = localStorage.getItem('nuxt-color-mode');
+  storedColorMode.value = localStorage.getItem('nuxt-color-mode') as string;
 })
 
 onUnmounted(() => {
