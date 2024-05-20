@@ -350,11 +350,11 @@ onUnmounted(() => {
           </view>
           <view
             v-else-if="status == 3"
-            class="flex justify-center items-center h-full"
+            class="flex justify-center items-center h-full w-full"
             v-auto-animate
           >
             <view
-              class="flex flex-row justify-center items-center h-full space-x-5"
+              class="flex flex-row justify-center items-center h-full space-x-5 w-max"
             >
               <view
                 class="flex flex-col justify-center items-center h-full w-2/5"
