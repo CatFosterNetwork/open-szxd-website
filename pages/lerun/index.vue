@@ -353,11 +353,11 @@ onUnmounted(() => {
             v-auto-animate
           >
             <view
-              class="grid justify-center items-center h-full w-full grid-cols-1 lg:grid-cols-4 lg:space-x-10"
+              class="grid justify-center items-center h-full w-full grid-rows-2 grid-cols-1 lg:grid-cols-4 lg:grid-rows-1 lg:space-x-10"
             >
               <view />
               <view
-                class="flex flex-col justify-center items-center h-full w-5/6 mr-1"
+                class="flex flex-col justify-center items-center h-full w-full lg:w-5/6 mr-1"
                 v-auto-animate
               >
                 <view
@@ -365,7 +365,7 @@ onUnmounted(() => {
                 >
                   {{ $t("lerun.index.completed") }}
                 </view>
-                <view v-if="isMapShowed" class="mt-2 size-60 w-full">
+                <view v-if="isMapShowed" class="flex justify-center mt-2 size-60 w-full">
                   <NuxtImg
                     src="https://open.szxd.swu.social/playground_2nd.PNG"
                     alt="Map"
@@ -373,7 +373,7 @@ onUnmounted(() => {
                 </view>
               </view>
               <view
-                class="flex flex-col justify-center items-center space-y-4 h-full w-5/6 ml-1"
+                class="flex flex-col justify-center items-center space-y-4 h-full w-full lg:w-5/6 ml-1"
                 v-auto-animate
               >
                 <view
