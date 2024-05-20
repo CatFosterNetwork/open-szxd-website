@@ -59,8 +59,8 @@
       }
     },
     "submit": {
-      "success": "登陆成功！",
-      "failed": "登陆失败！请检查您的账号和密码是否正确。"
+      "success": "登录成功！",
+      "failed": "登录失败！请检查您的账号和密码是否正确。"
     }
   },
   "purchase": {
@@ -176,7 +176,8 @@
         "invite": "复制分享链接",
         "help": "帮助中心",
         "inviteMsg": "【开放数智西大】我正在使用钉钉的自动打卡服务，访问 https://open.szxd.swu.social/ 免费获取！",
-        "inviteMsgCopied": "已复制！"
+        "inviteMsgCopied": "已复制！",
+        "inviteMsgNotCopied": "复制失败"
       },
       "lazyUDashboardSearch": {
         "groups": {

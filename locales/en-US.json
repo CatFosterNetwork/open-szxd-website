@@ -204,7 +204,7 @@
   },
   "homeChart": {
     "dashboardCard": {
-      "header": "Number of users yesterday"
+      "header": "Users statistic yesterday"
     }
   },
   "homeCountries": {

@@ -19,18 +19,33 @@ export default defineNuxtConfig({
     langDir: "locales/",
     detectBrowserLanguage: false,
     strategy: "prefix_except_default",
-    defaultLocale: "en",
+    defaultLocale: "en-US",
     vueI18n: "./i18n.config.ts",
     locales: [
       {
-        code: "zh",
+        code: "zh-CN",
         name: "简体中文",
-        file: "zh",
+        file: "zh-CN",
       },
       {
-        code: "en",
+        code: "zh-TW",
+        name: "繁體中文",
+        file: "zh-TW",
+      },
+      {
+        code: "ja-JP",
+        name: "日本語",
+        file: "ja-JP",
+      },
+      {
+        code: "ru-RU",
+        name: "Русский",
+        file: "ru-RU",
+      },
+      {
+        code: "en-US",
         name: "English",
-        file: "en",
+        file: "en-US",
       },
     ],
   },

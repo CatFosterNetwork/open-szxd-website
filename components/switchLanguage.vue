@@ -15,14 +15,32 @@ const availableLocales = [
   [
     {
       label: "English",
-      to: switchLocalePath("en"),
+      to: switchLocalePath("en-US"),
     },
   ],
   [
     {
       label: "简体中文",
-      to: switchLocalePath("zh"),
+      to: switchLocalePath("zh-CN"),
     },
   ],
+  [
+    {
+      label: "繁體中文",
+      to: switchLocalePath("zh-TW"),
+    },
+  ],
+  [
+    {
+      label: "日本語",
+      to: switchLocalePath("ja-JP"),
+    },
+  ],
+  [
+    {
+      label: "Русский",
+      to: switchLocalePath("ru-RU"),
+    },
+  ]
 ];
 </script>
