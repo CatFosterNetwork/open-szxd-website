@@ -116,12 +116,12 @@
           "text": "首頁"
         },
         "dashboard": {
-          "label": "儀表板",
-          "text": "儀表板"
+          "label": "羅盤",
+          "text": "羅盤"
         },
         "inbox": {
-          "label": "收件匣",
-          "text": "收件匣"
+          "label": "信匣",
+          "text": "信匣"
         },
         "schedule": {
           "label": "行程",
