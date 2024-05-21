@@ -14,7 +14,8 @@
     "dashboardCard": {
       "description": "自動チェックインが設定されました",
       "activateUntill": "までアクティブ化される",
-      "reactivate": "。\n有効期限が切れた後は、再度ログインして更新してください。"
+      "reactivate": "。\n有効期限が切れた後は、再度ログインして更新してください。",
+      "deactivate": "無効化されました。"
     }
   },
   "homeSales": {
@@ -103,7 +104,12 @@
       },
       "toast": {
         "email": {
-          "failed": "電子メール通知を購読できませんでした。設定ページで電子メール アドレスを入力してください。"
+          "failed": "電子メール通知を購読できませんでした。設定ページで電子メール アドレスを入力してください。",
+          "success": "メール通知を購読しました"
+        },
+        "wechat": {
+          "failed": "WeChat通知の購読に失敗しました",
+          "success": "WeChat通知を購読しました"
         }
       }
     }
@@ -138,6 +144,10 @@
             "notifications": "通知"
           },
           "text": "設定"
+        },
+        "purchase": {
+          "label": "購入",
+          "text": "購入"
         }
       },
       "footerLinks": {
@@ -161,7 +171,8 @@
           "telegram": {
             "commands": {
               "label": "テレグラムグループに参加してください"
-            }
+            },
+            "label": "電報"
           }
         }
       }
@@ -211,11 +222,13 @@
       "fields": {
         "account": {
           "label": "学校アカウント",
-          "placeholder": "アカウントを入力してください"
+          "placeholder": "アカウントを入力してください",
+          "name": "ユーザー名"
         },
         "password": {
           "label": "パスワード",
-          "placeholder": "パスワードを入力してください"
+          "placeholder": "パスワードを入力してください",
+          "name": "パスワード"
         }
       },
       "validate": {

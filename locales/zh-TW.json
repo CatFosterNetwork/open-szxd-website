@@ -14,7 +14,8 @@
     "dashboardCard": {
       "description": "自動打卡服務",
       "activateUntill": "激活直至",
-      "reactivate": "。\n過期後請重新登入刷新。"
+      "reactivate": "。\n過期後請重新登入刷新。",
+      "deactivate": "已停用。"
     }
   },
   "homeSales": {
@@ -103,7 +104,12 @@
       },
       "toast": {
         "email": {
-          "failed": "訂閱電子郵件通知失敗，請在設定頁面輸入您的電子郵件地址。"
+          "failed": "訂閱電子郵件通知失敗，請在設定頁面輸入您的電子郵件地址。",
+          "success": "已訂閱電子郵件通知"
+        },
+        "wechat": {
+          "failed": "訂閱微信通知失敗",
+          "success": "已訂閱微信通知"
         }
       }
     }
@@ -138,6 +144,10 @@
             "notifications": "通知"
           },
           "text": "設定"
+        },
+        "purchase": {
+          "label": "購買",
+          "text": "購買"
         }
       },
       "footerLinks": {
@@ -161,7 +171,8 @@
           "telegram": {
             "commands": {
               "label": "加入我們的電報群"
-            }
+            },
+            "label": "電報"
           }
         }
       }
@@ -211,11 +222,13 @@
       "fields": {
         "account": {
           "label": "學校帳號",
-          "placeholder": "輸入您的帳戶"
+          "placeholder": "輸入您的帳戶",
+          "name": "使用者名稱"
         },
         "password": {
           "label": "密碼",
-          "placeholder": "輸入您的密碼"
+          "placeholder": "輸入您的密碼",
+          "name": "密碼"
         }
       },
       "validate": {

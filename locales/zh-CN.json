@@ -46,11 +46,13 @@
       "fields": {
         "account": {
           "label": "校园网账号",
-          "placeholder": "请输入您的校园网账号"
+          "placeholder": "请输入您的校园网账号",
+          "name": "用户名"
         },
         "password": {
           "label": "密码",
-          "placeholder": "请输入您的密码"
+          "placeholder": "请输入您的密码",
+          "name": "密码"
         }
       },
       "validate": {
