@@ -221,7 +221,13 @@
       "validate": {
         "username": "帳號是必需的",
         "password": "密碼是必需的"
-      }
+      },
+      "title": "歡迎回來！",
+      "description": "沒有帳戶？",
+      "goaway": "離開",
+      "forgot": "忘記密碼？",
+      "footer": "登入即表示您同意我們的",
+      "terms": "服務條款"
     },
     "submit": {
       "success": "歡迎回來！",
