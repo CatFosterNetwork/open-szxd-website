@@ -311,7 +311,7 @@ onUnmounted(() => {
               <UButton
                 icon="i-mdi-refresh"
                 @click="startLerun"
-                v-if="status == 3"
+                v-if="status == 0"
               />
               <UButton
                 icon="i-simple-icons-telegram"
