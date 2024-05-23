@@ -165,6 +165,8 @@ const startLerun = () => {
     socket.connect();
   } else {
     socket.disconnect();
+    progress.value = null;
+    socket.connect();
   }
   isConnected.value = true;
 
