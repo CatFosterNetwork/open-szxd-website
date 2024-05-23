@@ -312,11 +312,11 @@ onUnmounted(() => {
         <UDashboardNavbar title="LeRun">
           <template #right>
             <view class="flex space-x-2">
-              <UButton
+              <!-- <UButton
                 icon="i-mdi-refresh"
                 @click="startLerun"
                 v-if="status == 0"
-              />
+              /> -->
               <UButton
                 icon="i-simple-icons-telegram"
                 to="https://t.me/+kLfUSbSYh7M2ZjQ9"
