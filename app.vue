@@ -96,12 +96,12 @@ useHead({
     {
       hid: "og:image",
       property: "og:image",
-      content: "https://open.szxd.swu.social/background.jpg",
+      content: "https://open.swu.social/background.jpg",
     },
     {
       hid: "og:url",
       property: "og:url",
-      content: "https://open.szxd.swu.social",
+      content: "https://open.swu.social",
     },
     {
       property: "og:locale",
@@ -109,8 +109,8 @@ useHead({
     },
   ],
   link: [
-    { rel: "icon", href: "/logo.png" },
-    { rel: "apple-touch-icon", href: "/logo.png" },
+    { rel: "icon", href: "/swulogo.png" },
+    { rel: "apple-touch-icon", href: "/swulogo.png" },
   ],
   htmlAttrs: {
     lang: locale.value,
