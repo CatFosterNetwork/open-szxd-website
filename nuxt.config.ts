@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "nuxt-icon",
     "nuxt-socket-io",
-    "@nuxtjs/robots",
     "@nuxtjs/sitemap",
     "@nuxtjs/seo",
     "@formkit/auto-animate/nuxt",
