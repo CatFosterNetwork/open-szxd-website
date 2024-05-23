@@ -96,12 +96,12 @@ useHead({
     {
       hid: "og:image",
       property: "og:image",
-      content: "https://open.swu.social/background.jpg",
+      content: "https://open.szxd.swu.social/background.jpg",
     },
     {
       hid: "og:url",
       property: "og:url",
-      content: "https://open.swu.social",
+      content: "https://open.szxd.swu.social",
     },
     {
       property: "og:locale",

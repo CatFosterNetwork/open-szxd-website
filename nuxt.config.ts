@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   ],
   sourcemap: true,
   site: {
-    url: "https://open.swu.social",
+    url: "https://open.szxd.swu.social",
   },
   ui: {
     icons: {},
