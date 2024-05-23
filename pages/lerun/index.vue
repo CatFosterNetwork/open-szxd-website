@@ -165,6 +165,7 @@ const startLerun = () => {
     socket.connect();
   } else {
     socket.disconnect();
+    base64.value = "";
     progress.value = null;
     socket.connect();
   }
