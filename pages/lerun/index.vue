@@ -38,6 +38,7 @@ const isDistanceShowed = ref(false);
 const isCaloriesShowed = ref(false);
 const isTimeShowed = ref(false);
 const storedColorMode = ref("light");
+const waiting = ref(1);
 
 const socket = io(serverUrl.value, {
   transports: ["websocket"],
@@ -159,7 +160,12 @@ const simulateProgress = () => {
 const startLerun = () => {
   start.value = true;
   status.value = 0;
-  socket.connect();
+  // socket.connect();
+  if (!socket.connected) {
+    socket.connect();
+  } else {
+    socket.disconnect();
+  }
   isConnected.value = true;
 
   const progressTimer = setTimeout(() => {
@@ -277,6 +283,10 @@ const startLerun = () => {
     });
   });
 
+  socket.on("waiting", (num: any) => {
+    waiting.value = num.data.data;
+  });
+
   socket.on("catchWindowsError", () => {
     WindowsError.value = t("lerun.index.windowsError");
   });
@@ -297,12 +307,21 @@ onUnmounted(() => {
       <UDashboardPanel grow>
         <UDashboardNavbar title="LeRun">
           <template #right>
-            <!-- <UButton
-            label="New user"
-            trailing-icon="i-heroicons-plus"
-            color="gray"
-            @click="isNewUserModalOpen = true"
-          /> -->
+            <view class="flex space-x-2">
+              <UButton
+                icon="i-mdi-refresh"
+                @click="startLerun"
+                v-if="status == 3"
+              />
+              <UButton
+                icon="i-simple-icons-telegram"
+                to="https://t.me/+kLfUSbSYh7M2ZjQ9"
+                target="_blank"
+              />
+              <view class="flex font-bold text-2xl">
+                {{ $t("lerun.index.waiting", { num: waiting }) }}
+              </view>
+            </view>
           </template>
         </UDashboardNavbar>
         <view v-auto-animate class="flex justify-center h-full">
@@ -343,7 +362,7 @@ onUnmounted(() => {
             <view
               class="grid justify-center items-center h-full w-full grid-rows-2 grid-cols-1 lg:grid-cols-4 lg:grid-rows-1 lg:space-x-10"
             >
-              <view class="lg:flex hidden"/>
+              <view class="lg:flex hidden" />
               <view
                 class="flex flex-col justify-center items-center h-full w-full lg:w-5/6 mr-1 mb-2"
                 v-auto-animate
@@ -399,7 +418,7 @@ onUnmounted(() => {
                   <NuxtImg :src="caloriesUrl" alt="Calories" class="size-20" />
                 </view>
               </view>
-              <view class="lg:flex hidden"/>
+              <view class="lg:flex hidden" />
             </view>
           </view>
           <view

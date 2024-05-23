@@ -134,9 +134,10 @@
       "searched": "And now, the moment you've been waiting for",
       "distance": "LeRun Distance",
       "time": "Time consuming: {min}min {sec}s",
-      "calories": "This fun run is equivalent to",
+      "calories": "This fun run is ",
       "pace": "Pace",
-      "loggedIn": "You have successfully logged in to WeChat. Continuing..."
+      "loggedIn": "You have successfully logged in to WeChat. Continuing...",
+      "waiting": "Position in queue: {num}"
     }
   },
   "layouts": {

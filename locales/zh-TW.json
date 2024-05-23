@@ -199,7 +199,7 @@
       "distance": "樂跑距離",
       "time": "耗時：{min}min {sec}s",
       "pace": "配速",
-      "calories": "這次樂跑相當於",
+      "calories": "這次樂跑",
       "outOfTime": "目前時間不是有效的樂跑時間",
       "scan": "請用微信掃描二維碼，將於 {expire} 秒後過期。",
       "noData": "沒有數據",
@@ -214,7 +214,8 @@
       "step5": "耐心是一種美德;\n偉大指日可待。",
       "step6": "新的冒險即將開始。",
       "loggingIn": "正在嘗試讓您登入",
-      "loggedIn": "您已成功登入微信。\n正在繼續..."
+      "loggedIn": "您已成功登入微信。\n正在繼續...",
+      "waiting": "佇列中的位置：{num}"
     }
   },
   "login": {

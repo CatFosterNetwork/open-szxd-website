@@ -134,9 +134,10 @@
       "searched": "现在，你一直在等待的那一刻",
       "distance": "乐跑距离",
       "time": "本次耗时 {min} 分 {sec} 秒",
-      "calories": "本次乐跑相当于",
+      "calories": "本次乐跑",
       "pace": "本次配速",
-      "loggedIn": "您已成功登录微信。\n正在继续..."
+      "loggedIn": "您已成功登录微信。\n正在继续...",
+      "waiting": "队列中的位置：{num}"
     }
   },
   "layouts": {

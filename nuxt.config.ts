@@ -9,8 +9,15 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "nuxt-icon",
     "nuxt-socket-io",
+    "@nuxtjs/robots",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/seo",
     "@formkit/auto-animate/nuxt",
   ],
+  sourcemap: true,
+  site: {
+    url: "https://open.swu.social",
+  },
   ui: {
     icons: {},
     safelistColors: ["primary", "red", "orange", "green"],
