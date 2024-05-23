@@ -167,6 +167,7 @@ const startLerun = () => {
     socket.disconnect();
     base64.value = "";
     progress.value = null;
+    isLoggedIn.value = false;
     socket.connect();
   }
   isConnected.value = true;
