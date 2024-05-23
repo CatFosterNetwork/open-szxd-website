@@ -59,8 +59,7 @@ const color = computed(() =>
   colorMode.value === "dark" ? "#111827" : "white"
 );
 
-const { locale } = useI18n();
-const { t } = useI18n();
+const { locale, t } = useI18n();
 
 useHead({
   title: t("app.head.title"),

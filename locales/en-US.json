@@ -324,5 +324,17 @@
       "activateUntill": "Activated until",
       "reactivate": ". Please log in again to refresh after expiration."
     }
+  },
+  "app": {
+    "og": {
+      "head": {
+        "description": "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.",
+        "title": "Open SWU"
+      }
+    },
+    "head": {
+      "description": "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.",
+      "title": "Open SWU | Your Best SWU Tools"
+    }
   }
 }

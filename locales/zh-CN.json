@@ -324,5 +324,17 @@
       "activateUntill": "已经激活至",
       "reactivate": "。请在服务过期后重新登陆以激活继续使用。"
     }
+  },
+  "app": {
+    "og": {
+      "head": {
+        "description": "OpenSZXD 减轻了软件成本的负担，并防止学生受到专有系统的束缚，倡导教育中的道德自由。",
+        "title": "开放西大"
+      }
+    },
+    "head": {
+      "description": "OpenSZXD 减轻了软件成本的负担，并防止学生受到专有系统的束缚，倡导教育中的道德自由。",
+      "title": "开放西大 |\n您最好的 SWU 工具"
+    }
   }
 }
