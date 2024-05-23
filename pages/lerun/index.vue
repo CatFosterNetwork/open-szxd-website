@@ -287,7 +287,7 @@ const startLerun = () => {
   });
 
   socket.on("waiting", (num: any) => {
-    waiting.value = num.data.data;
+    waiting.value = num.data.data || 1;
   });
 
   socket.on("catchWindowsError", () => {
