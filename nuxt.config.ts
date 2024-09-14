@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ["@nuxt/ui-pro"],
+  app: {
+    header: {
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/swulogo.png' }]
+    },
+  },
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
