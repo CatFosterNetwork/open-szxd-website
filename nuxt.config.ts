@@ -13,9 +13,9 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "@formkit/auto-animate/nuxt",
   ],
-  sourcemap: true,
+  sourcemap: false,
   site: {
-    url: "https://open.swu.social",
+    url: "https://szxd.swu.lol",
   },
   ui: {
     icons: {},

@@ -96,12 +96,12 @@ useHead({
     {
       hid: "og:image",
       property: "og:image",
-      content: "https://open.swu.social/background.jpg",
+      content: "https://szxd.swu.lol/background.jpg",
     },
     {
       hid: "og:url",
       property: "og:url",
-      content: "https://open.swu.social",
+      content: "https://szxd.swu.lol",
     },
     {
       property: "og:locale",
@@ -109,8 +109,8 @@ useHead({
     },
   ],
   link: [
-    { rel: "icon", href: "/swulogo.png" },
-    { rel: "apple-touch-icon", href: "/swulogo.png" },
+    { rel: "icon", href: "https://szxd.swu.lol/swulogo.png" },
+    { rel: "apple-touch-icon", href: "https://szxd.swu.lol/swulogo.png" },
   ],
   htmlAttrs: {
     lang: locale.value,
