@@ -117,16 +117,15 @@ useHead({
   },
 });
 
-const title = "OpenSZXD";
-const description =
-  "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.";
+const title = t('app.head.title');
+const description = t('app.og.head.description');
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  // ogImage: "https://dashboard-template.nuxt.dev/social-card.png",
+  ogImage: "https://szxd.swu.lol/ogImage.png",
   // twitterImage: "https://dashboard-template.nuxt.dev/social-card.png",
   // twitterCard: "summary_large_image",
 });

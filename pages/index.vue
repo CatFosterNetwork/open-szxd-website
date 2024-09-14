@@ -9,7 +9,8 @@
       <switchLanguage />
     </template>
   </UHeader>
-  <view class="grid lg:grid-cols-2 lg:items-center gap-8 min-h-5/6 m-10">
+  <view class="flex w-full h-full justify-center items-center">
+    <view class="grid lg:grid-cols-2 lg:items-center gap-8 min-h-5/6 m-10">
     <view class="big-title">
       <ULandingHero
         class="whitespace-pre-wrap"
@@ -54,6 +55,7 @@
         />
       </ULandingGrid>
     </view>
+  </view>
   </view>
 </template>
 
