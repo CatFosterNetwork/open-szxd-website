@@ -33,6 +33,12 @@ const actions = [
     to: "https://github.com/CatFosterNetwork",
     target: "_blank",
   },
+  {
+    label: "Join Telegram Group",
+    icon: "i-simple-icons-telegram",
+    to: "https://t.me/+kLfUSbSYh7M2ZjQ9",
+    target: "_blank",
+  },
 ];
 
 const team = ref(teams[0]);

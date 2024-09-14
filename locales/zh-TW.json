@@ -1,0 +1,340 @@
+{
+  "homeChart": {
+    "dashboardCard": {
+      "header": "昨日用戶數量"
+    }
+  },
+  "homeCountries": {
+    "dashboardCard": {
+      "title": "宿舍排行",
+      "description": "使用自動簽到服務最多的宿舍"
+    }
+  },
+  "homeDateRangePicker": {
+    "dashboardCard": {
+      "description": "自動打卡服務",
+      "activateUntill": "激活直至",
+      "reactivate": "。\n過期後請重新登入刷新。",
+      "deactivate": "已停用。"
+    }
+  },
+  "homeSales": {
+    "sales": {
+      "1": {
+        "name": "離線支付二維碼"
+      },
+      "2": {
+        "name": "快速 SWU VPN"
+      },
+      "3": {
+        "name": "選修課程助手"
+      }
+    },
+    "dashboardCard": {
+      "title": "廣告位出租",
+      "description": "在我們的幫助下推廣您無與倫比的產品。"
+    }
+  },
+  "settings": {
+    "deleteAccountModal": {
+      "success": "帳戶已刪除",
+      "failed": "刪除帳戶失敗",
+      "dashboardModal": {
+        "title": "刪除帳戶",
+        "description": "您確定要刪除您的帳戶嗎？"
+      }
+    },
+    "general": {
+      "updateProfile": {
+        "failed": "更新個人檔案時發生錯誤",
+        "success": "個人資料已更新"
+      },
+      "dashboardPanelContent": {
+        "theme": {
+          "title": "主題",
+          "description": "自訂羅盤的外觀和風格。"
+        },
+        "language": {
+          "title": "語言",
+          "description": "更改羅盤的語言。"
+        },
+        "profile": {
+          "title": "個人資料",
+          "description": "個人資料將被修改，因此請小心您所做的更改。",
+          "username": {
+            "description": "您的使用者名稱用於登入並識別您的身分。",
+            "label": "使用者名稱"
+          },
+          "avatar": {
+            "label": "頭像",
+            "help": "JPG、GIF 或 PNG。\n最大 1MB",
+            "button": "選擇"
+          },
+          "email": {
+            "label": "電子郵件",
+            "description": "用於通知、電子郵件收據和產品更新。"
+          }
+        },
+        "button": "儲存變更"
+      },
+      "deleteAccount": {
+        "title": "刪除帳戶",
+        "description": "不想再使用我們的服務？\n您可以在此刪除您的帳戶。\n此操作不可逆轉。\n與該帳戶相關的所有資訊將永久刪除。",
+        "button": "刪除帳戶"
+      }
+    },
+    "notifications": {
+      "sections": {
+        "title": "通知頻道",
+        "description": "我們可以在哪裡通知您？",
+        "fields": {
+          "email": {
+            "label": "電子郵件",
+            "description": "接收每日電子郵件摘要。"
+          },
+          "desktop": {
+            "label": "桌面通知",
+            "description": "在您的裝置上接收通知。"
+          },
+          "wechat": {
+            "label": "微信訂閱",
+            "description": "接收騰訊微信推播通知。"
+          }
+        }
+      },
+      "toast": {
+        "email": {
+          "failed": "訂閱電子郵件通知失敗，請在設定頁面輸入您的電子郵件地址。",
+          "success": "已訂閱電子郵件通知"
+        },
+        "wechat": {
+          "failed": "訂閱微信通知失敗",
+          "success": "已訂閱微信通知"
+        }
+      }
+    }
+  },
+  "layouts": {
+    "dashboard": {
+      "links": {
+        "home": {
+          "label": "首頁",
+          "text": "首頁"
+        },
+        "dashboard": {
+          "label": "羅盤",
+          "text": "羅盤"
+        },
+        "inbox": {
+          "label": "信匣",
+          "text": "信匣"
+        },
+        "schedule": {
+          "label": "行程",
+          "text": "行程"
+        },
+        "lerun": {
+          "label": "樂潤",
+          "text": "樂潤"
+        },
+        "settings": {
+          "label": "設定",
+          "children": {
+            "general": "一般",
+            "notifications": "通知"
+          },
+          "text": "設定"
+        },
+        "purchase": {
+          "label": "購買",
+          "text": "購買"
+        }
+      },
+      "footerLinks": {
+        "inviteMsg": "【Open-SZXD】我使用的是釘釘自動簽到服務，前往 https://open.szxd.swu.social/ 免費取得！",
+        "invite": "複製邀請訊息",
+        "inviteMsgCopied": "複製了！",
+        "inviteMsgNotCopied": "複製失敗",
+        "help": "幫助"
+      },
+      "lazyUDashboardSearch": {
+        "groups": {
+          "links": {
+            "label": "訪達"
+          },
+          "contact": {
+            "label": "聯繫",
+            "commands": {
+              "label": "在 GitHub 上聯絡我們"
+            }
+          },
+          "telegram": {
+            "commands": {
+              "label": "加入我們的電報群"
+            },
+            "label": "電報"
+          }
+        }
+      }
+    }
+  },
+  "inbox": {
+    "dropdownItems": {
+      "unread": "標記為未讀",
+      "allread": "標記為已讀"
+    }
+  },
+  "lerun": {
+    "index": {
+      "toastError": "發生錯誤。\n請刷新此頁面並稍等片刻。",
+      "searched": "現在，就是你一直在等待的那一刻",
+      "windowsDie": "發生嚴重錯誤。\n請在一分鐘後重試。",
+      "openMiniProgram": "耐心是一種美德;\n偉大指日可待。",
+      "loginLerun": "新的冒險即將開始",
+      "windowsError": "發生錯誤。\n我們正在努力恢復。\n請耐心等待或稍後重試。",
+      "ready": "準備好樂跑了",
+      "start": "啟動樂跑",
+      "inProgress": "樂跑進行中",
+      "completed": "樂跑完成了",
+      "distance": "樂跑距離",
+      "time": "耗時：{min}min {sec}s",
+      "pace": "配速",
+      "calories": "這次樂跑",
+      "outOfTime": "目前時間不是有效的樂跑時間",
+      "scan": "請用微信掃描二維碼，將於 {expire} 秒後過期。",
+      "noData": "沒有數據",
+      "connecting": "正在連接...",
+      "error": "發生了一個錯誤。",
+      "loading": "載入中...",
+      "na": "樂跑現在無法使用，我們已經通知我們的工程師，他們會盡快修復這個問題",
+      "step1": "正在連接...",
+      "step2": "良好的開端是成功的一半。",
+      "step3": "配置設定以獲得更好的體驗。",
+      "step4": "有朋遠方，遠方近了。",
+      "step5": "耐心是一種美德;\n偉大指日可待。",
+      "step6": "新的冒險即將開始。",
+      "loggingIn": "正在嘗試讓您登入",
+      "loggedIn": "您已成功登入微信。\n正在繼續...",
+      "waiting": "佇列中的位置：{num}"
+    }
+  },
+  "login": {
+    "authform": {
+      "fields": {
+        "account": {
+          "label": "學校帳號",
+          "placeholder": "輸入您的帳戶",
+          "name": "使用者名稱"
+        },
+        "password": {
+          "label": "密碼",
+          "placeholder": "輸入您的密碼",
+          "name": "密碼"
+        }
+      },
+      "validate": {
+        "username": "帳號是必需的",
+        "password": "密碼是必需的"
+      },
+      "title": "歡迎回來！",
+      "description": "沒有帳戶？",
+      "goaway": "離開",
+      "forgot": "忘記密碼？",
+      "footer": "登入即表示您同意我們的",
+      "terms": "服務條款"
+    },
+    "submit": {
+      "success": "歡迎回來！",
+      "failed": "登入失敗，請檢查您的帳號或密碼！"
+    }
+  },
+  "purchase": {
+    "pricing": {
+      "free": {
+        "title": "免費",
+        "description": "體驗產品計劃，我們只提供有限服務",
+        "features": {
+          "1": "受限制的計劃任務",
+          "2": "功能有限",
+          "3": "網頁控制面板"
+        }
+      },
+      "basic": {
+        "title": "基本的",
+        "description": "包月會員，您只需支付少量費用即可享受所有高級功能",
+        "cycle": "/月",
+        "badge": "最受歡迎",
+        "button": "沒有辦法購買",
+        "features": {
+          "1": "30天無憂",
+          "2": "所有頻道的每日通知",
+          "3": "優先處理回饋",
+          "4": "解鎖所有付費功能"
+        },
+        "price": "$2333.33"
+      },
+      "premium": {
+        "title": "優質的",
+        "description": "高級年費會員，成為我們的會員，體驗前所未有的自由，打破一切學校限制",
+        "cycle": "/年",
+        "badge": "最具性價比",
+        "button": "你買不起",
+        "features": {
+          "1": "365天無憂無慮",
+          "2": "客製化專屬功能",
+          "3": "成為所有功能的測試版會員",
+          "4": "線上人工服務"
+        },
+        "price": "$6666.66"
+      }
+    }
+  },
+  "header": {
+    "links": {
+      "home": "首頁",
+      "dashboard": "羅盤",
+      "purchase": "購買"
+    }
+  },
+  "index": {
+    "landing": {
+      "hero": {
+        "title": "保持自由\n不受控制",
+        "description": "與我們一起\n見證您的夢想在您眼前實現。",
+        "links": {
+          "label": "開始使用"
+        }
+      },
+      "cards": {
+        "visualization": {
+          "title": "高視覺化",
+          "description": "將資料視覺化，讓您清楚了解釘釘在西南大學的功能。"
+        },
+        "maintenance": {
+          "title": "專業維護",
+          "description": "我們的專案由熟練的專家維護。\n可靠性和穩定性在同類產品中遙遙領先。"
+        },
+        "clockin": {
+          "title": "自動打卡",
+          "description": "使用釘釘API自動進行日常健康打卡和查寢打卡，讓您不再擔心錯過、輔導員生氣、影響學習。"
+        },
+        "easy": {
+          "title": "方便使用",
+          "description": "介面簡潔易用，操作簡單方便。"
+        }
+      }
+    }
+  },
+  "app": {
+    "og": {
+      "head": {
+        "description": "OpenSZXD 減輕了軟體成本的負擔，並防止學生受到專有系統的束縛，倡導教育中的道德自由。",
+        "title": "開放西南大學"
+      }
+    },
+    "head": {
+      "description": "OpenSZXD 減輕了軟體成本的負擔，並防止學生受到專有系統的束縛，倡導教育中的道德自由。",
+      "title": "開放SWU |\n您最好的 SWU 工具"
+    }
+  }
+}

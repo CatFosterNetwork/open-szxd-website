@@ -24,7 +24,6 @@
           "title": "Professional Maintenance",
           "description": "Our projects are maintained by skilled experts. The reliability and stability are far ahead among similar products."
         },
-
         "clockin": {
           "title": "Automatic Clock-in",
           "description": "Use DingTalk API for automatic daily health check-in and bed check-in, so you no longer have to worry about missing out, the counselor's anger, and affecting your study."
@@ -107,6 +106,40 @@
       }
     }
   },
+  "lerun": {
+    "index": {
+      "noData": "No data",
+      "step1": "Connecting...",
+      "step2": "A good start is half the battle.",
+      "step3": "Configuring settings for a better experience.",
+      "step4": "Having a friend afar brings a distant land near.",
+      "step5": "Patience is a virtue; greatness is just around the corner.",
+      "step6": "A new adventure is about to begin.",
+      "outOfTime": "Current time is not a valid LeRun time",
+      "ready": "Ready to auto LeRun",
+      "start": "Start LeRun",
+      "inProgress": "LeRun in progress",
+      "completed": "LeRun completed",
+      "na": "LeRun is not available now, we have notified our engineers, they will fix this problem as soon as possible",
+      "error": "An error occurred, please try again later",
+      "connecting": "Connecting...",
+      "loading": "Loading...",
+      "loggingIn": "Attempting to log you in. Please wait for the result.",
+      "toastError": "An error occerred. Please refresh this page and wait for a moment.",
+      "windowsError": "An error occurred. We are trying to recover. Please be patient or try again later.",
+      "scan": "Please scan the QR code by WeChat, it will expire in {expire} seconds.",
+      "openMiniProgram": "Patience is a virtue; greatness is just around the corner.",
+      "windowsDie": "A serious error occurred. Please try again in one minute.",
+      "loginLerun": "A new adventure is about to begin.",
+      "searched": "And now, the moment you've been waiting for",
+      "distance": "LeRun Distance",
+      "time": "Time consuming: {min}min {sec}s",
+      "calories": "This fun run is ",
+      "pace": "Pace",
+      "loggedIn": "You have successfully logged in to WeChat. Continuing...",
+      "waiting": "Position in queue: {num}"
+    }
+  },
   "layouts": {
     "dashboard": {
       "links": {
@@ -129,6 +162,10 @@
         "schedule": {
           "label": "Schedule",
           "text": "Schedule"
+        },
+        "lerun": {
+          "label": "LeRun",
+          "text": "LeRun"
         },
         "settings": {
           "label": "Settings",
@@ -156,6 +193,12 @@
             "commands": {
               "label": "Contact us on GitHub"
             }
+          },
+          "telegram": {
+            "label": "Telegram",
+            "commands": {
+              "label": "Join our Telegram group"
+            }
           }
         }
       }
@@ -163,7 +206,7 @@
   },
   "homeChart": {
     "dashboardCard": {
-      "header": "Number of users yesterday"
+      "header": "Users statistic yesterday"
     }
   },
   "homeCountries": {
@@ -280,6 +323,18 @@
       "deactivate": "Deactivated.",
       "activateUntill": "Activated until",
       "reactivate": ". Please log in again to refresh after expiration."
+    }
+  },
+  "app": {
+    "og": {
+      "head": {
+        "description": "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.",
+        "title": "Open SWU"
+      }
+    },
+    "head": {
+      "description": "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.",
+      "title": "Open SWU | Your Best SWU Tools"
     }
   }
 }

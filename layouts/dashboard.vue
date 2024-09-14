@@ -61,6 +61,16 @@ const links = computed(() => {
       },
     },
     {
+      id: "lerun",
+      label: t("layouts.dashboard.links.lerun.label"),
+      icon: "i-material-symbols-directions-run-rounded",
+      to: localePath("/lerun"),
+      tooltip: {
+        text: t("layouts.dashboard.links.lerun.text"),
+        shortcuts: ["G", "L"],
+      },
+    },
+    {
       id: "settings",
       label: t("layouts.dashboard.links.settings.label"),
       to: localePath("/settings"),
@@ -160,6 +170,16 @@ const groups = [
         icon: "i-simple-icons-github",
         click: () => {
           window.open(`https://github.com/CatFosterNetwork`, "_blank");
+        },
+      },
+      {
+        id: "telegram",
+        label: t(
+          "layouts.dashboard.lazyUDashboardSearch.groups.telegram.commands.label"
+        ),
+        icon: "i-simple-icons-telegram",
+        click: () => {
+          window.open(`https://t.me/+kLfUSbSYh7M2ZjQ9`, "_blank");
         },
       },
     ],

@@ -29,6 +29,12 @@ const links = [
     target: "_blank",
   },
   {
+    label: "Join Telegram Group",
+    icon: "i-simple-icons-telegram",
+    to: "https://t.me/+kLfUSbSYh7M2ZjQ9",
+    target: "_blank",
+  },
+  {
     label: "Buy Open-SZXD Pro",
     icon: "i-heroicons-credit-card",
     to: localePath("/purchase"),

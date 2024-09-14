@@ -2,28 +2,67 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ["@nuxt/ui-pro"],
-  modules: ["@nuxt/content", "@nuxt/ui", "@nuxt/image", "@nuxtjs/i18n"],
+  modules: [
+    "@nuxt/content",
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@nuxtjs/i18n",
+    "nuxt-icon",
+    "nuxt-socket-io",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/seo",
+    "@formkit/auto-animate/nuxt",
+  ],
+  sourcemap: true,
+  site: {
+    url: "https://open.swu.social",
+  },
   ui: {
-    icons: ["heroicons", "simple-icons"],
+    icons: {},
     safelistColors: ["primary", "red", "orange", "green"],
   },
   i18n: {
     langDir: "locales/",
     detectBrowserLanguage: false,
     strategy: "prefix_except_default",
-    defaultLocale: "en",
-    vueI18n:"./i18n.config.ts",
+    defaultLocale: "en-US",
+    vueI18n: "./i18n.config.ts",
     locales: [
       {
-        code: "zh",
+        code: "zh-CN",
         name: "简体中文",
-        file: "zh"
+        file: "zh-CN",
       },
       {
-        code: "en",
+        code: "zh-TW",
+        name: "繁體中文",
+        file: "zh-TW",
+      },
+      {
+        code: "ja-JP",
+        name: "日本語",
+        file: "ja-JP",
+      },
+      {
+        code: "ru-RU",
+        name: "Русский",
+        file: "ru-RU",
+      },
+      {
+        code: "en-US",
         name: "English",
-        file: "en"
+        file: "en-US",
       },
     ],
+  },
+  colorMode: {
+    preference: "dark", // default value of $colorMode.preference
+    fallback: "dark", // fallback value if not system preference found
+    hid: "nuxt-color-mode-script",
+    globalName: "__NUXT_COLOR_MODE__",
+    componentName: "ColorScheme",
+    classPrefix: "",
+    classSuffix: "-mode",
+    storageKey: "nuxt-color-mode",
   },
 });

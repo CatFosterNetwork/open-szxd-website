@@ -53,20 +53,67 @@
 
 <script setup lang="ts">
 const colorMode = useColorMode();
+colorMode.preference = "dark";
 
 const color = computed(() =>
   colorMode.value === "dark" ? "#111827" : "white"
 );
 
+const { locale, t } = useI18n();
+
 useHead({
+  title: t("app.head.title"),
   meta: [
     { charset: "utf-8" },
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     { key: "theme-color", name: "theme-color", content: color },
+    // { name: "baidu-site-verification", content: "codeva-5bhYH6E1wP" },
+    // { name: "msvalidate.01", content: "A1770F9DC0579EB104659A67EF158DF3" },
+    {
+      "http-equiv": "content-security-policy",
+      content: "upgrade-insecure-requests",
+    },
+    {
+      hid: "description",
+      name: "description",
+      content: t("app.head.description"),
+    },
+    {
+      hid: "og:title",
+      property: "og:title",
+      content: t("app.og.head.title"),
+    },
+    {
+      hid: "og:description",
+      property: "og:description",
+      content: t("app.og.head.description"),
+    },
+    {
+      hid: "og:type",
+      property: "og:type",
+      content: "website",
+    },
+    {
+      hid: "og:image",
+      property: "og:image",
+      content: "https://open.swu.social/background.jpg",
+    },
+    {
+      hid: "og:url",
+      property: "og:url",
+      content: "https://open.swu.social",
+    },
+    {
+      property: "og:locale",
+      content: locale.value,
+    },
   ],
-  link: [{ rel: "icon", href: "/swulogo.png" }, { rel: "apple-touch-icon", href: "/swulogo.png" }],
+  link: [
+    { rel: "icon", href: "/swulogo.png" },
+    { rel: "apple-touch-icon", href: "/swulogo.png" },
+  ],
   htmlAttrs: {
-    lang: "en",
+    lang: locale.value,
   },
 });
 

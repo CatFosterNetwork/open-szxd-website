@@ -24,7 +24,6 @@
           "title": "专业维护",
           "description": "我们的项目由该领域的的权威专家维护。可靠性和稳定性在同类产品中遥遥领先。"
         },
-
         "clockin": {
           "title": "自动打卡",
           "description": "使用钉钉API进行自动日常健康打卡和查寝打卡，您再也不用再担心错过签到惹辅导员生气、在外学习无暇顾及于此了。"
@@ -47,11 +46,13 @@
       "fields": {
         "account": {
           "label": "校园网账号",
-          "placeholder": "请输入您的校园网账号"
+          "placeholder": "请输入您的校园网账号",
+          "name": "用户名"
         },
         "password": {
           "label": "密码",
-          "placeholder": "请输入您的密码"
+          "placeholder": "请输入您的密码",
+          "name": "密码"
         }
       },
       "validate": {
@@ -60,8 +61,8 @@
       }
     },
     "submit": {
-      "success": "登陆成功！",
-      "failed": "登陆失败！请检查您的账号和密码是否正确。"
+      "success": "登录成功！",
+      "failed": "登录失败！请检查您的账号和密码是否正确。"
     }
   },
   "purchase": {
@@ -105,6 +106,40 @@
       }
     }
   },
+  "lerun": {
+    "index": {
+      "noData": "暂无数据",
+      "step1": "正在连接...",
+      "step2": "好的开始是成功的一半。",
+      "step3": "为了更好的用户体验，正在配置设置。",
+      "step4": "海内存知己，天涯若比邻。",
+      "step5": "保持耐心，精彩即将呈现。",
+      "step6": "新的冒险即将开始。",
+      "outOfTime": "当前时段不可乐跑",
+      "ready": "准备就绪",
+      "start": "开始乐跑",
+      "inProgress": "乐跑进行中",
+      "completed": "今日乐跑已完成",
+      "na": "自动乐跑暂时不可用，我们已经通知了我们的工程师，他们会尽快解决这个问题",
+      "error": "出现了错误，请稍后再试",
+      "connecting": "正在连接...",
+      "loading": "数据加载中...",
+      "loggingIn": "正在为你登录，请等待结果状态",
+      "toastError": "发生了内部错误。请刷新页面或等待。",
+      "windowsError": "出现了错误，我们正在尝试恢复。请耐心等待或者稍后重试。",
+      "scan": "请使用微信扫描此二维码，二维码将在 {expire} 秒后过期",
+      "openMiniProgram": "保持耐心，精彩即将呈现。",
+      "windowsDie": "出现了严重错误，请一分钟后重试！",
+      "loginLerun": "新的冒险即将开始",
+      "searched": "现在，你一直在等待的那一刻",
+      "distance": "乐跑距离",
+      "time": "本次耗时 {min} 分 {sec} 秒",
+      "calories": "本次乐跑",
+      "pace": "本次配速",
+      "loggedIn": "您已成功登录微信。\n正在继续...",
+      "waiting": "队列中的位置：{num}"
+    }
+  },
   "layouts": {
     "dashboard": {
       "links": {
@@ -128,6 +163,10 @@
           "label": "安排计划",
           "text": "安排计划"
         },
+        "lerun": {
+          "label": "自动乐跑",
+          "text": "自动乐跑"
+        },
         "settings": {
           "label": "设置",
           "children": {
@@ -141,7 +180,8 @@
         "invite": "复制分享链接",
         "help": "帮助中心",
         "inviteMsg": "【开放数智西大】我正在使用钉钉的自动打卡服务，访问 https://open.szxd.swu.social/ 免费获取！",
-        "inviteMsgCopied": "已复制！"
+        "inviteMsgCopied": "已复制！",
+        "inviteMsgNotCopied": "复制失败"
       },
       "lazyUDashboardSearch": {
         "groups": {
@@ -152,6 +192,12 @@
             "label": "联系",
             "commands": {
               "label": "在 GitHub 上联系我们"
+            }
+          },
+          "telegram": {
+            "label": "Telegram",
+            "commands": {
+              "label": "加入我们的 Telegram 频道"
             }
           }
         }
@@ -277,6 +323,18 @@
       "deactivate": "尚未激活。",
       "activateUntill": "已经激活至",
       "reactivate": "。请在服务过期后重新登陆以激活继续使用。"
+    }
+  },
+  "app": {
+    "og": {
+      "head": {
+        "description": "OpenSZXD 减轻了软件成本的负担，并防止学生受到专有系统的束缚，倡导教育中的道德自由。",
+        "title": "开放西大"
+      }
+    },
+    "head": {
+      "description": "OpenSZXD 减轻了软件成本的负担，并防止学生受到专有系统的束缚，倡导教育中的道德自由。",
+      "title": "开放西大 |\n您最好的 SWU 工具"
     }
   }
 }

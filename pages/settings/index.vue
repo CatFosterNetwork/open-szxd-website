@@ -74,28 +74,58 @@ async function onSubmit(event: FormSubmitEvent<any>) {
   }
 }
 
+const { setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const { locale } = useI18n();
 const languageLabel = ref<string>("");
-if (locale.value === "en") {
+if (locale.value === "en-US") {
   languageLabel.value = "English";
-} else if (locale.value === "zh") {
+} else if (locale.value === "zh-CN") {
   languageLabel.value = "简体中文";
+} else if (locale.value === "zh-TW") {
+  languageLabel.value = "繁體中文";
+} else if (locale.value === "ja-JP") {
+  languageLabel.value = "日本語";
+} else if (locale.value === "ru-RU") {
+  languageLabel.value = "Русский";
 }
 
 const availableLocales = [
   [
     {
       label: "English",
-      to: switchLocalePath("en"),
+      to: switchLocalePath("en-US"),
+      click: () => setLocale("en-US"),
     },
   ],
   [
     {
       label: "简体中文",
-      to: switchLocalePath("zh"),
+      to: switchLocalePath("zh-CN"),
+      click: () => setLocale("zh-CN"),
     },
   ],
+  [
+    {
+      label: "繁體中文",
+      to: switchLocalePath("zh-TW"),
+      click: () => setLocale("zh-TW"),
+    },
+  ],
+  [
+    {
+      label: "日本語",
+      to: switchLocalePath("ja-JP"),
+      click: () => setLocale("ja-JP"),
+    },
+  ],
+  [
+    {
+      label: "Русский",
+      to: switchLocalePath("ru-RU"),
+      click: () => setLocale("ru-RU"),
+    },
+  ]
 ];
 </script>
 

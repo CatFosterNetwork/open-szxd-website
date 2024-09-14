@@ -1,0 +1,340 @@
+{
+  "homeChart": {
+    "dashboardCard": {
+      "header": "昨日のユーザー数"
+    }
+  },
+  "homeCountries": {
+    "dashboardCard": {
+      "title": "寮ランキング",
+      "description": "自動チェックインサービスを最も多く利用している寮"
+    }
+  },
+  "homeDateRangePicker": {
+    "dashboardCard": {
+      "description": "自動チェックインが設定されました",
+      "activateUntill": "までアクティブ化される",
+      "reactivate": "。\n有効期限が切れた後は、再度ログインして更新してください。",
+      "deactivate": "無効化されました。"
+    }
+  },
+  "homeSales": {
+    "sales": {
+      "1": {
+        "name": "オフライン決済用QRコード"
+      },
+      "2": {
+        "name": "高速 SWU VPN"
+      },
+      "3": {
+        "name": "選択コースアシスタント"
+      }
+    },
+    "dashboardCard": {
+      "title": "広告スペースのレンタル",
+      "description": "私たちの支援を利用して、比類のない製品を宣伝してください。"
+    }
+  },
+  "settings": {
+    "deleteAccountModal": {
+      "success": "アカウントが削除されました",
+      "failed": "アカウントの削除に失敗しました",
+      "dashboardModal": {
+        "title": "アカウントを削除する",
+        "description": "アカウントを削除してもよろしいですか?"
+      }
+    },
+    "general": {
+      "updateProfile": {
+        "failed": "プロファイルの更新中にエラーが発生しました",
+        "success": "プロフィール更新"
+      },
+      "dashboardPanelContent": {
+        "theme": {
+          "title": "テーマ",
+          "description": "ダッシュボードの外観と操作性をカスタマイズします。"
+        },
+        "language": {
+          "title": "言語",
+          "description": "ダッシュボードの言語を変更します。"
+        },
+        "profile": {
+          "title": "プロフィール",
+          "description": "この情報は変更されるので、変更内容に注意してください。",
+          "username": {
+            "label": "ユーザー名",
+            "description": "ユーザー名は、ログインしてあなたを識別するために使用されます。"
+          },
+          "avatar": {
+            "label": "アバター",
+            "help": "JPG、GIF、または PNG。\n最大1MB",
+            "button": "選ぶ"
+          },
+          "email": {
+            "label": "Eメール",
+            "description": "電子メールの受信や製品の更新などの通知に使用されます。"
+          }
+        },
+        "button": "変更内容を保存"
+      },
+      "deleteAccount": {
+        "title": "アカウントを削除する",
+        "description": "もう当社のサービスを使用したくないですか?\nここでアカウントを削除できます。\nこの操作は元に戻すことはできません。\nこのアカウントに関連するすべての情報は完全に削除されます。",
+        "button": "アカウントを削除する"
+      }
+    },
+    "notifications": {
+      "sections": {
+        "title": "通知チャネル",
+        "description": "どこに通知できますか?",
+        "fields": {
+          "email": {
+            "label": "Eメール",
+            "description": "毎日の電子メールのダイジェストを受け取ります。"
+          },
+          "desktop": {
+            "label": "デスクトップ通知",
+            "description": "デバイスで通知を受信します。"
+          },
+          "wechat": {
+            "label": "WeChatの購読",
+            "description": "Tecent WeChat でプッシュ通知を受け取ります。"
+          }
+        }
+      },
+      "toast": {
+        "email": {
+          "failed": "電子メール通知を購読できませんでした。設定ページで電子メール アドレスを入力してください。",
+          "success": "メール通知を購読しました"
+        },
+        "wechat": {
+          "failed": "WeChat通知の購読に失敗しました",
+          "success": "WeChat通知を購読しました"
+        }
+      }
+    }
+  },
+  "layouts": {
+    "dashboard": {
+      "links": {
+        "home": {
+          "label": "ホームページ",
+          "text": "ホームページ"
+        },
+        "dashboard": {
+          "label": "ダッシュボード",
+          "text": "ダッシュボード"
+        },
+        "inbox": {
+          "label": "受信箱",
+          "text": "受信箱"
+        },
+        "schedule": {
+          "label": "スケジュール",
+          "text": "スケジュール"
+        },
+        "lerun": {
+          "label": "ルラン",
+          "text": "ルラン"
+        },
+        "settings": {
+          "label": "設定",
+          "children": {
+            "general": "一般的な",
+            "notifications": "通知"
+          },
+          "text": "設定"
+        },
+        "purchase": {
+          "label": "購入",
+          "text": "購入"
+        }
+      },
+      "footerLinks": {
+        "inviteMsg": "【Open-SZXD】DingTalk の自動チェックイン サービスを使用しています。https://open.szxd.swu.social/ にアクセスして無料で利用してください。",
+        "invite": "招待メッセージをコピー",
+        "inviteMsgCopied": "コピーしました！",
+        "inviteMsgNotCopied": "コピーに失敗しました",
+        "help": "ヘルプ"
+      },
+      "lazyUDashboardSearch": {
+        "groups": {
+          "links": {
+            "label": "に行く"
+          },
+          "contact": {
+            "label": "接続する",
+            "commands": {
+              "label": "GitHub でお問い合わせください"
+            }
+          },
+          "telegram": {
+            "commands": {
+              "label": "テレグラムグループに参加してください"
+            },
+            "label": "電報"
+          }
+        }
+      }
+    }
+  },
+  "inbox": {
+    "dropdownItems": {
+      "unread": "未読としてマーク",
+      "allread": "すべて既読としてマークする"
+    }
+  },
+  "lerun": {
+    "index": {
+      "toastError": "エラーが発生しました。\nこのページを更新して、しばらくお待ちください。",
+      "searched": "そして今、あなたが待っていた瞬間です",
+      "windowsDie": "重大なエラーが発生しました。 \n1分後にもう一度試してください。",
+      "openMiniProgram": "忍耐は美徳;\n偉大さはすぐそこまで来ています。",
+      "loginLerun": "新たな冒険が始まろうとしています。",
+      "windowsError": "エラーが発生しました。\n私たちは回復に努めています。\nしばらくお待ちいただくか、後でもう一度お試しください。",
+      "ready": "自動 LeRun の準備ができました",
+      "start": "ルランを開始する",
+      "inProgress": "LeRun進行中",
+      "completed": "ルラン完了",
+      "distance": "ルラン距離",
+      "time": "所要時間: {min}min {sec}s",
+      "pace": "ペース",
+      "calories": "このファンランは、",
+      "outOfTime": "現在の時刻は有効な LeRun 時刻ではありません",
+      "scan": "WeChat で QR コードをスキャンしてください。有効期限は {expire} 秒後に切れます。",
+      "noData": "データなし",
+      "connecting": "接続中...",
+      "error": "エラーが発生しました。後でもう一度お試しください",
+      "loading": "読み込み中...",
+      "na": "LeRun は現在利用できません。エンジニアに通知しました。できるだけ早くこの問題を解決します。",
+      "step1": "接続中...",
+      "step2": "良いスタートが切れれば戦いは半分終わったようなものです。",
+      "step3": "より良いエクスペリエンスを実現するための設定を構成します。",
+      "step4": "遠くに友人がいると、遠い土地も近くなります。",
+      "step5": "忍耐は美徳;\n偉大さはすぐそこまで来ています。",
+      "step6": "新たな冒険が始まろうとしています。",
+      "loggingIn": "ログインを試みています。結果をお待ちください。",
+      "loggedIn": "WeChat に正常にログインしました。\n続きます...",
+      "waiting": "キュー内の位置: {num}"
+    }
+  },
+  "login": {
+    "authform": {
+      "fields": {
+        "account": {
+          "label": "学校アカウント",
+          "placeholder": "アカウントを入力してください",
+          "name": "ユーザー名"
+        },
+        "password": {
+          "label": "パスワード",
+          "placeholder": "パスワードを入力してください",
+          "name": "パスワード"
+        }
+      },
+      "validate": {
+        "username": "アカウントが必要です",
+        "password": "パスワードが必要"
+      },
+      "title": "おかえり！",
+      "description": "アカウントをお持ちでない場合は、",
+      "goaway": "どこかに行って",
+      "forgot": "パスワードをお忘れですか？",
+      "footer": "サインインすると、次のことに同意したことになります",
+      "terms": "利用規約"
+    },
+    "submit": {
+      "success": "おかえり！",
+      "failed": "ログインに失敗しました。アカ​​ウントまたはパスワードを確認してください。"
+    }
+  },
+  "purchase": {
+    "pricing": {
+      "free": {
+        "title": "無料",
+        "description": "体験商品プランは限定的なサービスのみを提供します",
+        "features": {
+          "1": "制限されたスケジュールされたタスク",
+          "2": "機能が制限されている",
+          "3": "Webコントロールパネル"
+        }
+      },
+      "basic": {
+        "title": "基本",
+        "description": "月額メンバーシップでは、わずかな料金を支払うだけで、すべての高度な機能をお楽しみいただけます",
+        "cycle": "/月",
+        "badge": "最も人気のある",
+        "button": "買う方法がない",
+        "features": {
+          "1": "30日間は心配いりません",
+          "2": "すべてのチャネルからの毎日の通知",
+          "3": "フィードバックを優先する",
+          "4": "すべての有料機能のロックを解除する"
+        },
+        "price": "$2333.33"
+      },
+      "premium": {
+        "title": "プレミアム",
+        "description": "プレミアム年間有料メンバーシップ、私たちのメンバーになって、前例のない自由を体験し、学校の制限をすべて破りましょう",
+        "cycle": "/年",
+        "badge": "最もコスト効率が高い",
+        "button": "余裕がありません",
+        "features": {
+          "1": "365日安心",
+          "2": "専用機能のカスタマイズ",
+          "3": "すべての機能を利用できるベータ メンバーになる",
+          "4": "オンラインヒューマンサービス"
+        },
+        "price": "$6666.66"
+      }
+    }
+  },
+  "header": {
+    "links": {
+      "home": "ホームページ",
+      "dashboard": "ダッシュボード",
+      "purchase": "購入"
+    }
+  },
+  "index": {
+    "landing": {
+      "hero": {
+        "title": "自由を保ち\n支配されないでください",
+        "description": "私たちと一緒に\nあなたの夢が目の前で実現するのを見てください。",
+        "links": {
+          "label": "始めましょう"
+        }
+      },
+      "cards": {
+        "visualization": {
+          "title": "高度な可視化",
+          "description": "データを視覚化して、SWU の DingTalk の機能を明確に理解できるようにします。"
+        },
+        "maintenance": {
+          "title": "プロフェッショナルなメンテナンス",
+          "description": "私たちのプロジェクトは熟練した専門家によって維持されます。\n信頼性と安定性は、同様の製品の中ではるかに優れています。"
+        },
+        "clockin": {
+          "title": "自動打刻",
+          "description": "DingTalk API を使用して、毎日の健康チェックインとベッドチェックインを自動的に行うため、見逃したり、カウンセラーの怒りを買ったり、学習に影響を与えたりすることを心配する必要がなくなります。"
+        },
+        "easy": {
+          "title": "使いやすい",
+          "description": "インターフェースはシンプルで使いやすく、操作もシンプルで便利です。"
+        }
+      }
+    }
+  },
+  "app": {
+    "og": {
+      "head": {
+        "description": "OpenSZXD はソフトウェア コストの負担を軽減し、学生が独自のシステムに束縛されるのを防ぎ、教育における倫理的自由を擁護します。",
+        "title": "SWUを開く"
+      }
+    },
+    "head": {
+      "description": "OpenSZXD はソフトウェア コストの負担を軽減し、学生が独自のシステムに束縛されるのを防ぎ、教育における倫理的自由を擁護します。",
+      "title": "SWUを開く |\n最適な SWU ツール"
+    }
+  }
+}

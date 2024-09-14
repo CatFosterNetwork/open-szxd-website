@@ -1,6 +1,6 @@
 export default {
     fallbackLocale: {
-      default: ['en']
+      default: ['en-US']
     }
   }
   
