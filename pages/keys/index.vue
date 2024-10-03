@@ -207,7 +207,7 @@ const print = () => {
         </UDashboardNavbar>
 
         <!-- ~/components/keys/KeysList.vue -->
-        <KeysList />
+        <KeyList />
       </UDashboardPanel>
 
       <UDashboardPanel id="keys" class="flex-1 min-w-[600px]">
