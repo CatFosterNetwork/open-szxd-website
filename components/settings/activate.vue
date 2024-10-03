@@ -32,7 +32,7 @@
       <view class="flex flex-col mt-4">
         <view class="flex items-center justify-between">
           <NuxtImg
-            src="/swuLogo.png"
+            src="/swulogo.png"
             width="48"
             height="48"
             alt="Open SZXD Logo"
@@ -52,7 +52,7 @@
       <view class="flex flex-col mt-4">
         <view class="flex items-center justify-between">
           <NuxtImg
-            src="/swuLogo.png"
+            src="/swulogo.png"
             width="48"
             height="48"
             alt="Open SZXD Logo"
@@ -72,8 +72,10 @@
     </view>
     <UDivider />
     <view class="about">
-      <Icon name="ph:info-fill" size="2rem" />
-      <view class="text-2xl font-bold ml-2">{{ $t('settings.activate.about_us') }}</view>
+      <view class="flex flex-row text-center justify-center items-center">
+        <Icon name="ph:info-fill" size="2rem" />
+        <view class="text-2xl font-bold ml-2">{{ $t('settings.activate.about_us') }}</view>
+      </view>
       <div class="text-sm text-gray-500 mt-2 ml-2">
         {{ $t('settings.activate.feature') }}
       </div>
