@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === "development") {
   baseUrl = "http://redmiax6s.lan:8080/api";
 }
 else {
-  baseUrl = "https://open.szxd.swu.social/api";
+  baseUrl = "https://szxd.swu.lol/api";
 
 }
 

@@ -96,12 +96,12 @@ useHead({
     {
       hid: "og:image",
       property: "og:image",
-      content: "https://open.swu.social/background.jpg",
+      content: "https://szxd.swu.lol/background.jpg",
     },
     {
       hid: "og:url",
       property: "og:url",
-      content: "https://open.swu.social",
+      content: "https://szxd.swu.lol",
     },
     {
       property: "og:locale",
@@ -109,24 +109,23 @@ useHead({
     },
   ],
   link: [
-    { rel: "icon", href: "/swulogo.png" },
-    { rel: "apple-touch-icon", href: "/swulogo.png" },
+    { rel: "icon", href: "https://szxd.swu.lol/swulogo.png" },
+    { rel: "apple-touch-icon", href: "https://szxd.swu.lol/swulogo.png" },
   ],
   htmlAttrs: {
     lang: locale.value,
   },
 });
 
-const title = "OpenSZXD";
-const description =
-  "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.";
+const title = t('app.head.title');
+const description = t('app.og.head.description');
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  // ogImage: "https://dashboard-template.nuxt.dev/social-card.png",
+  ogImage: "https://szxd.swu.lol/ogImage.png",
   // twitterImage: "https://dashboard-template.nuxt.dev/social-card.png",
   // twitterCard: "summary_large_image",
 });

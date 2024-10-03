@@ -331,7 +331,7 @@ const { locale } = useI18n();
             color: gray;
             mso-ansi-language: EN-US;
           "
-          ><a href="open.szxd.swu.social">open.szxd.swu.social</a></span
+          ><a href="szxd.swu.lol">szxd.swu.lol</a></span
         ></b
       ><span
         style="

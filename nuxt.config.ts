@@ -1,7 +1,20 @@
+/*
+ * Every line of code is my tear
+ * Every tear is you
+ */
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ["@nuxt/ui-pro"],
+  app: {
+    header: {
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/swulogo.png' }]
+    },
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    }
+  },
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
@@ -13,9 +26,9 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "@formkit/auto-animate/nuxt",
   ],
-  sourcemap: true,
+  sourcemap: false,
   site: {
-    url: "https://open.swu.social",
+    url: "https://szxd.swu.lol",
   },
   ui: {
     icons: {},

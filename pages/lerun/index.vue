@@ -3,7 +3,7 @@ import Api from "~/api/api";
 checkLogin();
 
 const base64 = ref<string>("");
-const serverUrl = ref<string>("wss://open.szxd.swu.social/api");
+const serverUrl = ref<string>("wss://szxd.swu.lol/api");
 const theme = useColorMode().value;
 const progress = ref<number | null>(null);
 const { t } = useI18n();
@@ -378,7 +378,7 @@ onUnmounted(() => {
                 </view>
                 <view v-if="isMapShowed" class="flex justify-center mt-2">
                   <NuxtImg
-                    src="https://open.szxd.swu.social/playground_2nd.PNG"
+                    src="https://szxd.swu.lol/playground_2nd.PNG"
                     alt="Map"
                   />
                 </view>
