@@ -2,7 +2,7 @@
 import Api from "~/api/api";
 const { t } = useI18n();
 
-const types: any = [];
+const types = ref<any>([]);
 const valid_time = computed(() => {
   if (selected1.value == "打卡") {
     return ["一学期", "一学年", "永久"]
@@ -180,8 +180,9 @@ const { pending } = await useAsyncData<void>(
     user.value = res.data.data;
     if (user.value) {
       if (user.value.is_admin) {
-        types.push("打卡");
-        types.push("乐跑");
+        types.value.push("打卡");
+        types.value.push("乐跑");
+        types.value.push("会员")
       } else if (user.value.is_reseller) {
         
       }
