@@ -159,6 +159,14 @@ const simulateProgress = () => {
 };
 
 const startNewLerun = () => {
+  if (user.value.lerun_remained <= 0) {
+    toast.add({
+      title: t("lerun.index.toast.remained_Insufficient"),
+      color: "red",
+    });
+    return
+  }
+
   start.value = true;
   status.value = 0;
   
@@ -482,9 +490,9 @@ onUnmounted(() => {
             </view>
           </template>
         </UDashboardNavbar>
-        <view class="flex justify-center h-full" v-auto-animate>
+        <view class="flex justify-center w-full h-full" v-auto-animate>
           
-          <view v-if="New" v-auto-animate class="flex justify-center h-full">
+          <view v-if="New" v-auto-animate class="flex justify-center w-full h-full">
             <view class="flex w-full h-full justify-center items-center flex-col">
               <view
                 v-if="status == 1"
@@ -677,7 +685,7 @@ onUnmounted(() => {
               </view>
             </view>
           </view>
-          <view v-else v-auto-animate class="flex justify-center h-full">
+          <view v-else v-auto-animate class="flex justify-center w-full h-full">
             <view
               v-if="status == 1"
               class="flex justify-center items-center h-full"

@@ -237,7 +237,10 @@
       "old": "古い",
       "remain": "残り時間: {num}",
       "new_desc": "多くのエラーが発生することなく、タスクを瞬時に完了します",
-      "new_ready": "LeRun の新バージョンが完成しました"
+      "new_ready": "LeRun の新バージョンが完成しました",
+      "toast": {
+        "remained_Insufficient": "ルラン残高が不足しています"
+      }
     }
   },
   "login": {

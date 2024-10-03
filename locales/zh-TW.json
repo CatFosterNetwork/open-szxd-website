@@ -237,7 +237,10 @@
       "old": "老的",
       "remain": "剩餘次數：{num}",
       "new_desc": "頃刻之間完成任務，不會遇到很多錯誤",
-      "new_ready": "新版樂跑已準備就緒"
+      "new_ready": "新版樂跑已準備就緒",
+      "toast": {
+        "remained_Insufficient": "您的樂跑次數餘額不足"
+      }
     }
   },
   "login": {

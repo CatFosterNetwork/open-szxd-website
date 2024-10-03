@@ -142,7 +142,10 @@
       "old": "Old",
       "remain": "Remaining times: {num}",
       "new_desc": "Complete tasks in a flash, without encountering many errors",
-      "new_ready": "The new version of LeRun is ready"
+      "new_ready": "The new version of LeRun is ready",
+      "toast": {
+        "remained_Insufficient": "Your LeRun Balance Is Insufficient"
+      }
     }
   },
   "layouts": {

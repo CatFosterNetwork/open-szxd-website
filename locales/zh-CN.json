@@ -142,7 +142,10 @@
       "old": "老的",
       "remain": "剩余次数：{num}",
       "new_desc": "瞬间完成任务，不会遇到很多错误",
-      "new_ready": "新版本乐跑已准备就绪"
+      "new_ready": "新版本乐跑已准备就绪",
+      "toast": {
+        "remained_Insufficient": "您的乐跑次数余额不足"
+      }
     }
   },
   "layouts": {
