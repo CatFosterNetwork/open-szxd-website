@@ -1,6 +1,6 @@
 <template>
   <view
-    class="info space-y-4 flex flex-col dark:bg-slate-950/45 p-4 rounded-lg w-full mx-auto"
+    class="info space-y-4 flex flex-col rounded-lg w-full mx-auto"
   >
     <view class="promo-activation flex flex-col w-full">
       <view class="flex flex-row items-center justify-start">
@@ -32,7 +32,7 @@
       <view class="flex flex-col mt-4">
         <view class="flex items-center justify-between">
           <NuxtImg
-            src="https://szxd.swu.lol/logo.jpg"
+            src="/swuLogo.png"
             width="48"
             height="48"
             alt="Open SZXD Logo"
@@ -52,7 +52,7 @@
       <view class="flex flex-col mt-4">
         <view class="flex items-center justify-between">
           <NuxtImg
-            src="https://szxd.swu.lol/logo.jpg"
+            src="/swuLogo.png"
             width="48"
             height="48"
             alt="Open SZXD Logo"
