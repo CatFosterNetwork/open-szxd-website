@@ -36,13 +36,12 @@ const { data } = await useAsyncData(
     const user = (await Api.profile()).data.data;
     return {
       username: user.username,
-      avatar: user.avatar,
-      lerun_remained: user.lerun_remained
-        ? user.is_vip ? '2333' : `${user.lerun_remained}次`
-        : t("No Subscription"),
-      expiry_date: user.expiry_date
-        ? user.is_vip ? '2333/3/3' : new Date(user.expiry_date).toLocaleDateString()
-        : t("No Subscription")
+      avatar: user.avatar, 
+      lerun_remained: user.is_vip
+        ? '2333次' : user.lerun_remained ? `${user.lerun_remained}次` : t("No Subscription"),
+      expiry_date: user.is_vip
+        ? '2333/3/3'
+        : user.expity_date ?  new Date(user.expiry_date).toLocaleDateString() : t("No Subscription")
     };
   },
   { server: false, watch: [] }

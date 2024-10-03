@@ -110,7 +110,7 @@ const onSubmit = () => {
   } else if (selected2.value == "永久") {
     valid_time = 9999;
   } else {
-    valid_time = 0;
+    valid_time = 1;
   }
   user.value.balance -= balance.value;
   Api.generateKeys({

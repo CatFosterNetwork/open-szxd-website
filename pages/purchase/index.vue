@@ -31,7 +31,7 @@
           :price="$t('purchase.pricing.basic.price')"
           :cycle="$t('purchase.pricing.basic.cycle')"
           :badge="{ label: $t('purchase.pricing.basic.badge') }"
-          :button="{ label: $t('purchase.pricing.basic.button') }"
+          :button="{ label: $t('purchase.pricing.basic.button'), to: '' }"
           orientation="vertical"
           :features="[
             $t('purchase.pricing.basic.features.1'),
