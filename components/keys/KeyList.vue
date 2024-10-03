@@ -55,26 +55,31 @@ const calculateBalance = () => {
   submitModal.value = true;
   if (selected1.value === "乐跑") {
     if (selected2.value === "1次") {
-      balance.value = 15;
+      balance.value = 1;
     } else if (selected2.value === "10次") {
-      balance.value = 80;
+      balance.value = 10;
     } else if (selected2.value === "20次") {
-      balance.value = 200;
+      balance.value = 20;
     } 
   } else if (selected1.value === "打卡") {
     if (selected2.value === "一学期") {
-      balance.value = 9999;
+      balance.value = 10;
     } else if (selected2.value === "一学年") {
-      balance.value = 9999;
+      balance.value = 20;
     } else if (selected2.value === "永久") {
-      balance.value = 300;
+      balance.value = 40;
     } 
+  } else if (selected1.value === "会员") {
+    if (selected2.value === "基础会员") {
+      balance.value = 30;
+    } else if (selected2.value === "高级会员") {
+      balance.value = 128;
+    }
   } else {
     balance.value = 9999999;
   }
   balance.value *= number.value;
   balance.value = Math.round(balance.value * ((100 - user.value.discount) / 100) * 100) / 100;
-  balance.value = 0
 };
 
 const onSubmit = () => {
@@ -109,6 +114,10 @@ const onSubmit = () => {
     valid_time = 365;
   } else if (selected2.value == "永久") {
     valid_time = 9999;
+  } else if (selected2.value == "基础会员") {
+    valid_time = 31;
+  } else if (selected2.value == "高级会员") {
+    valid_time = 366;
   } else {
     valid_time = 1;
   }
