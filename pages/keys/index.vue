@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Api from "~/api/api";
+import KeyList from "~/components/keys/KeyList.vue";
 
 checkLogin();
 
