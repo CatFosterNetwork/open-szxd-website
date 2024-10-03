@@ -85,6 +85,10 @@ const links = ref([
           label: t("layouts.dashboard.links.settings.children.notifications"),
           to: localePath("/settings/notifications"),
         },
+        {
+          label: t("layouts.dashboard.links.settings.children.cdkey"),
+          to: localePath("/settings/cdkey")
+        },
       ],
       tooltip: {
         text: t("layouts.dashboard.links.settings.text"),

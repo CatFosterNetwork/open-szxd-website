@@ -112,6 +112,21 @@
           "success": "WeChat通知を購読しました"
         }
       }
+    },
+    "activate": {
+      "activated_successfully": "このキーは正常にアクティブ化されました。",
+      "activated_fail": "アクティブ化に失敗しました",
+      "about_us": "私たちについて",
+      "feature": "安定した、プロフェッショナルな、長期サポート",
+      "desc": "サブスクリプション料金を支払った後、ユーザーは 30 暦日のアクセスを購入した後、自分のアカウントで DLC にアクセスできるようになります。サブスクリプションが更新されると、有効なサブスクリプションに 30 暦日が追加されます。",
+      "activate": "キーをアクティブ化してサブスクリプションを取得します",
+      "activate_title": "キーをアクティブにする",
+      "input_placeholder": "キーを入力してください",
+      "activate_button": "活性化",
+      "inviter_placeholder": "招待者のユーザー名 (オプション)",
+      "subscription_info": "購読情報",
+      "lerun": "【Open SZXD】ルラン",
+      "dingding": "【Open SZXD】 ディンディン チェックイン"
     }
   },
   "layouts": {
@@ -141,7 +156,8 @@
           "label": "設定",
           "children": {
             "general": "一般的な",
-            "notifications": "通知"
+            "notifications": "通知",
+            "cdkey": "CDキー"
           },
           "text": "設定"
         },
@@ -336,5 +352,6 @@
       "description": "OpenSZXD はソフトウェア コストの負担を軽減し、学生が独自のシステムに束縛されるのを防ぎ、教育における倫理的自由を擁護します。",
       "title": "SWUを開く |\n最適な SWU ツール"
     }
-  }
+  },
+  "No Subscription": "購読なし"
 }

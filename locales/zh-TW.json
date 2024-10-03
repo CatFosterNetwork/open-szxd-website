@@ -112,6 +112,21 @@
           "success": "已訂閱微信通知"
         }
       }
+    },
+    "activate": {
+      "activated_successfully": "此密鑰已成功啟用！",
+      "activated_fail": "啟動失敗",
+      "about_us": "關於我們",
+      "feature": "穩定、專業、長期支持",
+      "desc": "支付訂閱費用後，用戶將在購買 30 個日曆日的存取權限後在其帳戶上獲得 DLC 的存取權限，如果續訂訂閱，則有效訂閱將增加 30 個日曆天。",
+      "activate": "啟動金鑰以獲取訂閱",
+      "activate_title": "啟動金鑰",
+      "input_placeholder": "輸入金鑰",
+      "activate_button": "啟用設定",
+      "inviter_placeholder": "邀請者使用者名稱（可選）",
+      "subscription_info": "訂閱訊息",
+      "lerun": "【開放數智西大】樂跑",
+      "dingding": "【開放數智西大】釘釘打卡"
     }
   },
   "layouts": {
@@ -141,7 +156,8 @@
           "label": "設定",
           "children": {
             "general": "一般",
-            "notifications": "通知"
+            "notifications": "通知",
+            "cdkey": "激活碼"
           },
           "text": "設定"
         },
@@ -336,5 +352,6 @@
       "description": "OpenSZXD 減輕了軟體成本的負擔，並防止學生受到專有系統的束縛，倡導教育中的道德自由。",
       "title": "開放SWU |\n您最好的 SWU 工具"
     }
-  }
+  },
+  "No Subscription": "沒有訂閱"
 }

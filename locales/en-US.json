@@ -171,7 +171,8 @@
           "label": "Settings",
           "children": {
             "general": "General",
-            "notifications": "Notifications"
+            "notifications": "Notifications",
+            "cdkey": "CDKey"
           },
           "text": "Settings"
         }
@@ -315,6 +316,21 @@
         "title": "Delete account",
         "description": "Are you sure you want to delete your account?"
       }
+    },
+    "activate": {
+      "activated_successfully": "This Key Has Been Activated Successfully!",
+      "activated_fail": "Activate Failed",
+      "about_us": "About us",
+      "feature": "Stable, professional, long-term support",
+      "desc": "After paying the subscription fee, users will receive access to the DLC on their account after purchasing 30 calendar days of access, and if the subscription is renewed, 30 calendar days will be added to the active subscription.",
+      "activate": "Activate the key to get the subscription",
+      "activate_title": "Activate The Key",
+      "input_placeholder": "Enter the key",
+      "activate_button": "Activate",
+      "inviter_placeholder": "Inviter Username (optional)",
+      "subscription_info": "Subscription Information",
+      "lerun": "[Open SZXD] LeRun",
+      "dingding": "[Open SZXD] DingDing Check-in"
     }
   },
   "homeDateRangePicker": {
@@ -336,5 +352,7 @@
       "description": "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.",
       "title": "Open SWU | Your Best SWU Tools"
     }
-  }
+  },
+  "No Subscription": "No Subscription",
+  "[Open SZXD] LeRun": "[Open SZXD] LeRun"
 }

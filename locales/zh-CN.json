@@ -171,7 +171,8 @@
           "label": "设置",
           "children": {
             "general": "常规",
-            "notifications": "通知"
+            "notifications": "通知",
+            "cdkey": "激活码"
           },
           "text": "设置"
         }
@@ -315,6 +316,21 @@
         "title": "删除账户",
         "description": "您确定要删除您的账户吗？"
       }
+    },
+    "activate": {
+      "activated_successfully": "此密钥已成功激活！",
+      "activated_fail": "激活失败",
+      "about_us": "关于我们",
+      "feature": "稳定、专业、长期支持",
+      "desc": "支付订阅费用后，用户购买了 30 个日历日的访问权限后可以在其帐户上获得 DLC 的访问权限，如果续订订阅，有效订阅也会增加 30 个日历日。",
+      "activate": "激活卡密以获取订阅",
+      "activate_title": "激活密钥",
+      "input_placeholder": "输入密钥",
+      "activate_button": "激活",
+      "inviter_placeholder": "邀请者用户名（可选）",
+      "subscription_info": "订阅信息",
+      "lerun": "【开放数智西大】乐跑",
+      "dingding": "【开放数智西大】钉钉打卡"
     }
   },
   "homeDateRangePicker": {
@@ -336,5 +352,7 @@
       "description": "OpenSZXD 减轻了软件成本的负担，并防止学生受到专有系统的束缚，倡导教育中的道德自由。",
       "title": "开放西大 |\n您最好的 SWU 工具"
     }
-  }
+  },
+  "No Subscription": "没有订阅",
+  "[Open SZXD] LeRun": ""
 }
