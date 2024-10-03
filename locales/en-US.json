@@ -82,7 +82,7 @@
         "price": "$5",
         "cycle": "/month",
         "badge": "Most popular",
-        "button": "Take it now",
+        "button": "Take It Now",
         "features": {
           "1": "No worries for 30 days",
           "2": "Daily notifications from all channels",
@@ -96,7 +96,7 @@
         "price": "$20",
         "cycle": "/year",
         "badge": "Cost-effectiveness",
-        "button": "You can't afford it",
+        "button": "Order Now",
         "features": {
           "1": "No worries for 365 days",
           "2": "Customize exclusive functions",
