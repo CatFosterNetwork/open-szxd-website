@@ -21,7 +21,6 @@ if (hasOpened.value as any != true) {
 const open = ref(true)
 const isOpened = computed(() => !open.value && hasOpened.value as any == true ? false : true);
 
-
 const close = () => {
   hasOpened.value = true as any;
 };

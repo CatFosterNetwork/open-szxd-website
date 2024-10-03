@@ -95,7 +95,7 @@ const links = ref([
 
 useAsyncData(
   async () => {
-    user.value = await Api.profile();
+    user.value = (await Api.profile()).data.data;
     if (user.value.is_admin || user.value.is_reseller) {
       links.value.push(
         {
