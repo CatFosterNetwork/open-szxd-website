@@ -38,10 +38,10 @@ const { data } = await useAsyncData(
       username: user.username,
       avatar: user.avatar,
       lerun_remained: user.lerun_remained
-        ? `${user.lerun_remained}次`
+        ? user.is_vip ? '2333' : `${user.lerun_remained}次`
         : t("No Subscription"),
       expiry_date: user.expiry_date
-        ? new Date(user.expiry_date).toLocaleDateString()
+        ? user.is_vip ? '2333/3/3' : new Date(user.expiry_date).toLocaleDateString()
         : t("No Subscription")
     };
   },

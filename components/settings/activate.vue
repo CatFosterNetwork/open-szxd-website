@@ -27,7 +27,7 @@
         <view class="text-2xl font-bold ml-2">{{ $t('settings.activate.subscription_info') }}</view>
       </view>
       <div class="text-sm text-gray-500 mt-2 ml-2">
-        几次轻触，即达卓越
+        {{$t('settings.activate.tips')}}
       </div>
       <view class="flex flex-col mt-4">
         <view class="flex items-center justify-between">
@@ -72,7 +72,7 @@
     </view>
     <UDivider />
     <view class="about">
-      <view class="flex flex-row text-center justify-center items-center">
+      <view class="flex flex-row text-center justify-left items-center">
         <Icon name="ph:info-fill" size="2rem" />
         <view class="text-2xl font-bold ml-2">{{ $t('settings.activate.about_us') }}</view>
       </view>
