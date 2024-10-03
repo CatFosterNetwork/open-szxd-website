@@ -41,7 +41,7 @@ const { data } = await useAsyncData(
         ? '2333次' : user.lerun_remained ? `${user.lerun_remained}次` : t("No Subscription"),
       expiry_date: user.is_vip
         ? '2333/3/3'
-        : user.expity_date ?  new Date(user.expiry_date).toLocaleDateString() : t("No Subscription")
+        : user.expiry_date ?  new Date(user.expiry_date).toLocaleDateString() : t("No Subscription")
     };
   },
   { server: false, watch: [] }
