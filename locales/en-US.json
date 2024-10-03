@@ -137,7 +137,12 @@
       "calories": "This fun run is ",
       "pace": "Pace",
       "loggedIn": "You have successfully logged in to WeChat. Continuing...",
-      "waiting": "Position in queue: {num}"
+      "waiting": "Position in queue: {num}",
+      "new": "New",
+      "old": "Old",
+      "remain": "Remaining times: {num}",
+      "new_desc": "Complete tasks in a flash, without encountering many errors",
+      "new_ready": "The new version of LeRun is ready"
     }
   },
   "layouts": {

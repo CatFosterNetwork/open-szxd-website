@@ -19,6 +19,7 @@ const Api = {
   updateProfile: (data: any) => http.patch(apiUrl.profile, data),
   notifications: (data: any) => http.patch(apiUrl.user + '/notifications', data),
   lerun: () => http.get(apiUrl.lerun, {}),
+  lerun_new: () => http.get(apiUrl.lerun + '/new', {}),
   lerunStatus: () => http.get(apiUrl.lerun + '/status', {}),
   generateKeys: (data: any) => http.post(apiUrl.generateKeys, data),
   keys: () => http.get(apiUrl.getKeys, {}),

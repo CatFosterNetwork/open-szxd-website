@@ -137,7 +137,12 @@
       "calories": "本次乐跑",
       "pace": "本次配速",
       "loggedIn": "您已成功登录微信。\n正在继续...",
-      "waiting": "队列中的位置：{num}"
+      "waiting": "队列中的位置：{num}",
+      "new": "新的",
+      "old": "老的",
+      "remain": "剩余次数：{num}",
+      "new_desc": "瞬间完成任务，不会遇到很多错误",
+      "new_ready": "新版本乐跑已准备就绪"
     }
   },
   "layouts": {
