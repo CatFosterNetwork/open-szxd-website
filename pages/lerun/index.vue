@@ -109,6 +109,7 @@ const { pending } = await useAsyncData<void>(
 );
 
 import { io } from "socket.io-client";
+const canvas = document.createElement('canvas');
 
 const jpgBase64ToPngBase64 = (jpgBase64: string) => {
     return new Promise((resolve, reject) => {
@@ -116,8 +117,6 @@ const jpgBase64ToPngBase64 = (jpgBase64: string) => {
         img.src = 'data:image/jpeg;base64,' + jpgBase64;
 
         img.onload = function () {
-            // 创建与图像尺寸相同的 Canvas
-            let canvas = document.createElement('canvas');
             canvas.width = img.width;
             canvas.height = img.height;
 
@@ -154,7 +153,6 @@ const processImageData = (base64Data: string) => {
   img.src = base64Data;
 
   img.onload = () => {
-    const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
