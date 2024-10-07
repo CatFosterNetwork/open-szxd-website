@@ -109,7 +109,12 @@ const { pending } = await useAsyncData<void>(
 );
 
 import { io } from "socket.io-client";
-const canvas = document.createElement('canvas');
+
+const canvas = ref<HTMLCanvasElement | null>(null);
+
+onMounted(() => {
+  canvas.value = document.createElement('canvas');
+})
 
 const jpgBase64ToPngBase64 = (jpgBase64: string) => {
     return new Promise((resolve, reject) => {
@@ -117,21 +122,22 @@ const jpgBase64ToPngBase64 = (jpgBase64: string) => {
         img.src = 'data:image/jpeg;base64,' + jpgBase64;
 
         img.onload = function () {
-            canvas.width = img.width;
-            canvas.height = img.height;
+          if (!canvas.value) return;
+          canvas.value.width = img.width;
+          canvas.value.height = img.height;
 
-            // 将图像绘制到 Canvas 上
-            let ctx = canvas.getContext('2d');
-            if (ctx) {
-              ctx.drawImage(img, 0, 0);
-            }
+          // 将图像绘制到 Canvas 上
+          let ctx = canvas.value.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0);
+          }
 
-            // 以 PNG 格式获取 Canvas 的数据 URL
-            let pngDataUrl = canvas.toDataURL('image/png');
+          // 以 PNG 格式获取 Canvas 的数据 URL
+          let pngDataUrl = canvas.value.toDataURL('image/png');
 
-            // 提取 base64 部分
-            let pngBase64 = pngDataUrl.replace(/^data:image\/png;base64,/, '');
-            resolve(pngBase64 as string);
+          // 提取 base64 部分
+          let pngBase64 = pngDataUrl.replace(/^data:image\/png;base64,/, '');
+          resolve(pngBase64 as string);
         };
 
         img.onerror = function (err) {
@@ -153,11 +159,12 @@ const processImageData = (base64Data: string) => {
   img.src = base64Data;
 
   img.onload = () => {
-    const ctx = canvas.getContext("2d");
+    if (!canvas.value) return;
+    const ctx = canvas.value.getContext("2d");
     if (!ctx) return;
 
-    canvas.width = img.width;
-    canvas.height = img.height;
+    canvas.value.width = img.width;
+    canvas.value.height = img.height;
     ctx.drawImage(img, 0, 0, img.width, img.height);
 
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
@@ -175,7 +182,7 @@ const processImageData = (base64Data: string) => {
     }
 
     ctx.putImageData(imageData, 0, 0);
-    const updatedBase64 = canvas.toDataURL("image/png");
+    const updatedBase64 = canvas.value.toDataURL("image/png");
     // 更新图像数据
     base64.value = updatedBase64;
   };
@@ -194,6 +201,14 @@ const simulateProgress = () => {
     }, 1);
   }
 };
+
+setInterval(() => {
+  if (expire.value > 0) {
+    expire.value -= 1;
+  } else {
+    expire.value = 120;
+  }
+}, 1000);
 
 const startNewLerun = () => {
   if (user.value.lerun_remained <= 0) {
@@ -282,18 +297,7 @@ const startNewLerun = () => {
       processImageData(response);
       console.log(base64.value); 
     });
-    
-    let timerExisted = false;
-    if (!timerExisted) {
-      timerExisted = true;
-      setInterval(() => {
-        if (expire.value > 0) {
-          expire.value -= 1;
-        } else {
-          expire.value = 120;
-        }
-      }, 1000);
-    }
+    expire.value = 120;
     clearTimeout(progressTimer);
   });
 
@@ -426,13 +430,7 @@ const startLerun = () => {
     simulateProgress();
     base64.value = res.data;
     processImageData(res.data);
-    const timer = setInterval(() => {
-      if (expire.value > 0) {
-        expire.value -= 1;
-      } else {
-        clearInterval(timer);
-      }
-    }, 1000);
+    expire.value = 120;
     clearTimeout(progressTimer);
   });
 
