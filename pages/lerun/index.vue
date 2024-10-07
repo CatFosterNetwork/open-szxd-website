@@ -239,7 +239,7 @@ const startNewLerun = () => {
     });
   });
 
-  socket.on("qrcodeNew", (res: any) => {
+  socket.on("qrcode", (res: any) => {
     progress.value = 5;
     simulateProgress();
     base64.value = res.data;
@@ -248,7 +248,7 @@ const startNewLerun = () => {
       if (expire.value > 0) {
         expire.value -= 1;
       } else {
-        clearInterval(timer);
+        expire.value = 120;
       }
     }, 1000);
     clearTimeout(progressTimer);
