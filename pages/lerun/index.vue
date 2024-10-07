@@ -112,10 +112,7 @@ import { io } from "socket.io-client";
 
 const jpgBase64ToPngBase64 = (jpgBase64: string) => {
     return new Promise((resolve, reject) => {
-        // 创建一个 Image 对象
         let img = new Image();
-        img.crossOrigin = 'Anonymous'; // 处理跨域问题
-        // 设置图像源
         img.src = 'data:image/jpeg;base64,' + jpgBase64;
 
         img.onload = function () {
@@ -281,10 +278,11 @@ const startNewLerun = () => {
   socket.on("qrcodeNew", (res: any) => {
     progress.value = 5;
     jpgBase64ToPngBase64(res.data).then((response: any) => {
-      base64.value = response;
+      console.log(response);
       processImageData(response);
+      console.log(base64.value); 
     });
-    simulateProgress();
+    
     let timerExisted = false;
     if (!timerExisted) {
       timerExisted = true;
