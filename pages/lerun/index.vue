@@ -148,7 +148,10 @@ const jpgBase64ToPngBase64 = (jpgBase64: string) => {
 
 const processImageData = (base64Data: string) => {
   const img = new Image();
-  img.src = `data:image/png;base64,` + base64Data;
+  if (!base64Data.startsWith('data:image/png;base64,')) {
+    base64Data = 'data:image/png;base64,' + base64Data;
+  }
+  img.src = base64Data;
 
   img.onload = () => {
     const canvas = document.createElement("canvas");
@@ -278,7 +281,6 @@ const startNewLerun = () => {
   socket.on("qrcodeNew", (res: any) => {
     progress.value = 5;
     jpgBase64ToPngBase64(res.data).then((response: any) => {
-      console.log(response);
       processImageData(response);
       console.log(base64.value); 
     });
