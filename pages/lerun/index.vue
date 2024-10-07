@@ -110,6 +110,46 @@ const { pending } = await useAsyncData<void>(
 
 import { io } from "socket.io-client";
 
+const jpgBase64ToPngBase64 = (jpgBase64: string) => {
+    return new Promise((resolve, reject) => {
+        // 创建一个 Image 对象
+        let img = new Image();
+        img.crossOrigin = 'Anonymous'; // 处理跨域问题
+
+        img.onload = function () {
+            // 创建与图像尺寸相同的 Canvas
+            let canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            // 将图像绘制到 Canvas 上
+            let ctx = canvas.getContext('2d');
+            if (ctx) {
+              ctx.drawImage(img, 0, 0);
+            }
+
+            // 以 PNG 格式获取 Canvas 的数据 URL
+            let pngDataUrl = canvas.toDataURL('image/png');
+
+            // 提取 base64 部分
+            let pngBase64 = pngDataUrl.replace(/^data:image\/png;base64,/, '');
+            resolve(pngBase64 as string);
+        };
+
+        img.onerror = function (err) {
+            reject(err);
+        };
+
+        // 检查并添加必要的前缀
+        if (!jpgBase64.startsWith('data:image/jpeg;base64,')) {
+            jpgBase64 = 'data:image/jpeg;base64,' + jpgBase64;
+        }
+
+        // 设置图像源
+        img.src = jpgBase64;
+    });
+}
+
 const processImageData = (base64Data: string) => {
   const img = new Image();
   img.src = `data:image/png;base64,` + base64Data;
@@ -239,11 +279,13 @@ const startNewLerun = () => {
     });
   });
 
-  socket.on("qrcode", (res: any) => {
+  socket.on("qrcodeNew", (res: any) => {
     progress.value = 5;
+    jpgBase64ToPngBase64(res.data).then((res: any) => {
+      base64.value = res;
+      processImageData(res);
+    });
     simulateProgress();
-    base64.value = res.data;
-    processImageData(res.data);
     const timer = setInterval(() => {
       if (expire.value > 0) {
         expire.value -= 1;
