@@ -198,13 +198,15 @@ const simulateProgress = () => {
   }
 };
 
-setInterval(() => {
-  if (expire.value > 0) {
-    expire.value -= 1;
-  } else {
-    expire.value = 240;
-  }
-}, 1000);
+onMounted(() => {
+  setInterval(() => {
+    if (expire.value > 0) {
+      expire.value -= 1;
+    } else {
+      expire.value = 240;
+    }
+  }, 1000);
+});
 
 const startNewLerun = () => {
   if (user.value.lerun_remained <= 0) {
