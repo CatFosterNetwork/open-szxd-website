@@ -115,6 +115,8 @@ const jpgBase64ToPngBase64 = (jpgBase64: string) => {
         // 创建一个 Image 对象
         let img = new Image();
         img.crossOrigin = 'Anonymous'; // 处理跨域问题
+        // 设置图像源
+        img.src = 'data:image/jpeg;base64,' + jpgBase64;
 
         img.onload = function () {
             // 创建与图像尺寸相同的 Canvas
@@ -144,9 +146,6 @@ const jpgBase64ToPngBase64 = (jpgBase64: string) => {
         if (!jpgBase64.startsWith('data:image/jpeg;base64,')) {
             jpgBase64 = 'data:image/jpeg;base64,' + jpgBase64;
         }
-
-        // 设置图像源
-        img.src = jpgBase64;
     });
 }
 
@@ -281,18 +280,22 @@ const startNewLerun = () => {
 
   socket.on("qrcodeNew", (res: any) => {
     progress.value = 5;
-    jpgBase64ToPngBase64(res.data).then((res: any) => {
-      base64.value = res;
-      processImageData(res);
+    jpgBase64ToPngBase64(res.data).then((response: any) => {
+      base64.value = response;
+      processImageData(response);
     });
     simulateProgress();
-    const timer = setInterval(() => {
-      if (expire.value > 0) {
-        expire.value -= 1;
-      } else {
-        expire.value = 120;
-      }
-    }, 1000);
+    let timerExisted = false;
+    if (!timerExisted) {
+      timerExisted = true;
+      setInterval(() => {
+        if (expire.value > 0) {
+          expire.value -= 1;
+        } else {
+          expire.value = 120;
+        }
+      }, 1000);
+    }
     clearTimeout(progressTimer);
   });
 
