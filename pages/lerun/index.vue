@@ -292,7 +292,7 @@ const startNewLerun = () => {
   socket.on("qrcodeNew", async (res: any) => {
     progress.value = 5;
     const pngBase64 = await jpgBase64ToPngBase64(res.data) as string
-    console.log(pngBase64)
+    base64.value = pngBase64;
     processImageData(pngBase64);
     expire.value = 240;
     clearTimeout(progressTimer);
