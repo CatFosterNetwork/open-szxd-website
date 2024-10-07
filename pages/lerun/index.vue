@@ -287,12 +287,11 @@ const startNewLerun = () => {
     });
   });
 
-  socket.on("qrcodeNew", (res: any) => {
+  socket.on("qrcodeNew", async (res: any) => {
     progress.value = 5;
-    jpgBase64ToPngBase64(res.data).then((response: any) => {
-      processImageData(response);
-      console.log(base64.value); 
-    });
+    const pngBase64 = await jpgBase64ToPngBase64(res.data) as string
+    console.log(pngBase64)
+    processImageData(pngBase64);
     expire.value = 240;
     clearTimeout(progressTimer);
   });
