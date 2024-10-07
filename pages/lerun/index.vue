@@ -25,7 +25,7 @@ const user = ref<any>({});
 const status = ref();
 const toast = useToast();
 const WindowsError = ref<string>(t("lerun.index.loggingIn"));
-const expire = ref(120);
+const expire = ref(240);
 const isMapShowed = ref(false);
 const lerunData = ref<any>({});
 const paceMin = ref(0);
@@ -110,30 +110,25 @@ const { pending } = await useAsyncData<void>(
 
 import { io } from "socket.io-client";
 
-const canvas = ref<HTMLCanvasElement | null>(null);
-
-onMounted(() => {
-  canvas.value = document.createElement('canvas');
-})
-
 const jpgBase64ToPngBase64 = (jpgBase64: string) => {
     return new Promise((resolve, reject) => {
         let img = new Image();
         img.src = 'data:image/jpeg;base64,' + jpgBase64;
 
         img.onload = function () {
-          if (!canvas.value) return;
-          canvas.value.width = img.width;
-          canvas.value.height = img.height;
+          const canvas = document.createElement('canvas');
+          if (!canvas) return;
+          canvas.width = img.width;
+          canvas.height = img.height;
 
           // 将图像绘制到 Canvas 上
-          let ctx = canvas.value.getContext('2d');
+          let ctx = canvas.getContext('2d');
           if (ctx) {
             ctx.drawImage(img, 0, 0);
           }
 
           // 以 PNG 格式获取 Canvas 的数据 URL
-          let pngDataUrl = canvas.value.toDataURL('image/png');
+          let pngDataUrl = canvas.toDataURL('image/png');
 
           // 提取 base64 部分
           let pngBase64 = pngDataUrl.replace(/^data:image\/png;base64,/, '');
@@ -159,12 +154,13 @@ const processImageData = (base64Data: string) => {
   img.src = base64Data;
 
   img.onload = () => {
-    if (!canvas.value) return;
-    const ctx = canvas.value.getContext("2d");
+    const canvas = document.createElement('canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    canvas.value.width = img.width;
-    canvas.value.height = img.height;
+    canvas.width = img.width;
+    canvas.height = img.height;
     ctx.drawImage(img, 0, 0, img.width, img.height);
 
     const imageData = ctx.getImageData(0, 0, img.width, img.height);
@@ -182,7 +178,7 @@ const processImageData = (base64Data: string) => {
     }
 
     ctx.putImageData(imageData, 0, 0);
-    const updatedBase64 = canvas.value.toDataURL("image/png");
+    const updatedBase64 = canvas.toDataURL("image/png");
     // 更新图像数据
     base64.value = updatedBase64;
   };
@@ -206,7 +202,7 @@ setInterval(() => {
   if (expire.value > 0) {
     expire.value -= 1;
   } else {
-    expire.value = 120;
+    expire.value = 240;
   }
 }, 1000);
 
@@ -297,7 +293,7 @@ const startNewLerun = () => {
       processImageData(response);
       console.log(base64.value); 
     });
-    expire.value = 120;
+    expire.value = 240;
     clearTimeout(progressTimer);
   });
 
@@ -430,7 +426,7 @@ const startLerun = () => {
     simulateProgress();
     base64.value = res.data;
     processImageData(res.data);
-    expire.value = 120;
+    expire.value = 240;
     clearTimeout(progressTimer);
   });
 
