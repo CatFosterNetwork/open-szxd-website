@@ -174,6 +174,9 @@ const processImageData = (base64Data: string) => {
           data[i + 1] = 255;
           data[i + 2] = 255;
         }
+        else if (sum > 720) {
+          data[i + 3] = 0;
+        }
       }
     }
 
