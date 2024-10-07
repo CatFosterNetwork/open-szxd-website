@@ -239,7 +239,7 @@ const startNewLerun = () => {
     });
   });
 
-  socket.on("qrcode", (res: any) => {
+  socket.on("qrcodeNew", (res: any) => {
     progress.value = 5;
     simulateProgress();
     base64.value = res.data;
@@ -254,7 +254,7 @@ const startNewLerun = () => {
     clearTimeout(progressTimer);
   });
 
-  socket.on("requestComplete", (res) => {
+  socket.on("requestCompleteNew", (res) => {
     status.value = 3;
     socket.disconnect();
     isConnected.value = false;
