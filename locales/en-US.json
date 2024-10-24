@@ -79,10 +79,10 @@
       "basic": {
         "title": "Basic",
         "description": "Monthly membership, you can enjoy all advanced features but only pay a few fees",
-        "price": "$2333.33",
+        "price": "$5",
         "cycle": "/month",
         "badge": "Most popular",
-        "button": "No way to buy",
+        "button": "Take It Now",
         "features": {
           "1": "No worries for 30 days",
           "2": "Daily notifications from all channels",
@@ -93,10 +93,10 @@
       "premium": {
         "title": "Premium",
         "description": "Premium annual paid membership, become a member of us, experience unprecedented freedom, and break all school restrictions",
-        "price": "$6666.66",
+        "price": "$20",
         "cycle": "/year",
         "badge": "Cost-effectiveness",
-        "button": "You can't afford it",
+        "button": "Order Now",
         "features": {
           "1": "No worries for 365 days",
           "2": "Customize exclusive functions",
@@ -137,7 +137,15 @@
       "calories": "This fun run is ",
       "pace": "Pace",
       "loggedIn": "You have successfully logged in to WeChat. Continuing...",
-      "waiting": "Position in queue: {num}"
+      "waiting": "Position in queue: {num}",
+      "new": "New",
+      "old": "Old",
+      "remain": "Remaining times: {num}",
+      "new_desc": "Complete tasks in a flash, without encountering many errors",
+      "new_ready": "The new version of LeRun is ready",
+      "toast": {
+        "remained_Insufficient": "Your LeRun Balance Is Insufficient"
+      }
     }
   },
   "layouts": {
@@ -171,7 +179,8 @@
           "label": "Settings",
           "children": {
             "general": "General",
-            "notifications": "Notifications"
+            "notifications": "Notifications",
+            "cdkey": "CDKey"
           },
           "text": "Settings"
         }
@@ -315,6 +324,22 @@
         "title": "Delete account",
         "description": "Are you sure you want to delete your account?"
       }
+    },
+    "activate": {
+      "activated_successfully": "This Key Has Been Activated Successfully!",
+      "activated_fail": "Activate Failed",
+      "about_us": "About us",
+      "feature": "Stable, professional, long-term support",
+      "desc": "After paying the subscription fee, users will receive access to the DLC on their account after purchasing 30 calendar days of access, and if the subscription is renewed, 30 calendar days will be added to the active subscription.",
+      "activate": "Activate the key to get the subscription",
+      "activate_title": "Activate The Key",
+      "input_placeholder": "Enter the key",
+      "activate_button": "Activate",
+      "inviter_placeholder": "Inviter Username (optional)",
+      "subscription_info": "Subscription Information",
+      "lerun": "[Open SZXD] LeRun",
+      "dingding": "[Open SZXD] DingDing Check-in",
+      "tips": "Excellence in just a few touches"
     }
   },
   "homeDateRangePicker": {
@@ -336,5 +361,7 @@
       "description": "OpenSZXD alleviates the burden of software costs and prevents students from being tethered to proprietary systems, championing ethical freedom in education.",
       "title": "Open SWU | Your Best SWU Tools"
     }
-  }
+  },
+  "No Subscription": "No Subscription",
+  "[Open SZXD] LeRun": "[Open SZXD] LeRun"
 }

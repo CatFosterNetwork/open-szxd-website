@@ -112,6 +112,22 @@
           "success": "已訂閱微信通知"
         }
       }
+    },
+    "activate": {
+      "activated_successfully": "此密鑰已成功啟用！",
+      "activated_fail": "啟動失敗",
+      "about_us": "關於我們",
+      "feature": "穩定、專業、長期支持",
+      "desc": "支付訂閱費用後，用戶將在購買 30 個日曆日的存取權限後在其帳戶上獲得 DLC 的存取權限，如果續訂訂閱，則有效訂閱將增加 30 個日曆天。",
+      "activate": "啟動金鑰以獲取訂閱",
+      "activate_title": "啟動金鑰",
+      "input_placeholder": "輸入金鑰",
+      "activate_button": "啟用設定",
+      "inviter_placeholder": "邀請者使用者名稱（可選）",
+      "subscription_info": "訂閱訊息",
+      "lerun": "【開放數智西大】樂跑",
+      "dingding": "【開放數智西大】釘釘打卡",
+      "tips": "幾次操作，實現卓越"
     }
   },
   "layouts": {
@@ -141,7 +157,8 @@
           "label": "設定",
           "children": {
             "general": "一般",
-            "notifications": "通知"
+            "notifications": "通知",
+            "cdkey": "激活碼"
           },
           "text": "設定"
         },
@@ -215,7 +232,15 @@
       "step6": "新的冒險即將開始。",
       "loggingIn": "正在嘗試讓您登入",
       "loggedIn": "您已成功登入微信。\n正在繼續...",
-      "waiting": "佇列中的位置：{num}"
+      "waiting": "佇列中的位置：{num}",
+      "new": "新的",
+      "old": "老的",
+      "remain": "剩餘次數：{num}",
+      "new_desc": "頃刻之間完成任務，不會遇到很多錯誤",
+      "new_ready": "新版樂跑已準備就緒",
+      "toast": {
+        "remained_Insufficient": "您的樂跑次數餘額不足"
+      }
     }
   },
   "login": {
@@ -264,28 +289,28 @@
         "description": "包月會員，您只需支付少量費用即可享受所有高級功能",
         "cycle": "/月",
         "badge": "最受歡迎",
-        "button": "沒有辦法購買",
+        "button": "現在拿下",
         "features": {
           "1": "30天無憂",
           "2": "所有頻道的每日通知",
           "3": "優先處理回饋",
           "4": "解鎖所有付費功能"
         },
-        "price": "$2333.33"
+        "price": "$5"
       },
       "premium": {
         "title": "優質的",
         "description": "高級年費會員，成為我們的會員，體驗前所未有的自由，打破一切學校限制",
         "cycle": "/年",
         "badge": "最具性價比",
-        "button": "你買不起",
+        "button": "立即訂購",
         "features": {
           "1": "365天無憂無慮",
           "2": "客製化專屬功能",
           "3": "成為所有功能的測試版會員",
           "4": "線上人工服務"
         },
-        "price": "$6666.66"
+        "price": "$20"
       }
     }
   },
@@ -336,5 +361,6 @@
       "description": "OpenSZXD 減輕了軟體成本的負擔，並防止學生受到專有系統的束縛，倡導教育中的道德自由。",
       "title": "開放SWU |\n您最好的 SWU 工具"
     }
-  }
+  },
+  "No Subscription": "沒有訂閱"
 }

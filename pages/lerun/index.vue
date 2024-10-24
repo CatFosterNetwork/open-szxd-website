@@ -8,6 +8,7 @@ const theme = useColorMode().value;
 const progress = ref<number | null>(null);
 const { t } = useI18n();
 const start = ref(false);
+const New = ref(true)
 const steps = [
   t("lerun.index.step1"),
   t("lerun.index.step2"),
@@ -24,7 +25,7 @@ const user = ref<any>({});
 const status = ref();
 const toast = useToast();
 const WindowsError = ref<string>(t("lerun.index.loggingIn"));
-const expire = ref(120);
+const expire = ref(240);
 const isMapShowed = ref(false);
 const lerunData = ref<any>({});
 const paceMin = ref(0);
@@ -109,12 +110,52 @@ const { pending } = await useAsyncData<void>(
 
 import { io } from "socket.io-client";
 
+const jpgBase64ToPngBase64 = (jpgBase64: string) => {
+    return new Promise((resolve, reject) => {
+        let img = new Image();
+        img.src = 'data:image/jpeg;base64,' + jpgBase64;
+
+        img.onload = function () {
+          const canvas = document.createElement('canvas');
+          if (!canvas) return;
+          canvas.width = img.width;
+          canvas.height = img.height;
+
+          // 将图像绘制到 Canvas 上
+          let ctx = canvas.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0);
+          }
+
+          // 以 PNG 格式获取 Canvas 的数据 URL
+          let pngDataUrl = canvas.toDataURL('image/png');
+
+          // 提取 base64 部分
+          let pngBase64 = pngDataUrl.replace(/^data:image\/png;base64,/, '');
+          resolve(pngBase64 as string);
+        };
+
+        img.onerror = function (err) {
+            reject(err);
+        };
+
+        // 检查并添加必要的前缀
+        if (!jpgBase64.startsWith('data:image/jpeg;base64,')) {
+            jpgBase64 = 'data:image/jpeg;base64,' + jpgBase64;
+        }
+    });
+}
+
 const processImageData = (base64Data: string) => {
   const img = new Image();
-  img.src = `data:image/png;base64,` + base64Data;
+  if (!base64Data.startsWith('data:image/png;base64,')) {
+    base64Data = 'data:image/png;base64,' + base64Data;
+  }
+  img.src = base64Data;
 
   img.onload = () => {
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -132,6 +173,9 @@ const processImageData = (base64Data: string) => {
           data[i] = 255;
           data[i + 1] = 255;
           data[i + 2] = 255;
+        }
+        else if (sum > 720) {
+          data[i + 3] = 0;
         }
       }
     }
@@ -156,6 +200,157 @@ const simulateProgress = () => {
     }, 1);
   }
 };
+
+onMounted(() => {
+  setInterval(() => {
+    if (expire.value > 0) {
+      expire.value -= 1;
+    } else {
+      expire.value = 240;
+    }
+  }, 1000);
+});
+
+const startNewLerun = () => {
+  if (user.value.lerun_remained <= 0) {
+    toast.add({
+      title: t("lerun.index.toast.remained_Insufficient"),
+      color: "red",
+    });
+    return
+  }
+
+  start.value = true;
+  status.value = 0;
+  
+  if (!socket.connected) {
+    socket.connect();
+  } else {
+    socket.disconnect();
+    base64.value = "";
+    progress.value = null;
+    isLoggedIn.value = false;
+    socket.connect();
+  }
+  isConnected.value = true;
+
+  const progressTimer = setTimeout(() => {
+    start.value = false;
+    progress.value = 6;
+    toast.add({
+      title: t("lerun.index.toastError"),
+      color: "red",
+    });
+  }, 300000);
+
+  socket.on("ping", () => {
+    progress.value = 0;
+    simulateProgress();
+  });
+  socket.on("connect", () => {
+    progress.value = 1;
+    simulateProgress();
+    const session_tokenCookie = useCookie<string>("session_token", {
+      readonly: true,
+    });
+    socket.emit("createNew", {
+      id: user.value.username,
+      token: session_tokenCookie.value,
+    });
+  });
+
+  socket.on("createVM", () => {
+    progress.value = 2;
+    simulateProgress();
+  });
+
+  socket.on("VMcreated", () => {
+    progress.value = 3;
+    simulateProgress();
+  });
+
+  socket.on("powerOn", () => {
+    progress.value = 4;
+    simulateProgress();
+  });
+
+  socket.on("searched", () => {
+    WindowsError.value = t("lerun.index.searched");
+    simulateProgress();
+  });
+
+  socket.on("loginLerun", () => {
+    progress.value = 2;
+    simulateProgress();
+  });
+
+  socket.on("catchWindowsDie", () => {
+    WindowsError.value = t("lerun.index.windowsDie");
+    toast.add({
+      title: t("lerun.index.toastError"),
+      color: "red",
+    });
+  });
+
+  socket.on("qrcodeNew", async (res: any) => {
+    progress.value = 5;
+    const pngBase64 = await jpgBase64ToPngBase64(res.data) as string
+    base64.value = pngBase64;
+    processImageData(pngBase64);
+    expire.value = 240;
+    clearTimeout(progressTimer);
+  });
+
+  socket.on("requestCompleteNew", (res) => {
+    status.value = 3;
+    socket.disconnect();
+    isConnected.value = false;
+    requestComplete.value = true;
+    lerunData.value = res.data.record;
+    totalTime.value = lerunData.value.time;
+    distance.value = lerunData.value.distance;
+    const paceInSeconds = totalTime.value / distance.value;
+    paceMin.value = Math.floor(paceInSeconds / 60);
+    paceSec.value = Math.floor(paceInSeconds % 60);
+    caloriesDesc.value = lerunData.value.calDesc;
+    caloriesUrl.value = lerunData.value.calUrl;
+    showValues();
+  });
+
+  socket.on("loggedIn", () => {
+    WindowsError.value = t("lerun.index.loggingIn");
+    isLoggedIn.value = true;
+  });
+
+  socket.on("openMiniProgram", () => {
+    WindowsError.value = t("lerun.index.openMiniProgram");
+  });
+
+  socket.on("loginLerun", () => {
+    WindowsError.value = t("lerun.index.loginLerun");
+  });
+
+  socket.on("disconnect", () => {
+    isConnected.value = false;
+  });
+
+  socket.on("error", (error: string) => {
+    progress.value = 6;
+    isConnected.value = false;
+    toast.add({
+      title: t("lerun.index.toastError"),
+      color: "red",
+    });
+  });
+
+  socket.on("waiting", (num: any) => {
+    waiting.value = num.data.data || 1;
+  });
+
+  socket.on("catchWindowsError", () => {
+    WindowsError.value = t("lerun.index.windowsError");
+  });
+}
 
 const startLerun = () => {
   start.value = true;
@@ -235,13 +430,7 @@ const startLerun = () => {
     simulateProgress();
     base64.value = res.data;
     processImageData(res.data);
-    const timer = setInterval(() => {
-      if (expire.value > 0) {
-        expire.value -= 1;
-      } else {
-        clearInterval(timer);
-      }
-    }, 1000);
+    expire.value = 240;
     clearTimeout(progressTimer);
   });
 
@@ -310,27 +499,41 @@ onUnmounted(() => {
     <UDashboardPage>
       <UDashboardPanel grow>
         <UDashboardNavbar title="LeRun">
+          <template #center>
+            <view class="flex flex-row gap-8 justify-center">
+              <UButton
+                :padded="false"
+                variant="link"
+                :label="$t('lerun.index.new')"
+                @click="New = true"
+              />
+              <UButton
+                :padded="false"
+                variant="link"
+                :label="$t('lerun.index.old')"
+                @click="New = false"
+              />
+            </view>
+          </template>
           <template #right>
             <view class="flex space-x-2">
-              <!-- <UButton
-                icon="i-mdi-refresh"
-                @click="startLerun"
-                v-if="status == 0"
-              /> -->
               <UButton
                 icon="i-simple-icons-telegram"
                 to="https://t.me/+kLfUSbSYh7M2ZjQ9"
                 target="_blank"
               />
-              <view class="flex font-bold text-2xl">
+              <view class="flex font-bold text-2xl" v-if="New">
+                {{ $t("lerun.index.remain", { num: user.lerun_remained }) }}
+              </view>
+              <view class="flex font-bold text-2xl" v-else>
                 {{ $t("lerun.index.waiting", { num: waiting }) }}
               </view>
             </view>
           </template>
         </UDashboardNavbar>
-        <view v-auto-animate class="flex justify-center h-full">
+        <view v-auto-animate class="flex justify-center w-full h-full">
           <view
-            v-if="status == 1"
+            v-if="status == 1 && !New"
             class="flex justify-center items-center h-full"
           >
             <view class="flex justify-center items-center h-full flex-col">
@@ -340,6 +543,25 @@ onUnmounted(() => {
               <UButton
                 color="primary"
                 @click="startLerun"
+                class="ml-2"
+                v-if="!start"
+                :disabled="start"
+              >
+                {{ $t("lerun.index.start") }}
+              </UButton>
+            </view>
+          </view>
+          <view v-if="status == 1 && New" class="flex justify-center items-center h-full">
+            <view class="flex justify-center items-center h-full flex-col">
+              <view class="font-bold text-6xl mb-10">
+                {{ $t("lerun.index.new_ready") }}
+              </view>
+              <view class="text-4xl mb-10">
+                {{ $t('lerun.index.new_desc') }}
+              </view>
+              <UButton
+                color="primary"
+                @click="startNewLerun"
                 class="ml-2"
                 v-if="!start"
                 :disabled="start"
@@ -552,6 +774,7 @@ onUnmounted(() => {
             </view>
           </view>
         </view>
+        
       </UDashboardPanel>
     </UDashboardPage>
   </NuxtLayout>

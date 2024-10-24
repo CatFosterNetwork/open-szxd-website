@@ -31,7 +31,7 @@
           :price="$t('purchase.pricing.basic.price')"
           :cycle="$t('purchase.pricing.basic.cycle')"
           :badge="{ label: $t('purchase.pricing.basic.badge') }"
-          :button="{ label: $t('purchase.pricing.basic.button') }"
+          :button="{ label: $t('purchase.pricing.basic.button'), to: 'https://shop.swu.lol?cid=6&mid=8' }"
           orientation="vertical"
           :features="[
             $t('purchase.pricing.basic.features.1'),
@@ -52,6 +52,7 @@
           :button="{
             label: $t('purchase.pricing.premium.button'),
             color: 'black',
+            to: 'https://shop.swu.lol?cid=6&mid=9'
           }"
           orientation="vertical"
           :features="[

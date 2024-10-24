@@ -79,10 +79,10 @@
       "basic": {
         "title": "基础",
         "description": "通过成为月度会员，您可以享受所有高级功能，而仅需支付少量费用。",
-        "price": "¥8888",
+        "price": "¥30",
         "cycle": "/月",
         "badge": "当下最热",
-        "button": "不卖",
+        "button": "立刻拿下",
         "features": {
           "1": "30天无忧体验",
           "2": "来自所有渠道的每日通知",
@@ -93,10 +93,10 @@
       "premium": {
         "title": "高级",
         "description": "高级年付会员，成为我们的一员，体验前所未有的自由，不再受到学校任何限制。",
-        "price": "¥99999",
+        "price": "¥128",
         "cycle": "/年",
         "badge": "最具性价比",
-        "button": "想都别想",
+        "button": "现在下单",
         "features": {
           "1": "365天无忧体验",
           "2": "为您定制专属功能",
@@ -137,7 +137,15 @@
       "calories": "本次乐跑",
       "pace": "本次配速",
       "loggedIn": "您已成功登录微信。\n正在继续...",
-      "waiting": "队列中的位置：{num}"
+      "waiting": "队列中的位置：{num}",
+      "new": "新的",
+      "old": "老的",
+      "remain": "剩余次数：{num}",
+      "new_desc": "瞬间完成任务，不会遇到很多错误",
+      "new_ready": "新版本乐跑已准备就绪",
+      "toast": {
+        "remained_Insufficient": "您的乐跑次数余额不足"
+      }
     }
   },
   "layouts": {
@@ -171,7 +179,8 @@
           "label": "设置",
           "children": {
             "general": "常规",
-            "notifications": "通知"
+            "notifications": "通知",
+            "cdkey": "激活码"
           },
           "text": "设置"
         }
@@ -315,6 +324,22 @@
         "title": "删除账户",
         "description": "您确定要删除您的账户吗？"
       }
+    },
+    "activate": {
+      "activated_successfully": "此密钥已成功激活！",
+      "activated_fail": "激活失败",
+      "about_us": "关于我们",
+      "feature": "稳定、专业、长期支持",
+      "desc": "支付订阅费用后，用户购买了 30 个日历日的访问权限后可以在其帐户上获得 DLC 的访问权限，如果续订订阅，有效订阅也会增加 30 个日历日。",
+      "activate": "激活卡密以获取订阅",
+      "activate_title": "激活密钥",
+      "input_placeholder": "输入密钥",
+      "activate_button": "激活",
+      "inviter_placeholder": "邀请者用户名（可选）",
+      "subscription_info": "订阅信息",
+      "lerun": "【开放数智西大】乐跑",
+      "dingding": "【开放数智西大】钉钉打卡",
+      "tips": "几次轻触，即达卓越"
     }
   },
   "homeDateRangePicker": {
@@ -336,5 +361,7 @@
       "description": "OpenSZXD 减轻了软件成本的负担，并防止学生受到专有系统的束缚，倡导教育中的道德自由。",
       "title": "开放西大 |\n您最好的 SWU 工具"
     }
-  }
+  },
+  "No Subscription": "没有订阅",
+  "[Open SZXD] LeRun": ""
 }

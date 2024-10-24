@@ -5,6 +5,7 @@ const appConfig = useAppConfig();
 const { isHelpSlideoverOpen } = useDashboard();
 const { t } = useI18n();
 const badge = ref(0);
+const user = ref<any>()
 
 await useAsyncData(
   async () => {
@@ -17,8 +18,7 @@ await useAsyncData(
   { server: false, watch: [] }
 );
 
-const links = computed(() => {
-  return [
+const links = ref([
     {
       id: "home",
       label: t("layouts.dashboard.links.home.label"),
@@ -85,14 +85,38 @@ const links = computed(() => {
           label: t("layouts.dashboard.links.settings.children.notifications"),
           to: localePath("/settings/notifications"),
         },
+        {
+          label: t("layouts.dashboard.links.settings.children.cdkey"),
+          to: localePath("/settings/cdkey")
+        },
       ],
       tooltip: {
         text: t("layouts.dashboard.links.settings.text"),
         shortcuts: ["G", "S"],
       },
     },
-  ];
-});
+  ]);
+
+useAsyncData(
+  async () => {
+    user.value = (await Api.profile()).data.data;
+    if (user.value.is_admin || user.value.is_reseller) {
+      links.value.push(
+        {
+          id: 'keys',
+          label: '激活码',
+          to: localePath("/keys"),
+            icon: "i-heroicons-key",
+          tooltip: {
+            text: "激活码管理",
+            shortcuts: ["G", "K"]
+          }
+        }
+      )
+    }
+  },
+  { server: false, watch: [] }
+);
 
 import { useClipboard } from "@vueuse/core";
 

@@ -19,12 +19,10 @@ if (hasOpened.value as any != true) {
 }
 
 const open = ref(true)
-const isOpened = ref(!open.value && hasOpened.value as any == true ? false : true);
-
+const isOpened = computed(() => !open.value && hasOpened.value as any == true ? false : true);
 
 const close = () => {
   hasOpened.value = true as any;
-  isOpened.value = false;
 };
 </script>
 
@@ -36,7 +34,7 @@ const close = () => {
           <h2 class="text-lg font-semibold">温馨提示</h2>
           <p class="mt-2 text-sm text-gray-500">
             开放数智西大在节假日期间将会自动检测您的请假状态，如果您处于请假状态，将不会进行自动打卡操作。手动销假过后会恢复自动打卡（若打卡仍未过期）。
-            在节假日期间，若您不在学校，您可以通过网页VPN或者客户端VPN进入 <NuxtLink to="http://szxd-swu-lol-s.sangfor.vpn.swu.edu.cn:8118/">http://szxd-swu-lol-s.sangfor.vpn.swu.edu.cn:8118/</NuxtLink>
+            在节假日期间，若您不在学校，您可以通过网页VPN或者客户端VPN进入 <NuxtLink class="link hover:text-green-500" to="http://szxd-swu-lol-s.sangfor.vpn.swu.edu.cn:8118/">http://szxd-swu-lol-s.sangfor.vpn.swu.edu.cn:8118/</NuxtLink>
             来访问我们的服务!
           </p>
           <div class="mt-4 flex justify-end">
@@ -48,7 +46,7 @@ const close = () => {
         <div class="p-4">
           <h2 class="text-xl font-semibold">域名更换提示</h2>
           <p class="mt-2 text-base text-gray-500">
-            由于运营商屏蔽，我们将域名从原域名迁移至 <NuxtLink to="https://38.147.184.134/">https://38.147.184.134/</NuxtLink> 原有服务不受影响，原域名将会在一段时间后停止服务，请您尽快更换域名来访问我们的服务!
+            由于运营商屏蔽，我们将域名从原域名迁移至 <NuxtLink class="link hover:text-green-500" to="httpss://38.147.184.134/">httpss://38.147.184.134/</NuxtLink> 原有服务不受影响，原域名将会在一段时间后停止服务，请您尽快更换域名来访问我们的服务!
           </p>
           <div class="mt-4 flex justify-end">
             <UButton @click="open=false">Got it!</UButton>
