@@ -9,11 +9,10 @@ const http = axios.create({
 });
 // 请求拦截器
 const beforeRequest = (config: any) => {
-  // 设置 token
-  // const token = localStorage.getItem('token')
-  // token && (config.headers.Authorization = token)
-  // NOTE  添加自定义头部
-  // config.headers['my-header'] = 'jack'
+  const protocol = window.location.protocol 
+  const hostname = window.location.hostname 
+  const url = `${protocol}//${hostname}/api` 
+  config.baseURL = url 
   return config;
 };
 

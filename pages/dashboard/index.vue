@@ -48,7 +48,7 @@ const close = () => {
         <div class="p-4">
           <h2 class="text-xl font-semibold">域名更换提示</h2>
           <p class="mt-2 text-base text-gray-500">
-            由于服务升级，我们将域名从原域名迁移至 <NuxtLink to="http://szxd.swu.lol/">http://szxd.swu.lol/</NuxtLink> 原有服务不受影响，原域名将会在一段时间后停止服务，请您尽快更换域名来访问我们的服务!
+            由于运营商屏蔽，我们将域名从原域名迁移至 <NuxtLink to="https://38.147.184.134/">https://38.147.184.134/</NuxtLink> 原有服务不受影响，原域名将会在一段时间后停止服务，请您尽快更换域名来访问我们的服务!
           </p>
           <div class="mt-4 flex justify-end">
             <UButton @click="open=false">Got it!</UButton>
