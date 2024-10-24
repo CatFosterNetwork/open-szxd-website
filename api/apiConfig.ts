@@ -16,33 +16,33 @@ const apiUrl = {
   // 宿舍统计
   gardens: `/gardens`,
   // 乐跑
-  lerun: `$/lerun`,
+  lerun: `/lerun`,
   // 用户管理
-  usersManagement: `$/users/management`,
+  usersManagement: `/users/management`,
   // 用户封禁
-  ban: `$/users/ban/`,
+  ban: `/users/ban/`,
   // 用户解封
-  unban: `$/users/unban/`,
+  unban: `/users/unban/`,
   // 设为代理
-  setAgent: `$/users/setAgent/`,
+  setAgent: `/users/setAgent/`,
   // 增加余额 
-  addBalance: `$/users/addBalance/`,
+  addBalance: `/users/addBalance/`,
   // 设置余额
-  setBalance: `$/users/setBalance/`,
+  setBalance: `/users/setBalance/`,
   // 设置折扣
-  setDiscount: `$/users/setDiscount/`,
+  setDiscount: `/users/setDiscount/`,
   // 生成keys
-  generateKeys: `$/keys/generate`,
+  generateKeys: `/keys/generate`,
   // 删除keys
-  deleteKeys: `$/keys/delete/`,
+  deleteKeys: `/keys/delete/`,
   // 获取keys
-  getKeys: `$/keys`,
+  getKeys: `/keys`,
   // 激活
-  activate: `$/activate/`,
+  activate: `/activate/`,
   // 重置HWID
-  revokeHwid: `$/revokeHwid/`,
+  revokeHwid: `/revokeHwid/`,
   // 补偿时长
-  compensate: `$/compensate/`,
+  compensate: `/compensate/`,
 };
 
 export default apiUrl;
