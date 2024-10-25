@@ -226,7 +226,6 @@ const startNewLerun = () => {
   if (!socket.connected) {
     socket.connect();
   } else {
-    socket.disconnect();
     base64.value = "";
     progress.value = null;
     isLoggedIn.value = false;
@@ -303,7 +302,6 @@ const startNewLerun = () => {
 
   socket.on("requestCompleteNew", (res) => {
     status.value = 3;
-    socket.disconnect();
     isConnected.value = false;
     requestComplete.value = true;
     lerunData.value = res.data.record;
@@ -359,7 +357,6 @@ const startLerun = () => {
   if (!socket.connected) {
     socket.connect();
   } else {
-    socket.disconnect();
     base64.value = "";
     progress.value = null;
     isLoggedIn.value = false;
@@ -436,7 +433,6 @@ const startLerun = () => {
 
   socket.on("requestComplete", (res) => {
     status.value = 3;
-    socket.disconnect();
     isConnected.value = false;
     requestComplete.value = true;
     lerunData.value = res.data.record;
@@ -491,6 +487,15 @@ onMounted(() => {
 
 onUnmounted(() => {
   socket.disconnect();
+});
+
+watch(isConnected, (value) => {
+  if (value) {
+    simulateProgress();
+  } else {
+    progress.value = null;
+    socket.disconnect();
+  }
 });
 </script>
 
