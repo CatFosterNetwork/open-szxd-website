@@ -1,3 +1,7 @@
+/*
+ * Every line of code is my tear
+ * Every tear is you
+ */
 import axios from "axios";
 
 // const localePath = useLocalePath();
@@ -11,7 +15,8 @@ const http = axios.create({
 const beforeRequest = (config: any) => {
   const protocol = window.location.protocol 
   const hostname = window.location.hostname 
-  const url = `${protocol}//${hostname}/api` 
+  const port = window.location.port
+  const url = `${protocol}//${hostname}:${port}/api` 
   config.baseURL = url 
   return config;
 };
