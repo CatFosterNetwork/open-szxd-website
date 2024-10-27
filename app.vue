@@ -70,10 +70,6 @@ useHead({
     // { name: "baidu-site-verification", content: "codeva-5bhYH6E1wP" },
     // { name: "msvalidate.01", content: "A1770F9DC0579EB104659A67EF158DF3" },
     {
-      "http-equiv": "content-security-policy",
-      content: "upgrade-insecure-requests",
-    },
-    {
       hid: "description",
       name: "description",
       content: t("app.head.description"),
