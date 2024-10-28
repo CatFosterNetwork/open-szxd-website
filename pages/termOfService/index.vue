@@ -3,7 +3,7 @@ const { locale } = useI18n();
 </script>
 
 <template>
-  <div class="WordSection1" v-if="locale === 'zh'">
+  <div class="WordSection1" v-if="locale === 'zh-CN'">
     <p
       class="MsoNormal"
       align="center"
