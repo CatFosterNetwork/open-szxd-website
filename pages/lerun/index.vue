@@ -41,12 +41,7 @@ const isTimeShowed = ref(false);
 const storedColorMode = ref("light");
 const waiting = ref(1);
 
-const socket = io(serverUrl.value, {
-  transports: ["websocket"],
-  path: "/api/socket.io",
-  reconnection: true,
-  autoConnect: false,
-});
+let socket: ReturnType<typeof io>;
 
 const color = computed(() => {
   switch (true) {
@@ -474,6 +469,12 @@ const startLerun = () => {
 onMounted(() => {
   storedColorMode.value = localStorage.getItem("nuxt-color-mode") as string;
   serverUrl.value = `wss://${window.location.hostname}:${window.location.port}/api`;
+  socket = io(serverUrl.value, {
+    transports: ["websocket"],
+    path: "/api/socket.io",
+    reconnection: true,
+    autoConnect: false,
+  });
   setInterval(() => {
     if (expire.value > 0) {
       expire.value -= 1;
