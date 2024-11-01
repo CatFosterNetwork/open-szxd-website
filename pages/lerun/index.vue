@@ -201,17 +201,6 @@ const simulateProgress = () => {
   }
 };
 
-onMounted(() => {
-  setInterval(() => {
-    if (expire.value > 0) {
-      expire.value -= 1;
-    } else {
-      expire.value = 240;
-    }
-  }, 1000);
-  serverUrl.value = `wss://${window.location.hostname}:${window.location.port}/api`;
-});
-
 const startNewLerun = () => {
   if (user.value.lerun_remained <= 0) {
     toast.add({
@@ -484,6 +473,14 @@ const startLerun = () => {
 
 onMounted(() => {
   storedColorMode.value = localStorage.getItem("nuxt-color-mode") as string;
+  setInterval(() => {
+    if (expire.value > 0) {
+      expire.value -= 1;
+    } else {
+      expire.value = 240;
+    }
+  }, 1000);
+  serverUrl.value = `wss://${window.location.hostname}:${window.location.port}/api`;
 });
 
 onUnmounted(() => {
