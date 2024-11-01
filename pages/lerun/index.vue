@@ -3,7 +3,7 @@ import Api from "~/api/api";
 checkLogin();
 
 const base64 = ref<string>("");
-const serverUrl = ref<string>("wss://szxd.swu.lol/api");
+const serverUrl = ref<string>(`wss://open.szxd.swu.social/api`);
 const theme = useColorMode().value;
 const progress = ref<number | null>(null);
 const { t } = useI18n();
@@ -209,6 +209,7 @@ onMounted(() => {
       expire.value = 240;
     }
   }, 1000);
+  serverUrl.value = `wss://${window.location.hostname}:${window.location.port}/api`;
 });
 
 const startNewLerun = () => {
