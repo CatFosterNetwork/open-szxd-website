@@ -473,6 +473,7 @@ const startLerun = () => {
 
 onMounted(() => {
   storedColorMode.value = localStorage.getItem("nuxt-color-mode") as string;
+  serverUrl.value = `wss://${window.location.hostname}:${window.location.port}/api`;
   setInterval(() => {
     if (expire.value > 0) {
       expire.value -= 1;
@@ -480,7 +481,6 @@ onMounted(() => {
       expire.value = 240;
     }
   }, 1000);
-  serverUrl.value = `wss://${window.location.hostname}:${window.location.port}/api`;
 });
 
 onUnmounted(() => {
