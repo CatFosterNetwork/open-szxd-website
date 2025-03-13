@@ -145,7 +145,8 @@
       "new_ready": "The new version of LeRun is ready",
       "toast": {
         "remained_Insufficient": "Your LeRun Balance Is Insufficient"
-      }
+      },
+      "buy": "Purchase Now"
     }
   },
   "layouts": {
@@ -347,7 +348,8 @@
       "description": "Automatic check-in has been",
       "deactivate": "Deactivated.",
       "activateUntill": "Activated until",
-      "reactivate": ". Please log in again to refresh after expiration."
+      "reactivate": ". Please log in again to refresh after expiration.",
+      "purchase": "Or you can get subscription in our store."
     }
   },
   "app": {

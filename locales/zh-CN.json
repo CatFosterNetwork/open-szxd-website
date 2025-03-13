@@ -145,7 +145,8 @@
       "new_ready": "新版本乐跑已准备就绪",
       "toast": {
         "remained_Insufficient": "您的乐跑次数余额不足"
-      }
+      },
+      "buy": "立即购买"
     }
   },
   "layouts": {
@@ -347,7 +348,8 @@
       "description": "自动打卡服务",
       "deactivate": "尚未激活。",
       "activateUntill": "已经激活至",
-      "reactivate": "。请在服务过期后重新登陆以激活继续使用。"
+      "reactivate": "。请在服务过期后重新登陆以激活继续使用。",
+      "purchase": "或者您可以在我们的商店中获得订阅。"
     }
   },
   "app": {

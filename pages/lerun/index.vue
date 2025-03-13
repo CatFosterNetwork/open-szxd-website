@@ -202,6 +202,7 @@ const startNewLerun = () => {
       title: t("lerun.index.toast.remained_Insufficient"),
       color: "red",
     });
+    window.location.href = "/purchase";
     return
   }
 
@@ -511,12 +512,6 @@ watch(isConnected, (value) => {
                 :label="$t('lerun.index.new')"
                 @click="New = true"
               />
-              <UButton
-                :padded="false"
-                variant="link"
-                :label="$t('lerun.index.old')"
-                @click="New = false"
-              />
             </view>
           </template>
           <template #right>
@@ -529,32 +524,10 @@ watch(isConnected, (value) => {
               <view class="flex font-bold text-2xl" v-if="New">
                 {{ $t("lerun.index.remain", { num: user.lerun_remained }) }}
               </view>
-              <view class="flex font-bold text-2xl" v-else>
-                {{ $t("lerun.index.waiting", { num: waiting }) }}
-              </view>
             </view>
           </template>
         </UDashboardNavbar>
         <view v-auto-animate class="flex justify-center w-full h-full">
-          <view
-            v-if="status == 1 && !New"
-            class="flex justify-center items-center h-full"
-          >
-            <view class="flex justify-center items-center h-full flex-col">
-              <view class="font-bold text-4xl mb-10">
-                {{ $t("lerun.index.ready") }}
-              </view>
-              <UButton
-                color="primary"
-                @click="startLerun"
-                class="ml-2"
-                v-if="!start"
-                :disabled="start"
-              >
-                {{ $t("lerun.index.start") }}
-              </UButton>
-            </view>
-          </view>
           <view v-if="status == 1 && New" class="flex justify-center items-center h-full">
             <view class="flex justify-center items-center h-full flex-col">
               <view class="font-bold text-6xl mb-10">
@@ -570,7 +543,7 @@ watch(isConnected, (value) => {
                 v-if="!start"
                 :disabled="start"
               >
-                {{ $t("lerun.index.start") }}
+                {{ user.lerun_remained > 0 ? $t("lerun.index.start") : $t("lerun.index.buy") }}
               </UButton>
             </view>
           </view>

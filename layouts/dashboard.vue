@@ -40,6 +40,16 @@ const links = ref([
       },
     },
     {
+      id: "purchase",
+      label: t("layouts.dashboard.links.purchase.label"),
+      icon: "i-heroicons-shopping-cart",
+      to: localePath("/purchase"),
+      tooltip: {
+        text: t("layouts.dashboard.links.purchase.text"),
+        shortcuts: ["G", "P"],
+      },
+    },
+    {
       id: "inbox",
       label: t("layouts.dashboard.links.inbox.label"),
       icon: "i-heroicons-inbox",

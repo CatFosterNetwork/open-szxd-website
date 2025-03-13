@@ -31,7 +31,7 @@ await useAsyncData<void>(
       <span class="text-green-500 dark:text-green-400"
         >{{ $t("homeDateRangePicker.dashboardCard.activateUntill") }}
         {{ date }}</span
-      >{{ $t("homeDateRangePicker.dashboardCard.reactivate") }}
+      >{{ $t("homeDateRangePicker.dashboardCard.reactivate") }} {{ $t("homeDateRangePicker.dashboardCard.purchase") }}
     </div>
   </div>
 </template>

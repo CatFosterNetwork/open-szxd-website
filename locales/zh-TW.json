@@ -15,7 +15,8 @@
       "description": "自動打卡服務",
       "activateUntill": "激活直至",
       "reactivate": "。\n過期後請重新登入刷新。",
-      "deactivate": "已停用。"
+      "deactivate": "已停用。",
+      "purchase": "或者您可以在我們的商店中獲得訂閱。"
     }
   },
   "homeSales": {
@@ -240,7 +241,8 @@
       "new_ready": "新版樂跑已準備就緒",
       "toast": {
         "remained_Insufficient": "您的樂跑次數餘額不足"
-      }
+      },
+      "buy": "立即購買"
     }
   },
   "login": {

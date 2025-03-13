@@ -15,7 +15,8 @@
       "description": "自動チェックインが設定されました",
       "activateUntill": "までアクティブ化される",
       "reactivate": "。\n有効期限が切れた後は、再度ログインして更新してください。",
-      "deactivate": "無効化されました。"
+      "deactivate": "無効化されました。",
+      "purchase": "または、私たちのストアでサブスクリプションを取得できます。"
     }
   },
   "homeSales": {
@@ -240,7 +241,8 @@
       "new_ready": "LeRun の新バージョンが完成しました",
       "toast": {
         "remained_Insufficient": "ルラン残高が不足しています"
-      }
+      },
+      "buy": "今すぐ購入してください"
     }
   },
   "login": {
