@@ -364,6 +364,21 @@
       "title": "Open SWU | Your Best SWU Tools"
     }
   },
+  "dashboard": {
+    "modals": {
+      "warmReminder": {
+        "title": "Warm Reminder",
+        "content": "Open SZXD will automatically detect your leave status during holidays. If you are on leave, automatic check-in will not be performed. After manually canceling leave, automatic check-in will resume (if check-in has not expired).",
+        "button": "Got it!"
+      },
+      "domainChange": {
+        "title": "Domain Change Notice",
+        "content": "Due to ISP blocking, we have migrated our domain from the original domain to",
+        "contentSuffix": "The original services are not affected. The original domain will stop service after a period of time. Please change the domain as soon as possible to access our services!",
+        "button": "Got it!"
+      }
+    }
+  },
   "No Subscription": "No Subscription",
   "[Open SZXD] LeRun": "[Open SZXD] LeRun"
 }

@@ -364,6 +364,21 @@
       "title": "开放西大 |\n您最好的 SWU 工具"
     }
   },
+  "dashboard": {
+    "modals": {
+      "warmReminder": {
+        "title": "温馨提示",
+        "content": "开放数智西大在节假日期间将会自动检测您的请假状态，如果您处于请假状态，将不会进行自动打卡操作。手动销假过后会恢复自动打卡（若打卡仍未过期）。",
+        "button": "知道了"
+      },
+      "domainChange": {
+        "title": "域名更换提示",
+        "content": "由于运营商屏蔽，我们将域名从原域名迁移至",
+        "contentSuffix": "原有服务不受影响，原域名将会在一段时间后停止服务，请您尽快更换域名来访问我们的服务!",
+        "button": "知道了"
+      }
+    }
+  },
   "No Subscription": "没有订阅",
   "[Open SZXD] LeRun": ""
 }
