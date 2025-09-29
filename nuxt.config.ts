@@ -5,66 +5,64 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  extends: ["@nuxt/ui-pro"],
   app: {
-    header: {
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/swulogo.png' }]
-    },
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/swulogo.png' }]
     }
   },
+  css: ['~/assets/css/main.css'],
   modules: [
-    "@nuxt/content",
-    "@nuxt/ui",
-    "@nuxt/image",
-    "@nuxtjs/i18n",
-    "nuxt-icon",
-    "nuxt-socket-io",
-    "@nuxtjs/sitemap",
-    "@nuxtjs/seo",
-    "@formkit/auto-animate/nuxt",
+   "@nuxt/ui",
+   "@nuxt/content",
+   "@nuxt/image",
+   "@nuxtjs/i18n",
+   "@nuxt/icon",
+   "nuxt-socket-io",
+   "@nuxtjs/sitemap",
+   "@nuxtjs/seo",
+   "@formkit/auto-animate/nuxt",
+   "nuxt-seo-utils",
   ],
   sourcemap: false,
   site: {
     url: "https://szxd.swu.lol",
   },
-  ui: {
-    icons: {},
-    safelistColors: ["primary", "red", "orange", "green"],
+  icon: {
+    serverBundle: {
+      collections: ['heroicons', 'material-symbols', 'simple-icons', 'lucide']
+    }
   },
   i18n: {
-    langDir: "locales/",
     detectBrowserLanguage: false,
     strategy: "prefix_except_default",
     defaultLocale: "en-US",
-    vueI18n: "./i18n.config.ts",
     locales: [
       {
         code: "zh-CN",
         name: "简体中文",
-        file: "zh-CN",
+        file: "zh-CN.json",
       },
       {
         code: "zh-TW",
         name: "繁體中文",
-        file: "zh-TW",
+        file: "zh-TW.json",
       },
       {
         code: "ja-JP",
         name: "日本語",
-        file: "ja-JP",
+        file: "ja-JP.json",
       },
       {
         code: "ru-RU",
         name: "Русский",
-        file: "ru-RU",
+        file: "ru-RU.json",
       },
       {
         code: "en-US",
         name: "English",
-        file: "en-US",
+        file: "en-US.json",
       },
     ],
   },
@@ -74,8 +72,9 @@ export default defineNuxtConfig({
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",
     componentName: "ColorScheme",
-    classPrefix: "",
-    classSuffix: "-mode",
+    classPrefix: '',
+    classSuffix: '',
+    storage: 'localStorage', // or 'sessionStorage' or 'cookie'
     storageKey: "nuxt-color-mode",
   },
 });
